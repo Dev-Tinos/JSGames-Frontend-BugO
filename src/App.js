@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Router, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home.js";
-import Ranking from "./pages/ranking/Ranking.js";
-import Signin from "./pages/signin/Signin.js";
-import MyPage from "./pages/mypage/MyPage";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home.js";
+import Ranking from "./pages/Ranking.js";
+import Signin from "./pages/Signin.js";
+import MyPage from "./pages/MyPage.js";
 
 const App = () => {
     return (
