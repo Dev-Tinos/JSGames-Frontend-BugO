@@ -1,18 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./TopNavigationBar.css";
-import SearchBar from "../molecules/SearchBar";
+import Logo from "../atoms/Logo";
 
 const TopNavigationBar = () => {
     return (
         <div className="top-nav-bar">
-            <h1 className="logo">
-                <img
-                    className="logo-img"
-                    src="assets/img/tino.png"
-                    alt="티노"
-                />
-            </h1>
+            <Logo />
             <div className="nav-links">
                 <li>
                     <Link to="/">Home</Link>
@@ -27,7 +21,6 @@ const TopNavigationBar = () => {
                     <Link to="/signin">Login</Link>
                 </li>
             </div>
-            <SearchBar />
         </div>
     );
 };

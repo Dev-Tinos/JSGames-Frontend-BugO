@@ -1,22 +1,27 @@
-import React, { useState } from "react";
-import "./Input.css";
+import React from "react";
+import styled from "styled-components";
 
-const Input = ({ type, placeholder }) => {
-    const [value, setValue] = useState("");
+const InputBox = styled.input`
+    flex: 1;
+    background-color: #fff;
+    border: none;
+    width: 450px;
+    height: 50px;
+    margin: 10px;
+`;
 
+const Input = ({ type, placeholder, onChange, value }) => {
     const onhandleChange = (e) => {
-        setValue(e.target.value);
-        console.log(value);
+        onChange(e.target.value);
     };
 
     return (
-        <input
-            className="input"
+        <InputBox
             type={type}
             value={value}
             onChange={onhandleChange}
             placeholder={placeholder}
-        ></input>
+        />
     );
 };
 
