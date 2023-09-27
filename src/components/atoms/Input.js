@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const InputBox = styled.input`
-    flex: 1;
     background-color: #fff;
     border: none;
     width: 450px;

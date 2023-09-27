@@ -1,6 +1,6 @@
 import React from "react";
 import TopNavigationBar from "../organisms/TopNavigationBar";
-import GameList from "../molecules/GameList";
+import GameList from "../organisms/GameList";
 
 const testData = [
     {

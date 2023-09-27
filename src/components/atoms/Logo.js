@@ -5,10 +5,12 @@ const Logoblock = styled.div`
     width: 75px;
     height: 75px;
     background-color: #4249e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 50%;
+
+    img {
+        margin: 5px auto;
+        display: block;
+    }
 `;
 
 const Logo = () => {

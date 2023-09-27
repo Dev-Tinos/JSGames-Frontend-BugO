@@ -8,10 +8,14 @@ const LoginStyle = styled.div`
     padding: 10px;
     width: 500px;
     text-align: center;
-    margin: 20px;
+    margin: 50px auto;
+    .btn {
+        height: 50px;
+        cursor: pointer;
+    }
 `;
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -23,21 +27,13 @@ const LoginForm = () => {
         <LoginStyle>
             <h2>Login</h2>
             <form>
-                <div>
-                    <Input
-                        type="text"
-                        placeholder={"Email"}
-                        onChange={setEmail}
-                    />
-                    <Input
-                        type="password"
-                        placeholder={"Password"}
-                        onChange={setPassword}
-                    />
-                </div>
-                <div>
-                    <LoginButton text="로그인" onClick={Login} />
-                </div>
+                <Input type="text" placeholder={"Email"} onChange={setEmail} />
+                <Input
+                    type="password"
+                    placeholder={"Password"}
+                    onChange={setPassword}
+                />
+                <LoginButton text="로그인" onClick={Login} />
             </form>
         </LoginStyle>
     );
