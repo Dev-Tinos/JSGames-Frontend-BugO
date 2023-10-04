@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import GameItem from "../molecules/GameItem";
+import { Link } from "react-router-dom";
 
-const GameListBlock = styled.ul`
+const GameStyle = styled.ul`
     margin: auto;
     width: 1300px;
 `;
@@ -10,11 +11,13 @@ const GameListBlock = styled.ul`
 const GameList = ({ data }) => {
     const gameList = data;
     return (
-        <GameListBlock>
+        <GameStyle>
             {gameList.map((item) => (
-                <GameItem key={item.id} item={item} />
+                <Link to="/game/1">
+                    <GameItem key={item.gameId} item={item} />
+                </Link>
             ))}
-        </GameListBlock>
+        </GameStyle>
     );
 };
 

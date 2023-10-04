@@ -4,7 +4,7 @@ import Ranking from "./pages/Ranking.js";
 import Login from "./pages/Login.js";
 import MyPage from "./pages/MyPage.js";
 import Main from "./pages/Main.js";
-import GameDetail from "./components/Templat/GameDetail.js";
+import GamePage from "./pages/GamePage.js";
 
 const App = () => {
     return (
@@ -13,7 +13,7 @@ const App = () => {
             <Route path="/ranking" Component={Ranking} />
             <Route path="/mypage" Component={MyPage} />
             <Route path="/signin" Component={Login} />
-            <Route path="/game/:id" Component={GameDetail} />
+            <Route path="/game/:id" Component={GamePage} />
         </Routes>
     );
 };

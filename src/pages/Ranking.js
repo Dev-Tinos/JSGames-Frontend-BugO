@@ -1,11 +1,10 @@
 import React from "react";
-import TopNavigationBar from "../components/organisms/TopNavigationBar";
+import RankingTemlat from "../components/Templat/RankingTemlat";
 
 const Ranking = () => {
     return (
         <div>
-            <TopNavigationBar />
-            랭킹(리더보드)
+            <RankingTemlat />
         </div>
     );
 };

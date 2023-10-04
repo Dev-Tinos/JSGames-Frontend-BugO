@@ -1,13 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import GameDetail from "../components/Templat/GameDetail";
 
 const GamePage = () => {
-    const { id } = useParams();
-
     return (
         <div>
-            <h1>게임 페이지</h1>
-            <p>ID: {id}</p>
+            <GameDetail />
         </div>
     );
 };

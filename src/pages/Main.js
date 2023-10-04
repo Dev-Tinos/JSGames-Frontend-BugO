@@ -1,10 +1,10 @@
 import React from "react";
-import MainPage from "../components/Templat/MainPage";
+import MainTemplat from "../components/Templat/MainTemplat";
 
 const Main = () => {
     return (
         <div>
-            <MainPage />
+            <MainTemplat />
         </div>
     );
 };

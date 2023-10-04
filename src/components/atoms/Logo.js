@@ -6,17 +6,17 @@ const Logoblock = styled.div`
     height: 75px;
     background-color: #4249e5;
     border-radius: 50%;
-
     img {
         margin: 5px auto;
         display: block;
+        border-radius: 50%;
     }
 `;
 
 const Logo = () => {
     return (
         <Logoblock>
-            <img src="assets/img/tino.png" alt="티노" />
+            <img src={require("../../assets/img/tino.png")} alt="티노" />
         </Logoblock>
     );
 };

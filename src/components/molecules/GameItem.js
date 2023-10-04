@@ -32,18 +32,12 @@ const GameItemBlock = styled.div`
     }
 `;
 
-const GameItem = ({ onClick, item }) => {
-    const { id, title, developer, img } = item;
-
-    const Clicked = () => {
-        console.log(id);
-    };
-
+const GameItem = ({ item }) => {
     return (
-        <GameItemBlock onClick={Clicked}>
-            <img className="logo-img" src={img} alt="티노" />
-            <p className="title">{title}</p>
-            <p className="text">{developer}</p>
+        <GameItemBlock>
+            <img className="logo-img" src={item.imageUrl} alt="티노" />
+            <p className="title">{item.gameName}</p>
+            <p className="text">{item.userId}</p>
         </GameItemBlock>
     );
 };

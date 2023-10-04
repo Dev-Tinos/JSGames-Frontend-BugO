@@ -9,7 +9,7 @@ const LoginPageStyle = styled.div`
     }
 `;
 
-const LoginPage = () => {
+const LoginTemplat = () => {
     return (
         <LoginPageStyle>
             <TopNavigationBar />
@@ -19,4 +19,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default LoginTemplat;
