@@ -13,7 +13,7 @@ const ProfileImg = () => {
         <ProfileImgStyle>
             <img
                 className="roundimg"
-                src={require("../../assets/img/tino.png")}
+                // src={require("../../assets/img/tino.png")}
                 alt="티노"
             />
         </ProfileImgStyle>
