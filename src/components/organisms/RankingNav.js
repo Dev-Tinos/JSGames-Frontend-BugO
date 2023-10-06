@@ -18,10 +18,7 @@ const RankingNav = () => {
     return (
         <RankingNavStyle>
             <ul>
-                <li>game1</li>
-                <li>game2</li>
-                <li>game3</li>
-                <li>game4</li>
+                <li>종합 순위</li>
             </ul>
         </RankingNavStyle>
     );
