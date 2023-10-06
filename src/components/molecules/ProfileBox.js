@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ProfileImg from "../atoms/ProfileImg";
+import ProfileImg from "../atoms/profileImg";
 
 const ProfileBoxStyle = styled.div`
     display: flex;
