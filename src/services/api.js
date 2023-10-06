@@ -53,3 +53,17 @@ export const putUser = async (params, userId) => {
 };
 
 // 회원탈퇴
+
+// test
+export const apiTest = async () => {
+    const response = await fetch(`http://54.210.228.54:8080/`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    const data = await response.text();
+
+    return data;
+};
