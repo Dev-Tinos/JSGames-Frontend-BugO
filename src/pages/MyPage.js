@@ -1,11 +1,10 @@
 import React from "react";
-import TopNavigationBar from "../components/organisms/TopNavigationBar";
+import MyTemplat from "../components/Templat/MyTemplat";
 
 const MyPage = () => {
     return (
         <div>
-            <TopNavigationBar />
-            마이 페이지
+            <MyTemplat />
         </div>
     );
 };

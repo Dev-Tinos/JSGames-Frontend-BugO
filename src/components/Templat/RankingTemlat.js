@@ -56,7 +56,6 @@ const RankingStyle = styled.div`
         margin: auto;
         display: flex;
         width: 1280px;
-        background-color: red;
     }
     .navigation {
         width: 240px;
@@ -70,6 +69,9 @@ const RankingStyle = styled.div`
     }
     li {
         list-style-type: none;
+    }
+    .commentbox {
+        background-color: #fff;
     }
 `;
 
