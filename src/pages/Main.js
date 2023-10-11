@@ -3,8 +3,7 @@ import MainTemplat from "../components/Templat/MainTemplat";
 import { getGameList } from "../services/gameApi";
 
 const Main = () => {
-    const [gameList, setGameList] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    const [gameList, setGameList] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
@@ -12,7 +11,6 @@ const Main = () => {
                 const params = { page: 0, size: 12 };
                 const apiData = await getGameList(params);
                 setGameList(apiData);
-                setIsLoading(false);
             } catch (error) {
                 console.error();
             }
@@ -21,9 +19,6 @@ const Main = () => {
         getData();
     }, []);
 
-    if (isLoading) {
-        return <div>Loding...</div>;
-    }
     return (
         <div>
             <MainTemplat data={gameList} />
