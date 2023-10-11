@@ -15,3 +15,17 @@ export const getGameList = async (params) => {
 
     return data;
 };
+
+// GameId로 게임 조회
+export const getGame = async (params) => {
+    const data = await axios
+        .get(`${API_URL}/api/game/${params.gameId}`)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    console.log(data);
+    return data;
+};
