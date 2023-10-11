@@ -12,7 +12,6 @@ export const getGameList = async (params) => {
         .catch((error) => {
             return error;
         });
-
     return data;
 };
 
@@ -26,6 +25,5 @@ export const getGame = async (params) => {
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };
