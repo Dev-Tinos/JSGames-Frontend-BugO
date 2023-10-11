@@ -9,6 +9,7 @@ const FrameStyle = styled.div`
     iframe {
         width: 1280px;
         height: 800px;
+        border-width: 0px;
     }
 `;
 
