@@ -14,7 +14,7 @@ const App = () => {
             <Route path="/ranking" Component={Ranking} />
             <Route path="/mypage" Component={MyPage} />
             <Route path="/signin" Component={Login} />
-            <Route path="/game/:id" Component={GamePage} />
+            <Route path="/game/:gameId" Component={GamePage} />
             <Route path="/test" Component={TestPage} />
         </Routes>
     );

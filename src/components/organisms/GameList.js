@@ -13,7 +13,7 @@ const GameList = ({ data }) => {
     return (
         <GameStyle>
             {gameList.map((item) => (
-                <Link to="/game/1">
+                <Link to={`/game/${item.gameId}`}>
                     <GameItem key={item.gameId} item={item} />
                 </Link>
             ))}
