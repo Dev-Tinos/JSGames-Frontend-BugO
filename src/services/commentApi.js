@@ -12,6 +12,5 @@ export const getCommentList = async (gameId, params) => {
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };

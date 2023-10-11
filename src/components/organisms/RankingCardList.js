@@ -8,6 +8,7 @@ const CardListStyled = styled.div`
     height: 500px;
     background-color: #d9d9d9;
     display: flex;
+    border-radius: 10px;
     .CardStyled {
         background-color: blue;
     }

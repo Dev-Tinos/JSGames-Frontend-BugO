@@ -6,22 +6,19 @@ import CommentForm from "../molecules/CommentForm";
 const CommentStyle = styled.div`
     margin: auto;
     width: 1280px;
-    .commentbox {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #d9d9d9;
-    }
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
 `;
 
 const CommentList = ({ data }) => {
     return (
         <CommentStyle>
-            <div className="commentbox">
-                <CommentForm />
-                {data.map((item) => (
-                    <Comment key={item.commentId} item={item} />
-                ))}
-            </div>
+            <CommentForm />
+            {data.map((item) => (
+                <Comment key={item.commentId} item={item} />
+            ))}
         </CommentStyle>
     );
 };
