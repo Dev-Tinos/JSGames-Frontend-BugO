@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
-import { postUser } from "../../services/api";
+import { postUser } from "../../services/userApi";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;

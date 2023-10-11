@@ -6,7 +6,7 @@ const RankingListStyle = styled.div`
     margin: auto;
     width: 1280px;
     .commentbox {
-        background-color: #d9d9d9;
+        background-color: #fff;
         padding: 15px;
     }
     .title {
@@ -35,10 +35,10 @@ const RankingList = ({ data }) => {
         <RankingListStyle>
             <div className="commentbox">
                 <div className="title">
-                    <p className="ranking">Ranking</p>
+                    <p className="ranking">랭킹</p>
                     <p className="img" />
-                    <p className="nickname">Nickname</p>
-                    <p className="score">Score</p>
+                    <p className="nickname">닉네임</p>
+                    <p className="score">점수</p>
                 </div>
                 {data.map((item) => (
                     <RankingItem key={item.resultId} item={item} />

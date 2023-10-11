@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiTest } from "../services/api";
+import { apiTest } from "../services/userApi";
 
 const TestPage = () => {
     const [data, setData] = useState("");
@@ -11,7 +11,7 @@ const TestPage = () => {
         };
 
         apiData().then((res) => setData(res));
-    });
+    }, []);
 
     return <div>{data}</div>;
 };

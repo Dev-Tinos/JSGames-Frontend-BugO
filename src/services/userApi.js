@@ -1,8 +1,8 @@
-const API_URL = "http://54.210.228.54:8080/api";
+const API_URL = process.env.REACT_APP_API_URL;
 
 // 회원가입
 export const postUser = async (params) => {
-    const response = await fetch(`${API_URL}/user`, {
+    const response = await fetch(`${API_URL}/api/user`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export const postUser = async (params) => {
 
 // 로그인
 export const postLogin = async (params) => {
-    const response = await fetch(`${API_URL}/user/login`, {
+    const response = await fetch(`${API_URL}/api/user/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const postLogin = async (params) => {
 
 // 회원 정보 조회
 export const getUser = async (params) => {
-    const response = await fetch(`${API_URL}/user/${params}`, {
+    const response = await fetch(`${API_URL}/api/user/${params}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export const getUser = async (params) => {
 
 // 회원 정보 수정
 export const putUser = async (params, userId) => {
-    const response = await fetch(`${API_URL}/user/${userId}`, {
+    const response = await fetch(`${API_URL}/api/user/${userId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -56,14 +56,12 @@ export const putUser = async (params, userId) => {
 
 // test
 export const apiTest = async () => {
-    const response = await fetch(`http://54.210.228.54:8080/`, {
+    const response = await fetch(`${API_URL}/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
     });
-
     const data = await response.text();
-
     return data;
 };

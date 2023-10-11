@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const Logoblock = styled.div`
-    width: 75px;
-    height: 75px;
-    background-color: #4249e5;
-    border-radius: 50%;
+    margin: 10px;
     img {
-        margin: 5px auto;
+        background-color: #4249e5;
+        width: 75px;
+        height: 75px;
         display: block;
         border-radius: 50%;
     }

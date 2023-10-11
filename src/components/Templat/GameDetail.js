@@ -2,7 +2,7 @@ import React from "react";
 import TopNavigationBar from "../organisms/TopNavigationBar";
 import styled from "styled-components";
 import CommentList from "../organisms/CommentList";
-import RankingList from "../organisms/RankingList";
+import RankingCardList from "../organisms/RankingCardList";
 
 const Detailbox = styled.div`
     .gameScreen {
@@ -82,6 +82,14 @@ const ranking = [
     },
 ];
 
+const myRanking = {
+    resultId: 123,
+    gameId: 123,
+    gameScore: "100",
+    userId: "나의 랭킹",
+    imageUrl: "../../assets/img/tino.png",
+};
+
 const GameDetail = () => {
     return (
         <Detailbox>
@@ -94,9 +102,9 @@ const GameDetail = () => {
                     만세
                 </p>
             </div>
-            <h2>Top 10</h2>
-            <RankingList data={ranking} />
-            <h2>Comment</h2>
+            <h2>랭킹</h2>
+            <RankingCardList data={ranking} myRanking={myRanking} />
+            <h2>댓글</h2>
             <CommentList data={comments} />
         </Detailbox>
     );

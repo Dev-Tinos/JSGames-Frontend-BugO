@@ -53,25 +53,19 @@ const RankingStyle = styled.div`
         height: 800px;
     }
     .container {
-        margin: auto;
         display: flex;
-        width: 1280px;
-    }
-    .navigation {
-        width: 240px;
-        height: 800px;
-        background-color: #fafafa;
-        display: block;
-        padding: 15px;
-    }
-    .RankingListStyle {
-        display: "flex";
-    }
-    li {
-        list-style-type: none;
+        margin: auto;
     }
     .commentbox {
         background-color: #fff;
+        margin: auto;
+    }
+    .space {
+        width: 270px;
+        padding: 15px;
+    }
+    .rankingBox {
+        flex: 1;
     }
 `;
 
@@ -81,7 +75,10 @@ const RankingTemlat = () => {
             <TopNavigationBar />
             <div className="container">
                 <RankingNav data={game} />
-                <RankingList data={ranking} />
+                <div className="rankingBox">
+                    <RankingList data={ranking} />
+                </div>
+                <div className="space" />
             </div>
         </RankingStyle>
     );
