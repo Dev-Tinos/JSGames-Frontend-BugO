@@ -23,3 +23,8 @@ jobs:
                   AWS_EC2_METADATA_DISABLED: true
               run: |
                   aws s3 sync ./build s3://dinogmaes-bugo
+
+            - name: Build
+              env:
+                  REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+              run: npm run build
