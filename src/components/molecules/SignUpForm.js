@@ -39,7 +39,7 @@ const SignUpForm = () => {
 
     return (
         <SignUpStyle>
-            <h2>SignUp</h2>
+            <h2>회원가입</h2>
             <form onSubmit={SignUp}>
                 <Input type="text" placeholder={"Email"} onChange={setEmail} />
                 <Input

@@ -61,7 +61,7 @@ const TopNavigationBar = () => {
                 </Link>
 
                 <li>
-                    <Link to="/signin">로그인</Link>
+                    <Link to="/login">로그인</Link>
                 </li>
             </div>
         </TopBar>
