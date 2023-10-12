@@ -1,10 +1,10 @@
 import React from "react";
-import RankingTemlat from "../components/Templat/RankingTemlat";
+import RankingTemplat from "../components/Templat/RankingTemplat";
 
 const Ranking = () => {
     return (
         <div>
-            <RankingTemlat />
+            <RankingTemplat />
         </div>
     );
 };

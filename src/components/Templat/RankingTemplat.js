@@ -69,7 +69,7 @@ const RankingStyle = styled.div`
     }
 `;
 
-const RankingTemlat = () => {
+const RankingTemplat = () => {
     return (
         <RankingStyle>
             <TopNavigationBar />
@@ -84,4 +84,4 @@ const RankingTemlat = () => {
     );
 };
 
-export default RankingTemlat;
+export default RankingTemplat;
