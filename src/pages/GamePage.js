@@ -34,7 +34,7 @@ const GamePage = () => {
         };
 
         getData();
-    }, []);
+    }, [params]);
 
     return (
         <div>
