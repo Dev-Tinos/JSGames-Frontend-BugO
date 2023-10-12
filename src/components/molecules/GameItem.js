@@ -2,23 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const GameItemBlock = styled.div`
-    background-color: #d9d9d9;
+    background-color: #fff;
     list-style-type: none;
     width: 380px;
     margin: 10px;
     float: left;
     border-radius: 10px;
-    padding: 10px;
+    border: 2px solid #ccc;
     cursor: pointer;
 
     img {
-        margin: 0 auto;
+        margin: 10px auto;
         display: block;
         width: 360px;
         height: 220px;
         object-fit: cover;
-        background-color: #999;
+        background-color: #ccc;
         border-radius: 10px;
+        color: #000;
     }
     .title {
         font-size: 18px;
@@ -28,7 +29,8 @@ const GameItemBlock = styled.div`
     }
     .text {
         font-size: 14px;
-        margin: 0px 0px 0px 10px;
+        margin: 0px 0px 10px 10px;
+        color: #000;
     }
 `;
 

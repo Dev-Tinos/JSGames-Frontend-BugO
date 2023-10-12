@@ -10,8 +10,6 @@ const RankingItemStyle = styled.div`
     margin-top: 5px;
     border: 2px solid #ccc;
     border-radius: 5px;
-    /* padding-right: 20px;
-    padding-left: 20px; */
     img {
         width: 60px;
         height: 60px;
