@@ -16,7 +16,7 @@ const FrameStyle = styled.div`
 const GameFrame = ({ gameUrl }) => {
     return (
         <FrameStyle>
-            <iframe src={gameUrl} />
+            <iframe src={gameUrl} title="게임 화면" />
         </FrameStyle>
     );
 };

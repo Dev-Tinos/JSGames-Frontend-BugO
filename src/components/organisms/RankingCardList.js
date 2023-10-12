@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import RankingCard from "../molecules/RankingCard";
+import RankingCardSkeleton from "../atoms/RankingCardSkeleton";
 
 const CardListStyled = styled.div`
     margin: auto;
@@ -14,13 +15,17 @@ const CardListStyled = styled.div`
     }
 `;
 
-const RankingCardList = ({ myRanking, data }) => {
+const RankingCardList = ({ myRanking, data, isLoading }) => {
     return (
         <CardListStyled>
             <RankingCard item={myRanking} />
-            {data.map((item) => (
-                <RankingCard key={item.resultId} item={item} />
-            ))}
+            {isLoading
+                ? new Array(3).fill(1).map((_, i) => {
+                      return <RankingCardSkeleton key={i} />;
+                  })
+                : data.map((item) => (
+                      <RankingCard key={item.resultId} item={item} />
+                  ))}
         </CardListStyled>
     );
 };

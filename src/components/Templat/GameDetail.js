@@ -27,7 +27,7 @@ const myRanking = {
     imageUrl: "../../assets/img/tino.png",
 };
 
-const GameDetail = ({ game, comment, ranking }) => {
+const GameDetail = ({ game, comment, ranking, isLoading }) => {
     return (
         <Detailbox>
             <TopNavigationBar />
@@ -38,6 +38,7 @@ const GameDetail = ({ game, comment, ranking }) => {
             </div>
             <h2>랭킹</h2>
             <RankingCardList
+                isLoading={isLoading}
                 data={ranking}
                 myRanking={myRanking}
                 ranking={ranking}

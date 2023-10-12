@@ -7,9 +7,10 @@ import { getGameResult } from "../services/resultApi";
 
 const GamePage = () => {
     const params = useParams();
-    const [gameData, setGameData] = useState({});
+    const [gameData, setGameData] = useState([]);
     const [commentList, setCommentList] = useState([]);
-    const [rankingList, setRankingList] = useState([]);
+    const [rankingList, setRankingList] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
@@ -26,7 +27,7 @@ const GamePage = () => {
                 setGameData(game);
                 setCommentList(comment);
                 setRankingList(ranking);
-                console.log(rankingList);
+                setIsLoading(false);
             } catch (error) {
                 console.error();
             }
@@ -41,6 +42,7 @@ const GamePage = () => {
                 game={gameData}
                 comment={commentList}
                 ranking={rankingList}
+                isLoading={isLoading}
             />
         </div>
     );

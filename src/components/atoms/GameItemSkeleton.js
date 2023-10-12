@@ -16,13 +16,13 @@ const SkeletonStyle = styled.div`
         width: 360px;
         height: 220px;
         object-fit: cover;
-        background-color: #cfcfcf;
+        background-color: #ccc;
         border-radius: 10px;
     }
     .title {
         width: 70%;
         height: 25px;
-        background-color: #cfcfcf;
+        background-color: #ccc;
         margin: 10px 0px 10px 10px;
     }
     .text {
