@@ -20,6 +20,7 @@ const Detailbox = styled.div`
 `;
 
 const myRanking = {
+    ranking: 123,
     resultId: 123,
     gameId: 123,
     gameScore: "100",
@@ -27,7 +28,14 @@ const myRanking = {
     imageUrl: "../../assets/img/tino.png",
 };
 
-const GameDetail = ({ game, comment, ranking, isLoading }) => {
+const GameDetail = ({
+    game,
+    comment,
+    ranking,
+    isLoading,
+    rankingPage,
+    // onClicked,
+}) => {
     return (
         <Detailbox>
             <TopNavigationBar />
@@ -38,10 +46,12 @@ const GameDetail = ({ game, comment, ranking, isLoading }) => {
             </div>
             <h2>랭킹</h2>
             <RankingCardList
+                rankingPage={rankingPage}
                 isLoading={isLoading}
                 data={ranking}
                 myRanking={myRanking}
                 ranking={ranking}
+                // onClicked={onClicked}
             />
             <h2>댓글</h2>
             <CommentList data={comment} />

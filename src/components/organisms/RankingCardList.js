@@ -15,17 +15,29 @@ const CardListStyled = styled.div`
     }
 `;
 
-const RankingCardList = ({ myRanking, data, isLoading }) => {
+const RankingCardList = ({
+    myRanking,
+    data,
+    isLoading,
+    rankingPage,
+    // onClicked,
+}) => {
     return (
         <CardListStyled>
-            <RankingCard item={myRanking} />
+            <RankingCard item={myRanking} ranking={myRanking.ranking} />
+            {/* <button onClick={onClicked(rankingPage - 1)}>이전</button> */}
             {isLoading
                 ? new Array(3).fill(1).map((_, i) => {
                       return <RankingCardSkeleton key={i} />;
                   })
-                : data.map((item) => (
-                      <RankingCard key={item.resultId} item={item} />
+                : data.map((item, i) => (
+                      <RankingCard
+                          key={item.resultId}
+                          item={item}
+                          ranking={rankingPage * 3 + i + 1}
+                      />
                   ))}
+            {/* <button onClick={onClicked(rankingPage + 1)}>다음</button> */}
         </CardListStyled>
     );
 };

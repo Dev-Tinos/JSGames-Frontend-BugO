@@ -27,10 +27,10 @@ const CardStyled = styled.div`
     }
 `;
 
-const RankingCard = ({ item }) => {
+const RankingCard = ({ item, ranking }) => {
     return (
         <CardStyled>
-            <p className="ranking">{item.resultId}</p>
+            <p className="ranking">{ranking}</p>
             <img
                 src={require("../../assets/img/tino.png")}
                 alt={`${item.userId}`}

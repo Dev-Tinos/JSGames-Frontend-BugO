@@ -10,6 +10,7 @@ const GamePage = () => {
     const [gameData, setGameData] = useState([]);
     const [commentList, setCommentList] = useState([]);
     const [rankingList, setRankingList] = useState(null);
+    const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const GamePage = () => {
                 });
                 const ranking = await getGameResult(params.gameId, {
                     size: 3,
-                    page: 0,
+                    page: rankingPage,
                 });
                 setGameData(game);
                 setCommentList(comment);
@@ -34,7 +35,7 @@ const GamePage = () => {
         };
 
         getData();
-    }, [params]);
+    }, [params, rankingPage]);
 
     return (
         <div>
@@ -43,6 +44,8 @@ const GamePage = () => {
                 comment={commentList}
                 ranking={rankingList}
                 isLoading={isLoading}
+                rankingPage={rankingPage}
+                // onClicked={setRankingPage}
             />
         </div>
     );
