@@ -45,7 +45,7 @@ const GamePage = () => {
                 ranking={rankingList}
                 isLoading={isLoading}
                 rankingPage={rankingPage}
-                // onClicked={setRankingPage}
+                onClicked={setRankingPage}
             />
         </div>
     );
