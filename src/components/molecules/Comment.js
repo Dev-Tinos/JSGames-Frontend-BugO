@@ -34,6 +34,18 @@ const CommentBox = styled.div`
     }
 `;
 
+const formatDate = (dateObj) => {
+    const date = new Date(dateObj);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+
+    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
+};
+
 const Comment = ({ item }) => {
     return (
         <CommentBox>
@@ -44,7 +56,7 @@ const Comment = ({ item }) => {
             <div className="comment-content">
                 <p className="name">{item.userId}</p>
                 <p className="text">{item.commentContent}</p>
-                <p className="date">{item.dateTime}</p>
+                <p className="date">{formatDate(item.dateTime)}</p>
             </div>
         </CommentBox>
     );
