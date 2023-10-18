@@ -45,7 +45,10 @@ const TopBar = styled.div`
 const TopNavigationBar = () => {
     return (
         <TopBar className="top-nav-bar">
-            <Logo />
+            <Link to={"/"}>
+                <Logo />
+            </Link>
+
             <div className="rightMenu">
                 <li>
                     <Link to="/">홈</Link>
