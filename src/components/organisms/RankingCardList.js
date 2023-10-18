@@ -32,7 +32,7 @@ const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
                     setRankingPage(rankingPage - 1);
                 }}
             >
-                이전
+                <i class="fa-solid fa-caret-left fa-2x"></i>
             </button>
             {data === null
                 ? new Array(3).fill(1).map((_, i) => {
@@ -50,7 +50,7 @@ const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
                     setRankingPage(rankingPage + 1);
                 }}
             >
-                다음
+                <i class="fa-solid fa-caret-right fa-2x"></i>
             </button>
         </CardListStyled>
     );
