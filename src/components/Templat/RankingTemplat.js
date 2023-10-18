@@ -3,6 +3,7 @@ import TopNavigationBar from "../organisms/TopNavigationBar";
 import RankingList from "../organisms/RankingList";
 import styled from "styled-components";
 import RankingNav from "../organisms/RankingNav";
+import UserRankingList from "../organisms/UserRankingList";
 
 const RankingStyle = styled.div`
     .commentbox {
@@ -26,20 +27,29 @@ const RankingStyle = styled.div`
     }
 `;
 
-const rankingMenu = [
-    { type: 1, text: "게임 랭킹(조회수)" },
-    { type: 2, text: "유저 랭킹" },
-];
-
-const RankingTemplat = ({ data, page, size }) => {
+const RankingTemplat = ({ data, page, size, type, setType }) => {
+    const changeRaningPage = () => {
+        switch (type) {
+            case 0:
+                return (
+                    <div className="rankingBox">
+                        <RankingList data={data} page={page} size={size} />
+                    </div>
+                );
+            default:
+                return (
+                    <div className="rankingBox">
+                        <UserRankingList data={null} page={page} size={size} />
+                    </div>
+                );
+        }
+    };
     return (
         <RankingStyle>
             <TopNavigationBar />
             <div className="container">
-                <RankingNav data={rankingMenu} />
-                <div className="rankingBox">
-                    <RankingList data={data} page={page} size={size} />
-                </div>
+                <RankingNav setType={setType} type={type} />
+                {changeRaningPage()}
                 <div className="space" />
             </div>
         </RankingStyle>

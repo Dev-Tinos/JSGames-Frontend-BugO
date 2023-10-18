@@ -58,7 +58,6 @@ export const getUser = async (params) => {
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };
 

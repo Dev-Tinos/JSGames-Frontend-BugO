@@ -6,6 +6,7 @@ const Ranking = () => {
     const [ranking, setRanking] = useState(null);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
+    const [type, setType] = useState(0);
 
     useEffect(() => {
         const getData = async () => {
@@ -28,6 +29,8 @@ const Ranking = () => {
                 size={size}
                 setPage={setPage}
                 setSize={setSize}
+                type={type}
+                setType={setType}
             />
         </div>
     );

@@ -12,7 +12,6 @@ export const getGameResult = async (gameId, params) => {
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };
 
@@ -26,7 +25,6 @@ export const getUserResults = async (userId, params) => {
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };
 

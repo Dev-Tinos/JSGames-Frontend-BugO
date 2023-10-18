@@ -18,6 +18,7 @@ const ProfileNavStyle = styled.div`
             font-size: 30px;
             padding: 10px;
             color: #4249e5;
+            font-weight: bold;
             cursor: pointer;
         }
     }

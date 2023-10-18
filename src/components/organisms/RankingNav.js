@@ -9,21 +9,40 @@ const RankingNavStyle = styled.div`
     padding: 15px;
     ul {
         width: 240px;
-    }
-    li {
-        font-size: 20px;
-        margin-bottom: 20px;
-        cursor: pointer;
-        list-style-type: none;
+        li {
+            font-size: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            list-style-type: none;
+        }
+        .clicked {
+            font-size: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            list-style-type: none;
+            color: #4249e5;
+            font-weight: bold;
+        }
     }
 `;
 
-const RankingNav = ({ data }) => {
+const RankingNav = ({ setType, type }) => {
+    const list = [
+        { type: 0, text: "게임 랭킹(조회수)" },
+        { type: 1, text: "유저 랭킹" },
+    ];
+
     return (
         <RankingNavStyle>
             <ul>
-                {data.map((item) => (
-                    <li key={item.type}>{item.text}</li>
+                {list.map((item) => (
+                    <li
+                        onClick={() => setType(item.type)}
+                        className={item.type === type ? "clicked" : null}
+                        key={item.type}
+                    >
+                        {item.text}
+                    </li>
                 ))}
             </ul>
         </RankingNavStyle>
