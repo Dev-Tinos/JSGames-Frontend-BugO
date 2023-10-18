@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
-    padding: 8px 16px;
     background-color: #4249e5;
     color: #fff;
     border: none;
@@ -12,9 +11,9 @@ const Button = styled.button`
     margin: 10px;
 `;
 
-const LoginButton = ({ text, onClick }) => {
+const LoginButton = ({ text, onClick, disabled }) => {
     return (
-        <Button onClick={onClick} className="button">
+        <Button onClick={onClick} disabled={disabled}>
             {text}
         </Button>
     );

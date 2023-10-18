@@ -10,15 +10,11 @@ const InputBox = styled.input`
 `;
 
 const Input = ({ type, placeholder, onChange, value }) => {
-    const onhandleChange = (e) => {
-        onChange(e.target.value);
-    };
-
     return (
         <InputBox
             type={type}
             value={value}
-            onChange={onhandleChange}
+            onChange={onChange}
             placeholder={placeholder}
         />
     );
