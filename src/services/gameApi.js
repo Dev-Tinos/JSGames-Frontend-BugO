@@ -27,16 +27,3 @@ export const getGame = async (params) => {
         });
     return data;
 };
-
-// Game 랭킹 조회
-export const getGames = async (params) => {
-    const data = await axios
-        .get(`${API_URL}/api/games/`, { params })
-        .then((response) => {
-            return response.data;
-        })
-        .catch((error) => {
-            return error;
-        });
-    return data;
-};
