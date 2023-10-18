@@ -34,18 +34,19 @@ const RankingItemStyle = styled.div`
     }
 `;
 
-const RankingItem = ({ item }) => {
+const RankingItem = ({ item, ranking }) => {
     return (
         <RankingItemStyle>
-            <p className="ranking">{item.resultId}</p>
+            <p className="ranking">{ranking}</p>
             <div className="imgbox">
+                {/* <img src={item.imageUrl} alt={`${item.userId}`} /> */}
                 <img
                     src={require("../../assets/img/tino.png")}
                     alt={`${item.userId}`}
                 />
             </div>
-            <p className="name">{item.userId}</p>
-            <p className="score">{item.gameScore}</p>
+            <p className="name">{item.gameName}</p>
+            <p className="score">{item.viewCount}</p>
         </RankingItemStyle>
     );
 };

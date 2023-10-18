@@ -30,19 +30,25 @@ const RankingListStyle = styled.div`
     }
 `;
 
-const RankingList = ({ data }) => {
+const RankingList = ({ data, page, size }) => {
     return (
         <RankingListStyle>
             <div className="commentbox">
                 <div className="title">
                     <p className="ranking">랭킹</p>
                     <p className="img" />
-                    <p className="nickname">닉네임</p>
-                    <p className="score">점수</p>
+                    <p className="nickname">게임 이름</p>
+                    <p className="score">조회수</p>
                 </div>
-                {data.map((item) => (
-                    <RankingItem key={item.resultId} item={item} />
-                ))}
+                {data === null
+                    ? null
+                    : data.map((item, i) => (
+                          <RankingItem
+                              key={item.resultId}
+                              item={item}
+                              ranking={page * size + i + 1}
+                          />
+                      ))}
             </div>
         </RankingListStyle>
     );

@@ -18,12 +18,13 @@ const RankingNavStyle = styled.div`
     }
 `;
 
-const RankingNav = () => {
+const RankingNav = ({ data }) => {
     return (
         <RankingNavStyle>
             <ul>
-                <li>유저 랭킹</li>
-                <li>게임 랭킹</li>
+                {data.map((item) => (
+                    <li key={item.type}>{item.text}</li>
+                ))}
             </ul>
         </RankingNavStyle>
     );
