@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RankingTemplat from "../components/Templat/RankingTemplat";
-import { getGames } from "../services/gameApi";
+import { getGameList } from "../services/gameApi";
 
 const Ranking = () => {
     const [ranking, setRanking] = useState(null);
@@ -11,7 +11,7 @@ const Ranking = () => {
         const getData = async () => {
             try {
                 const params = { page: page, size: size };
-                const apiData = await getGames(params);
+                const apiData = await getGameList(params);
                 setRanking(apiData);
                 console.log(apiData);
             } catch (error) {
