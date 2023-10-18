@@ -15,13 +15,7 @@ const CardListStyled = styled.div`
     }
 `;
 
-const RankingCardList = ({
-    myRanking,
-    data,
-    isLoading,
-    rankingPage,
-    // onClicked,
-}) => {
+const RankingCardList = ({ myRanking, data, isLoading, rankingPage }) => {
     return (
         <CardListStyled>
             <RankingCard item={myRanking} ranking={myRanking.ranking} />

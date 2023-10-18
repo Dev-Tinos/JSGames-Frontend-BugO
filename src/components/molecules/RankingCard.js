@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getUser } from "../../services/userApi";
+import RankingCardSkeleton from "../atoms/RankingCardSkeleton";
 
 const CardStyled = styled.div`
     margin: auto;
@@ -28,16 +30,38 @@ const CardStyled = styled.div`
 `;
 
 const RankingCard = ({ item, ranking }) => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const apiData = await getUser(item.userId);
+                setUser(apiData);
+            } catch (error) {
+                console.error();
+            }
+        };
+        getData();
+    }, [item]);
+
     return (
-        <CardStyled>
-            <p className="ranking">{ranking}</p>
-            <img
-                src={require("../../assets/img/tino.png")}
-                alt={`${item.userId}`}
-            />
-            <p className="name">{item.userId}</p>
-            <p className="score">{item.gameScore}</p>
-        </CardStyled>
+        <>
+            {user === null ? (
+                <RankingCardSkeleton />
+            ) : (
+                <CardStyled>
+                    <>
+                        <p className="ranking">{ranking}</p>
+                        <img
+                            src={require("../../assets/img/tino.png")}
+                            alt={`${item.userId}`}
+                        />
+                        <p className="name">{user.nickname}</p>
+                        <p className="score">{item.gameScore}</p>
+                    </>
+                </CardStyled>
+            )}
+        </>
     );
 };
 
