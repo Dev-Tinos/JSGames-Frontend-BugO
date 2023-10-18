@@ -32,9 +32,8 @@ const GameDetail = ({
     game,
     comment,
     ranking,
-    isLoading,
     rankingPage,
-    // onClicked,
+    setRankingPage,
 }) => {
     return (
         <Detailbox>
@@ -47,11 +46,9 @@ const GameDetail = ({
             <h2>랭킹</h2>
             <RankingCardList
                 rankingPage={rankingPage}
-                isLoading={isLoading}
                 data={ranking}
                 myRanking={myRanking}
-                ranking={ranking}
-                // onClicked={onClicked}
+                setRankingPage={setRankingPage}
             />
             <h2>댓글</h2>
             <CommentList data={comment} />

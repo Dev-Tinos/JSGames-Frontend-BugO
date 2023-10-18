@@ -21,13 +21,8 @@ const GamePage = () => {
                     size: 10,
                     page: 0,
                 });
-                const ranking = await getGameResult(params.gameId, {
-                    size: 3,
-                    page: rankingPage,
-                });
                 setGameData(game);
                 setCommentList(comment);
-                setRankingList(ranking);
                 setIsLoading(false);
             } catch (error) {
                 console.error();
@@ -35,7 +30,40 @@ const GamePage = () => {
         };
 
         getData();
+    }, [params]);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const ranking = await getGameResult(params.gameId, {
+                    size: 3,
+                    page: rankingPage,
+                });
+                setRankingList(ranking);
+                setIsLoading(false);
+            } catch (error) {
+                console.error();
+            }
+        };
+        setRankingList(null);
+        getData();
     }, [params, rankingPage]);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const comment = await getCommentList(params.gameId, {
+                    size: 10,
+                    page: 0,
+                });
+                setCommentList(comment);
+            } catch (error) {
+                console.error();
+            }
+        };
+
+        getData();
+    }, [params]);
 
     return (
         <div>
@@ -45,7 +73,7 @@ const GamePage = () => {
                 ranking={rankingList}
                 isLoading={isLoading}
                 rankingPage={rankingPage}
-                onClicked={setRankingPage}
+                setRankingPage={setRankingPage}
             />
         </div>
     );

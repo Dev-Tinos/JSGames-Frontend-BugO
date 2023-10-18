@@ -10,17 +10,31 @@ const CardListStyled = styled.div`
     background-color: #d9d9d9;
     display: flex;
     border-radius: 10px;
-    .CardStyled {
-        background-color: blue;
+    button {
+        background-color: #4249e5;
+        border: 0px;
+        color: #fff;
+    }
+    .disabledButton {
+        background-color: #eee;
+        color: #000;
     }
 `;
 
-const RankingCardList = ({ myRanking, data, isLoading, rankingPage }) => {
+const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
     return (
         <CardListStyled>
             <RankingCard item={myRanking} ranking={myRanking.ranking} />
-            {/* <button onClick={onClicked(rankingPage - 1)}>이전</button> */}
-            {isLoading
+            <button
+                disabled={rankingPage === 0 ? true : false}
+                className={rankingPage === 0 ? "disabledButton" : null}
+                onClick={() => {
+                    setRankingPage(rankingPage - 1);
+                }}
+            >
+                이전
+            </button>
+            {data === null
                 ? new Array(3).fill(1).map((_, i) => {
                       return <RankingCardSkeleton key={i} />;
                   })
@@ -31,7 +45,13 @@ const RankingCardList = ({ myRanking, data, isLoading, rankingPage }) => {
                           ranking={rankingPage * 3 + i + 1}
                       />
                   ))}
-            {/* <button onClick={onClicked(rankingPage + 1)}>다음</button> */}
+            <button
+                onClick={() => {
+                    setRankingPage(rankingPage + 1);
+                }}
+            >
+                다음
+            </button>
         </CardListStyled>
     );
 };
