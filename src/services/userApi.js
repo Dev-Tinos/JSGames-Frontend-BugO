@@ -48,6 +48,20 @@ export const postUser = async (params) => {
     return data;
 };
 
+// userId로 유저 정보 조회
+export const getUser = async (params) => {
+    const data = await axios
+        .get(`${API_URL}/api/user/${params}`)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    console.log(data);
+    return data;
+};
+
 // test
 export const apiTest = async () => {
     const response = await fetch(`${API_URL}/`, {
