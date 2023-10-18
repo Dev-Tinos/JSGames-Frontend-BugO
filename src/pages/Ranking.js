@@ -13,7 +13,6 @@ const Ranking = () => {
                 const params = { page: page, size: size };
                 const apiData = await getGameList(params);
                 setRanking(apiData);
-                console.log(apiData);
             } catch (error) {
                 console.error();
             }

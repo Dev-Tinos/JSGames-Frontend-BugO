@@ -16,24 +16,26 @@ const ProfileBoxStyle = styled.div`
         margin-bottom: auto;
         margin-left: 50px;
     }
-    .name {
+    .title {
         font-size: 30px;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
         font-weight: bold;
     }
-    .major {
-        margin-top: 10px;
+    .text {
         font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 5px;
     }
 `;
 
-const ProfileBox = () => {
+const ProfileBox = ({ data }) => {
     return (
         <ProfileBoxStyle>
             <ProfileImg />
             <div className="textbox">
-                <p className="name">Nickname</p>
-                <p className="major">Major</p>
+                <p className="title">{data.nickname}</p>
+                <p className="text">{data.email}</p>
+                <p className="text">{data.major}</p>
             </div>
         </ProfileBoxStyle>
     );

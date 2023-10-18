@@ -9,24 +9,38 @@ const ProfileNavStyle = styled.div`
         display: flex;
         li {
             list-style-type: none;
-            font-size: 20px;
+            font-size: 30px;
             padding: 10px;
+            cursor: pointer;
+        }
+        .clicked {
+            list-style-type: none;
+            font-size: 30px;
+            padding: 10px;
+            color: #4249e5;
             cursor: pointer;
         }
     }
 `;
 
-const ProfileNav = () => {
+const ProfileNav = ({ setType, type }) => {
     const list = [
-        { type: 1, text: "순위" },
-        { type: 2, text: "기록" },
+        { type: "ranking", text: "랭킹" },
+        { type: "history", text: "기록" },
     ];
 
     return (
         <ProfileNavStyle>
             <ul>
                 {list.map((item) => (
-                    <li>{item.text}</li>
+                    <li
+                        onClick={() => {
+                            setType(item.type);
+                        }}
+                        className={item.type === type ? "clicked" : null}
+                    >
+                        {item.text}
+                    </li>
                 ))}
             </ul>
         </ProfileNavStyle>
