@@ -15,8 +15,8 @@ const CardStyled = styled.div`
     img {
         width: 150px;
         height: 150px;
-        background-color: red;
         border-radius: 50%;
+        border: 1px solid #000;
     }
     .name {
         font-size: 20px;

@@ -17,7 +17,7 @@ const CommentBox = styled.div`
         height: 60px;
         border-radius: 50%;
         margin-right: 10px;
-        background-color: red;
+        border: 1px solid #000;
     }
     .name {
         font-weight: bold;

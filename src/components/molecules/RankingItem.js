@@ -10,12 +10,7 @@ const RankingItemStyle = styled.div`
     margin-top: 5px;
     border: 2px solid #ccc;
     border-radius: 5px;
-    img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: red;
-    }
+
     .ranking {
         font-size: 24px;
         font-weight: bold;
@@ -24,6 +19,13 @@ const RankingItemStyle = styled.div`
     }
     .imgbox {
         width: 10%;
+        height: 60px;
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid #000;
+        }
     }
     .name {
         width: 50%;
