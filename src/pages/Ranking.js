@@ -19,11 +19,17 @@ const Ranking = () => {
             }
         };
         getData();
-    }, []);
+    }, [page, size]);
 
     return (
         <div>
-            <RankingTemplat data={ranking} page={page} size={size} />
+            <RankingTemplat
+                data={ranking}
+                page={page}
+                size={size}
+                setPage={setPage}
+                setSize={setSize}
+            />
         </div>
     );
 };
