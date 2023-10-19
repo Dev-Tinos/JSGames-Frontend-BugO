@@ -12,20 +12,19 @@ export const postEmail = async (params) => {
             headers: headers,
         })
         .then((response) => {
-            console.log("success");
+            console.log("인증 코드가 발송되었습니다.");
             return response;
         })
         .catch((error) => {
-            console.log("error");
+            alert(error.response.data.message);
             return error;
         });
-    console.log(data);
-    console.log(data.response.data.message);
     return data;
 };
 
 // 회원가입
 export const postUser = async (params) => {
+    console.log(params);
     const headers = {
         "Content-Type": "application/json",
     };
@@ -34,9 +33,11 @@ export const postUser = async (params) => {
             headers: headers,
         })
         .then((response) => {
+            console.log("회원가입이 완료되었습니다.");
             return response.data;
         })
         .catch((error) => {
+            alert(error.response.data.message);
             return error;
         });
     return data;

@@ -39,21 +39,19 @@ const SignUpForm = () => {
     const [major, setMajor] = useState("");
 
     const SignUp = async () => {
-        const result = await postUser({
+        await postUser({
             email: email,
             password: password,
             nickname: nickname,
             major: major,
             code: emailCode,
         });
-
-        return alert(result);
     };
 
     return (
         <SignUpStyle>
             <h2>회원가입</h2>
-            <form onSubmit={SignUp}>
+            <div onSubmit={SignUp}>
                 <Input
                     type="text"
                     placeholder={"Email"}
@@ -96,9 +94,13 @@ const SignUpForm = () => {
                 {password !== confirmPassword ? (
                     <LoginButton text="회원가입" disabled={true} />
                 ) : (
-                    <LoginButton text="회원가입" disabled={false} />
+                    <LoginButton
+                        text="회원가입"
+                        disabled={false}
+                        onClick={SignUp}
+                    />
                 )}
-            </form>
+            </div>
         </SignUpStyle>
     );
 };

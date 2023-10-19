@@ -32,8 +32,7 @@ const EmailBox = styled.div`
 const EmailAuth = () => {
     const [email, setEmail] = useState("");
     const Auth = async () => {
-        const result = await postEmail({ email: email });
-        return alert(result.response.data.message);
+        await postEmail({ email: email });
     };
 
     return (
