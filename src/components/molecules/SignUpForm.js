@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
-import { postEmail, postUser } from "../../services/userApi";
+import { postUser } from "../../services/userApi";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;
@@ -38,11 +38,6 @@ const SignUpForm = () => {
     const [nickname, setNickname] = useState("");
     const [major, setMajor] = useState("");
 
-    const EmailAuth = async () => {
-        const result = postEmail({ email: email });
-        console.log(result);
-    };
-
     const SignUp = async () => {
         const result = await postUser({
             email: email,
@@ -59,15 +54,12 @@ const SignUpForm = () => {
         <SignUpStyle>
             <h2>회원가입</h2>
             <form onSubmit={SignUp}>
-                <div className="emailBox">
-                    <Input
-                        type="text"
-                        placeholder={"Email"}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <LoginButton text={"인증코드 발송"} onClick={EmailAuth} />
-                </div>
+                <Input
+                    type="text"
+                    placeholder={"Email"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <Input
                     type="text"
                     placeholder={"이메인 인증 코드"}

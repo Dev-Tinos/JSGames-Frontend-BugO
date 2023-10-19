@@ -8,20 +8,19 @@ export const postEmail = async (params) => {
         "Content-Type": "application/json",
     };
     const data = await axios
-        .post(
-            `${API_URL}/api/email`,
-            { params },
-            {
-                headers: headers,
-            }
-        )
+        .post(`${API_URL}/api/email`, params, {
+            headers: headers,
+        })
         .then((response) => {
+            console.log("success");
             return response;
         })
         .catch((error) => {
+            console.log("error");
             return error;
         });
     console.log(data);
+    console.log(data.response.data.message);
     return data;
 };
 
@@ -31,20 +30,15 @@ export const postUser = async (params) => {
         "Content-Type": "application/json",
     };
     const data = await axios
-        .post(
-            `${API_URL}/api/user`,
-            { params },
-            {
-                headers: headers,
-            }
-        )
+        .post(`${API_URL}/api/user`, params, {
+            headers: headers,
+        })
         .then((response) => {
             return response.data;
         })
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };
 
