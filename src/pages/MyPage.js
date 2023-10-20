@@ -12,9 +12,11 @@ const MyPage = () => {
     const [historyData, setHistoryData] = useState(null);
 
     useEffect(() => {
+        const userId = localStorage.getItem("userId");
+        console.log(userId);
         const getData = async () => {
             try {
-                const apiData = await getUser(1);
+                const apiData = await getUser(userId);
                 setUser(apiData);
             } catch (error) {
                 console.error();
@@ -24,10 +26,11 @@ const MyPage = () => {
     }, []);
 
     useEffect(() => {
+        const userId = localStorage.getItem("userId");
         const getData = async () => {
             try {
                 if (type === "ranking") {
-                    const apiData = await getUserResults(1, {
+                    const apiData = await getUserResults(userId, {
                         page: page,
                         size: size,
                     });
