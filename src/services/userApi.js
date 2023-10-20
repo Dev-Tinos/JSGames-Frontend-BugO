@@ -33,7 +33,7 @@ export const postUser = async (params) => {
             headers: headers,
         })
         .then((response) => {
-            console.log("회원가입이 완료되었습니다.");
+            alert("회원가입이 완료되었습니다.");
             return response.data;
         })
         .catch((error) => {
@@ -51,6 +51,28 @@ export const getUser = async (params) => {
             return response.data;
         })
         .catch((error) => {
+            return error;
+        });
+    return data;
+};
+
+// 로그인
+export const postLogin = async (params) => {
+    console.log(params);
+    const headers = {
+        "Content-Type": "application/json",
+    };
+    const data = await axios
+        .post(`${API_URL}/api/user/login`, params, {
+            headers: headers,
+        })
+        .then((response) => {
+            console.log(response);
+            localStorage.setItem("userId", response.data.userId);
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error.response.data.message);
             return error;
         });
     return data;
