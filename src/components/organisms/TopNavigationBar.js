@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../atoms/Logo";
 import styled from "styled-components";
@@ -39,10 +39,33 @@ const TopBar = styled.div`
     .leftMenu {
         display: flex;
         width: 200px;
+        button {
+            margin: auto;
+            background-color: #8a8fff;
+            color: white;
+            text-decoration: none;
+            width: 100px;
+            display: block;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            margin-left: 10px;
+            border: 0px;
+        }
     }
 `;
 
 const TopNavigationBar = () => {
+    const [userId, setUserId] = useState(null);
+    const LogOut = () => {
+        localStorage.removeItem("userId");
+        setUserId(null);
+    };
+
+    useEffect(() => {
+        setUserId(localStorage.getItem("userId"));
+    }, [userId]);
+
     return (
         <TopBar className="top-nav-bar">
             <Link to={"/"}>
@@ -58,15 +81,20 @@ const TopNavigationBar = () => {
                 </li>
             </div>
             <div className="space" />
-            <div className="leftMenu">
-                <Link to="/mypage">
-                    <ProfileImg />
-                </Link>
-
-                <li>
-                    <Link to="/login">로그인</Link>
-                </li>
-            </div>
+            {userId === null ? (
+                <div>
+                    <li>
+                        <Link to="/login">로그인</Link>
+                    </li>
+                </div>
+            ) : (
+                <div className="leftMenu">
+                    <Link to="/mypage">
+                        <ProfileImg />
+                    </Link>
+                    <button onClick={LogOut}>로그아웃</button>
+                </div>
+            )}
         </TopBar>
     );
 };
