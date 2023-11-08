@@ -13,7 +13,6 @@ const MyPage = () => {
 
     useEffect(() => {
         const userId = localStorage.getItem("userId");
-        console.log(userId);
         const getData = async () => {
             try {
                 const apiData = await getUser(userId);

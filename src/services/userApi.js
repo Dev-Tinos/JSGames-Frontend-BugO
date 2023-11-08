@@ -24,7 +24,6 @@ export const postEmail = async (params) => {
 
 // 회원가입
 export const postUser = async (params) => {
-    console.log(params);
     const headers = {
         "Content-Type": "application/json",
     };
@@ -58,7 +57,6 @@ export const getUser = async (params) => {
 
 // 로그인
 export const postLogin = async (params) => {
-    console.log(params);
     const headers = {
         "Content-Type": "application/json",
     };
@@ -67,7 +65,6 @@ export const postLogin = async (params) => {
             headers: headers,
         })
         .then((response) => {
-            console.log(response);
             localStorage.setItem("userId", response.data.userId);
             return response.data;
         })

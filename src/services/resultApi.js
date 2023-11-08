@@ -38,7 +38,6 @@ export const getUserResult = async (userId, gameId) => {
         .catch((error) => {
             return error;
         });
-    console.log(data);
     return data;
 };
 
