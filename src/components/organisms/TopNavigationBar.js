@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../atoms/Logo";
 import styled from "styled-components";
 import ProfileImg from "../atoms/ProfileImg";
@@ -57,9 +57,12 @@ const TopBar = styled.div`
 
 const TopNavigationBar = () => {
     const [userId, setUserId] = useState(null);
+    const navigate = useNavigate();
+
     const LogOut = () => {
         localStorage.removeItem("userId");
         setUserId(null);
+        navigate("/");
     };
 
     useEffect(() => {
