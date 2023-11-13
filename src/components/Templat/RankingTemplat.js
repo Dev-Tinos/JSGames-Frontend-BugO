@@ -39,7 +39,7 @@ const RankingTemplat = ({ data, page, size, type, setType }) => {
             default:
                 return (
                     <div className="rankingBox">
-                        <UserRankingList data={null} page={page} size={size} />
+                        <UserRankingList data={data} page={page} size={size} />
                     </div>
                 );
         }

@@ -31,7 +31,7 @@ const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
     return (
         <CardListStyled>
             {myRanking === null ? (
-                <RankingCardSkeleton />
+                <RankingCardSkeleton type={myRanking} />
             ) : (
                 <RankingCard item={myRanking} ranking={12} styled={"my"} />
             )}

@@ -3,7 +3,7 @@ import GameDetail from "../components/Templat/GameDetail";
 import { getGame } from "../services/gameApi";
 import { useParams } from "react-router-dom";
 import { getCommentList } from "../services/commentApi";
-import { getGameResult } from "../services/resultApi";
+import { getGameResult, getUserResult } from "../services/resultApi";
 
 const GamePage = () => {
     const params = useParams();
@@ -12,6 +12,7 @@ const GamePage = () => {
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [myRanking, setMyRanking] = useState([]);
 
     useEffect(() => {
         const getData = async () => {
@@ -35,11 +36,16 @@ const GamePage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const ranking = await getGameResult(params.gameId, {
+                const rankings = await getGameResult(params.gameId, {
                     size: 3,
                     page: rankingPage,
                 });
-                setRankingList(ranking);
+                const ranking = await getUserResult(
+                    params.gameId,
+                    localStorage.getItem("userId")
+                );
+                setRankingList(rankings);
+                setMyRanking(ranking);
                 setIsLoading(false);
             } catch (error) {
                 console.error();
@@ -71,6 +77,7 @@ const GamePage = () => {
                 game={gameData}
                 comment={commentList}
                 ranking={rankingList}
+                myRanking={myRanking}
                 isLoading={isLoading}
                 rankingPage={rankingPage}
                 setRankingPage={setRankingPage}
