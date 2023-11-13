@@ -29,14 +29,14 @@ export const getUserResults = async (userId, params) => {
 };
 
 // 특정 게임 특정 유저의 최고 점수 조회
-export const getUserResult = async (userId, gameId) => {
+export const getUserResult = async (gameId, userId) => {
     const data = await axios
         .get(`${API_URL}/api/result/game/${gameId}/user/${userId}`)
         .then((response) => {
             return response.data;
         })
         .catch((error) => {
-            return error;
+            return null;
         });
     return data;
 };
