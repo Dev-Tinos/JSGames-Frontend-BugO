@@ -44,16 +44,27 @@ const CardStyle = styled.div`
         margin-left: auto;
         margin-right: auto;
     }
+    .not {
+        text-align: center;
+    }
 `;
 
-const RankingCardSkeleton = () => {
+const RankingCardSkeleton = ({ type }) => {
     return (
-        <CardStyle>
-            <p className="ranking" />
-            <div className="skeleton-img" />
-            <p className="name" />
-            <p className="score" />
-        </CardStyle>
+        <>
+            {type === null ? (
+                <CardStyle>
+                    <p className="not">랭킹 데이터가 없습니다</p>
+                </CardStyle>
+            ) : (
+                <CardStyle>
+                    <p className="ranking" />
+                    <div className="skeleton-img" />
+                    <p className="name" />
+                    <p className="score" />
+                </CardStyle>
+            )}
+        </>
     );
 };
 
