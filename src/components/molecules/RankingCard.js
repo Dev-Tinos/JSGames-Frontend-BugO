@@ -29,7 +29,7 @@ const CardStyled = styled.div`
     }
 `;
 
-const RankingCard = ({ item, ranking }) => {
+const RankingCard = ({ item, ranking, styled }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -49,7 +49,13 @@ const RankingCard = ({ item, ranking }) => {
             {user === null ? (
                 <RankingCardSkeleton />
             ) : (
-                <CardStyled>
+                <CardStyled
+                    style={
+                        styled === "my"
+                            ? { boxShadow: "0 0 0 20px #ffffb5 inset" }
+                            : null
+                    }
+                >
                     <>
                         <p className="ranking">{ranking}</p>
                         <img

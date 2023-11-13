@@ -14,17 +14,27 @@ const CardListStyled = styled.div`
         background-color: #4249e5;
         border: 0px;
         color: #fff;
+        cursor: pointer;
     }
     .disabledButton {
         background-color: #eee;
         color: #000;
+    }
+    .my {
+        .CardStyled {
+            background-color: red;
+        }
     }
 `;
 
 const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
     return (
         <CardListStyled>
-            <RankingCard item={myRanking} ranking={myRanking.ranking} />
+            {myRanking === null ? (
+                <RankingCardSkeleton />
+            ) : (
+                <RankingCard item={myRanking} ranking={12} styled={"my"} />
+            )}
             <button
                 disabled={rankingPage === 0 ? true : false}
                 className={rankingPage === 0 ? "disabledButton" : null}
