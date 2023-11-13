@@ -12,7 +12,7 @@ const GamePage = () => {
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [myRanking, setMyRanking] = useState([]);
+    const [myRanking, setMyRanking] = useState(null);
 
     useEffect(() => {
         const getData = async () => {
