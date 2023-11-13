@@ -75,6 +75,19 @@ export const postLogin = async (params) => {
     return data;
 };
 
+// Top100 유저 조회
+export const getTop100 = async (params) => {
+    const data = await axios
+        .get(`${API_URL}/api/users/top100`, { params })
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return data;
+};
+
 // test
 export const apiTest = async () => {
     const response = await fetch(`${API_URL}/`, {
