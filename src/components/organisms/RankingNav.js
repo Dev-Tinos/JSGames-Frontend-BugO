@@ -14,6 +14,7 @@ const RankingNavStyle = styled.div`
             margin-bottom: 20px;
             cursor: pointer;
             list-style-type: none;
+            font-weight: bold;
         }
         .clicked {
             font-size: 20px;
@@ -28,7 +29,7 @@ const RankingNavStyle = styled.div`
 
 const RankingNav = ({ setType, type }) => {
     const list = [
-        { type: 0, text: "게임 랭킹(조회수)" },
+        { type: 0, text: "게임 랭킹" },
         { type: 1, text: "유저 랭킹" },
     ];
 
