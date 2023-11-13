@@ -19,21 +19,13 @@ const Detailbox = styled.div`
     }
 `;
 
-const myRanking = {
-    ranking: 123,
-    resultId: 123,
-    gameId: 123,
-    gameScore: "100",
-    userId: "나의 랭킹",
-    imageUrl: "../../assets/img/tino.png",
-};
-
 const GameDetail = ({
     game,
     comment,
     ranking,
     rankingPage,
     setRankingPage,
+    myRanking,
 }) => {
     return (
         <Detailbox>
