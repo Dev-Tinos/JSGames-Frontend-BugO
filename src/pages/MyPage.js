@@ -29,15 +29,14 @@ const MyPage = () => {
         const getData = async () => {
             try {
                 if (type === "ranking") {
+                    const apiData = null;
+                    setRankingData(apiData);
+                } else if (type === "history") {
                     const apiData = await getUserResults(userId, {
                         page: page,
                         size: size,
                     });
-                    setRankingData(apiData);
-                    setHistoryData(null);
-                } else if (type === "history") {
-                    setHistoryData("유저 게임 기록");
-                    setRankingData(null);
+                    setHistoryData(apiData);
                 }
             } catch (error) {
                 console.error();

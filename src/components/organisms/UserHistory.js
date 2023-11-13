@@ -8,8 +8,14 @@ const DivBox = styled.div`
     background-color: #ccc;
 `;
 
-const UserHistory = () => {
-    return <DivBox>유저 기록</DivBox>;
+const UserHistory = ({ data }) => {
+    return (
+        <DivBox>
+            {data !== null
+                ? data.map((item) => <p>{JSON.stringify(item)}</p>)
+                : null}
+        </DivBox>
+    );
 };
 
 export default UserHistory;
