@@ -5,33 +5,42 @@ import { getUser } from "../../services/userApi";
 const CommentBox = styled.div`
     align-items: center;
     background-color: #fff;
-    width: 90%;
+    width: 95%;
     margin: auto;
     display: flex;
     margin-top: 10px;
-    border: 2px solid #ccc;
+    box-shadow: 0 0 0 1px #000 inset;
     border-radius: 5px;
-    padding-right: 20px;
-    padding-left: 20px;
-    img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin-right: 10px;
-        border: 1px solid #000;
+    height: 160px;
+    .profile {
+        width: 11%;
+        text-align: center;
+        img {
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 0 1px inset #000;
+            margin: auto;
+        }
     }
-    .name {
-        font-weight: bold;
-        font-size: 18px;
-        margin: 10px 0px 8px 0px;
-    }
-    .text {
-        font-size: 15px;
-        margin: 0px;
-    }
-    .date {
-        margin-top: 5px;
-        font-size: 12px;
+    .comment-content {
+        width: 88%;
+        height: 80%;
+        .name {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0px;
+        }
+        .text {
+            font-size: 15px;
+            margin: 5px 0px 0px 0px;
+            height: 60%;
+        }
+        .date {
+            margin-top: 5px;
+            font-size: 12px;
+            text-align: right;
+            vertical-align: bottom;
+        }
     }
 `;
 
@@ -49,7 +58,6 @@ const formatDate = (dateObj) => {
 
 const Comment = ({ item }) => {
     const [user, setUser] = useState(null);
-
     useEffect(() => {
         const getData = async () => {
             try {
@@ -66,10 +74,12 @@ const Comment = ({ item }) => {
         <>
             {user === null ? null : (
                 <CommentBox>
-                    <img
-                        src={require("../../assets/img/tino.png")}
-                        alt={`${item.userId}`}
-                    />
+                    <div className="profile">
+                        <img
+                            src={require("../../assets/img/tino.png")}
+                            alt={`${item.userId}`}
+                        />
+                    </div>
                     <div className="comment-content">
                         <p className="name">{user.nickname}</p>
                         <p className="text">{item.commentContent}</p>
