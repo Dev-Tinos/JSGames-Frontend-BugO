@@ -4,9 +4,12 @@ import CommentBtn from "../atoms/CommentBtn";
 import styled from "styled-components";
 
 const CommentFormBox = styled.div`
-    width: 1280px;
+    width: 95%;
     margin: auto;
     text-align: center;
+    form {
+        display: flex;
+    }
 `;
 
 const CommentForm = ({ onCommentSubmit }) => {
