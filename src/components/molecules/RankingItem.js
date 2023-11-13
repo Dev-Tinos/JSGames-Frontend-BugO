@@ -47,8 +47,14 @@ const RankingItem = ({ item, ranking }) => {
                     alt={`${item.userId}`}
                 />
             </div>
-            <p className="name">{item.gameName}</p>
-            <p className="score">{item.viewCount}</p>
+            <p className="name">
+                {item.gameName}
+                {item.userId}
+            </p>
+            <p className="score">
+                {item.viewCount}
+                {item.score}
+            </p>
         </RankingItemStyle>
     );
 };

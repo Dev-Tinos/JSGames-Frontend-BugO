@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RankingTemplat from "../components/Templat/RankingTemplat";
 import { getGameList } from "../services/gameApi";
+import { getTop100 } from "../services/userApi";
 
 const Ranking = () => {
     const [ranking, setRanking] = useState(null);
@@ -12,14 +13,19 @@ const Ranking = () => {
         const getData = async () => {
             try {
                 const params = { page: page, size: size };
-                const apiData = await getGameList(params);
-                setRanking(apiData);
+                if (type === 0) {
+                    const apiData = await getGameList(params);
+                    setRanking(apiData);
+                } else if (type === 1) {
+                    const apiData = await getTop100(params);
+                    setRanking(apiData);
+                }
             } catch (error) {
                 console.error();
             }
         };
         getData();
-    }, [page, size]);
+    }, [page, size, type]);
 
     return (
         <div>
