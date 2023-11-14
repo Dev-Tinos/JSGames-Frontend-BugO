@@ -28,6 +28,7 @@ const GameDetail = ({
     setRankingPage,
     myRanking,
     rankingRefresh,
+    btnDisable,
 }) => {
     return (
         <Detailbox>
@@ -39,7 +40,7 @@ const GameDetail = ({
             </div>
             <h2>
                 랭킹
-                <RefreshBtn onClick={rankingRefresh} />
+                <RefreshBtn onClick={rankingRefresh} btnDisable={btnDisable} />
             </h2>
 
             <RankingCardList

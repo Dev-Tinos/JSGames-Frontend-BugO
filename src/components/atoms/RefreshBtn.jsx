@@ -8,9 +8,9 @@ const RefreshBtnStyle = styled.button`
     margin-left: 10px;
 `;
 
-const RefreshBtn = ({ onClick }) => {
+const RefreshBtn = ({ onClick, btnDisable }) => {
     return (
-        <RefreshBtnStyle onClick={onClick}>
+        <RefreshBtnStyle onClick={onClick} disabled={btnDisable ? true : false}>
             <i class="fa-solid fa-arrow-rotate-left fa-2x" />
         </RefreshBtnStyle>
     );

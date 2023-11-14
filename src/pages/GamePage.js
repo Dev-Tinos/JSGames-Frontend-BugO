@@ -13,6 +13,7 @@ const GamePage = () => {
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [myRanking, setMyRanking] = useState(null);
+    const [btnDisable, setBtnDisable] = useState(false);
 
     useEffect(() => {
         const getData = async () => {
@@ -70,7 +71,9 @@ const GamePage = () => {
 
         getData();
     }, [params]);
+
     const rankingRefresh = async () => {
+        setBtnDisable(true);
         try {
             const ranking = await getUserResult(
                 params.gameId,
@@ -80,7 +83,9 @@ const GamePage = () => {
         } catch (error) {
             console.error();
         }
+        setBtnDisable(false);
     };
+
     return (
         <div>
             <GameDetail
@@ -92,6 +97,7 @@ const GamePage = () => {
                 rankingPage={rankingPage}
                 setRankingPage={setRankingPage}
                 rankingRefresh={rankingRefresh}
+                btnDisable={btnDisable}
             />
         </div>
     );
