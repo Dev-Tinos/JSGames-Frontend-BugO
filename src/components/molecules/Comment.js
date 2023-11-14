@@ -40,6 +40,7 @@ const CommentBox = styled.div`
             font-size: 12px;
             text-align: right;
             vertical-align: bottom;
+            color: #888;
         }
     }
 `;
