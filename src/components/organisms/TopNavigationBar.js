@@ -6,9 +6,14 @@ import ProfileImg from "../atoms/ProfileImg";
 
 const TopBar = styled.div`
     background-color: #d9d9d9;
-    display: flex;
-    align-items: center;
     height: 80px;
+    .nav {
+        height: 80px;
+        width: 1280px;
+        display: flex;
+        align-items: center;
+        margin: auto;
+    }
     .space {
         flex: 1;
     }
@@ -71,33 +76,35 @@ const TopNavigationBar = () => {
 
     return (
         <TopBar className="top-nav-bar">
-            <Link to={"/"}>
-                <Logo />
-            </Link>
-
-            <div className="rightMenu">
-                <li>
-                    <Link to="/">홈</Link>
-                </li>
-                <li>
-                    <Link to="/ranking">랭킹</Link>
-                </li>
-            </div>
-            <div className="space" />
-            {userId === null ? (
-                <div>
+            <div className="nav">
+                {" "}
+                <Link to={"/"}>
+                    <Logo />
+                </Link>
+                <div className="rightMenu">
                     <li>
-                        <Link to="/login">로그인</Link>
+                        <Link to="/">홈</Link>
+                    </li>
+                    <li>
+                        <Link to="/ranking">랭킹</Link>
                     </li>
                 </div>
-            ) : (
-                <div className="leftMenu">
-                    <Link to="/mypage">
-                        <ProfileImg />
-                    </Link>
-                    <button onClick={LogOut}>로그아웃</button>
-                </div>
-            )}
+                <div className="space" />
+                {userId === null ? (
+                    <div>
+                        <li>
+                            <Link to="/login">로그인</Link>
+                        </li>
+                    </div>
+                ) : (
+                    <div className="leftMenu">
+                        <Link to="/mypage">
+                            <ProfileImg />
+                        </Link>
+                        <button onClick={LogOut}>로그아웃</button>
+                    </div>
+                )}
+            </div>
         </TopBar>
     );
 };
