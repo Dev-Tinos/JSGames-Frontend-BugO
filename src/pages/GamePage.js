@@ -70,7 +70,17 @@ const GamePage = () => {
 
         getData();
     }, [params]);
-
+    const rankingRefresh = async () => {
+        try {
+            const ranking = await getUserResult(
+                params.gameId,
+                localStorage.getItem("userId")
+            );
+            setMyRanking(ranking);
+        } catch (error) {
+            console.error();
+        }
+    };
     return (
         <div>
             <GameDetail
@@ -81,6 +91,7 @@ const GamePage = () => {
                 isLoading={isLoading}
                 rankingPage={rankingPage}
                 setRankingPage={setRankingPage}
+                rankingRefresh={rankingRefresh}
             />
         </div>
     );

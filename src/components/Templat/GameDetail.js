@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CommentList from "../organisms/CommentList";
 import RankingCardList from "../organisms/RankingCardList";
 import GameFrame from "../atoms/GameFrame";
+import RefreshBtn from "../atoms/RefreshBtn";
 
 const Detailbox = styled.div`
     .gameDocs {
@@ -26,6 +27,7 @@ const GameDetail = ({
     rankingPage,
     setRankingPage,
     myRanking,
+    rankingRefresh,
 }) => {
     return (
         <Detailbox>
@@ -35,7 +37,11 @@ const GameDetail = ({
             <div className="gameDocs">
                 <p>{game.description}</p>
             </div>
-            <h2>랭킹</h2>
+            <h2>
+                랭킹
+                <RefreshBtn onClick={rankingRefresh} />
+            </h2>
+
             <RankingCardList
                 rankingPage={rankingPage}
                 data={ranking}
