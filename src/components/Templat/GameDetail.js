@@ -22,7 +22,7 @@ const Detailbox = styled.div`
 
 const GameDetail = ({
     game,
-    comment,
+    review,
     ranking,
     rankingPage,
     setRankingPage,
@@ -42,7 +42,6 @@ const GameDetail = ({
                 랭킹
                 <RefreshBtn onClick={rankingRefresh} btnDisable={btnDisable} />
             </h2>
-
             <RankingCardList
                 rankingPage={rankingPage}
                 data={ranking}
@@ -50,7 +49,7 @@ const GameDetail = ({
                 setRankingPage={setRankingPage}
             />
             <h2>댓글</h2>
-            <CommentList data={comment} />
+            <CommentList data={review} />
         </Detailbox>
     );
 };

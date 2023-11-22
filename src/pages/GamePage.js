@@ -7,7 +7,7 @@ import { getUserLog, getUsersLogs } from "../services/LogApi";
 const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
-    const [commentList, setCommentList] = useState([]);
+    const [reviewList, setReviewList] = useState([]);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -18,13 +18,12 @@ const GamePage = () => {
         const getData = async () => {
             try {
                 const game = await getGame(params);
-                const comment = await getReviewList(params.gameId, {
-                    size: 10,
+                const review = await getReviewList(params.gameId, {
+                    size: 5,
                     page: 0,
                 });
                 setGameData(game);
-                setCommentList(comment);
-                console.log(comment);
+                setReviewList(review);
                 setIsLoading(false);
             } catch (error) {
                 console.error();
@@ -47,6 +46,7 @@ const GamePage = () => {
                 );
                 setRankingList(rankings);
                 setMyRanking(ranking);
+                console.log(rankings);
                 setIsLoading(false);
             } catch (error) {
                 console.error();
@@ -59,11 +59,11 @@ const GamePage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const comment = await getReviewList(params.gameId, {
+                const review = await getReviewList(params.gameId, {
                     size: 10,
                     page: 0,
                 });
-                setCommentList(comment);
+                setReviewList(review);
             } catch (error) {
                 console.error();
             }
@@ -90,7 +90,7 @@ const GamePage = () => {
         <div>
             <GameDetail
                 game={gameData}
-                comment={commentList}
+                review={reviewList}
                 ranking={rankingList}
                 myRanking={myRanking}
                 isLoading={isLoading}

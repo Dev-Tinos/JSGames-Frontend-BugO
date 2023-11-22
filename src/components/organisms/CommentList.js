@@ -17,7 +17,7 @@ const CommentList = ({ data }) => {
         <CommentStyle>
             <CommentForm />
             {data.map((item) => (
-                <Comment key={item.commentId} item={item} />
+                <Comment key={item.reviewId} item={item} />
             ))}
         </CommentStyle>
     );

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { getUser } from "../../services/UserApi";
 
 const CommentBox = styled.div`
     align-items: center;
@@ -58,37 +57,20 @@ const formatDate = (dateObj) => {
 };
 
 const Comment = ({ item }) => {
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const apiData = await getUser(item.userId);
-                setUser(apiData);
-            } catch (error) {
-                console.error();
-            }
-        };
-        getData();
-    }, [item]);
-
     return (
-        <>
-            {user === null ? null : (
-                <CommentBox>
-                    <div className="profile">
-                        <img
-                            src={require("../../assets/img/tino.png")}
-                            alt={`${item.userId}`}
-                        />
-                    </div>
-                    <div className="comment-content">
-                        <p className="name">{user.nickname}</p>
-                        <p className="text">{item.commentContent}</p>
-                        <p className="date">{formatDate(item.dateTime)}</p>
-                    </div>
-                </CommentBox>
-            )}
-        </>
+        <CommentBox>
+            <div className="profile">
+                <img
+                    src={require("../../assets/img/tino.png")}
+                    alt={`${item.user.profileImage}`}
+                />
+            </div>
+            <div className="comment-content">
+                <p className="name">{item.user.nickname}</p>
+                <p className="text">{item.reviewContent}</p>
+                <p className="date">{formatDate(item.dateTime)}</p>
+            </div>
+        </CommentBox>
     );
 };
 
