@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { postEmail } from "../../services/userApi";
 import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
+import { postEmail } from "../../services/EmailApi";
 
 const EmailBox = styled.div`
     background-color: #d9d9d9;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainTemplat from "../components/Templat/MainTemplat";
-import { getGameList } from "../services/gameApi";
+import { getGameRanking } from "../services/RankingApi";
 
 const Main = () => {
     const [gameList, setGameList] = useState(null);
@@ -9,8 +9,8 @@ const Main = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const params = { page: 0, size: 12 };
-                const apiData = await getGameList(params);
+                const params = { page: 0, size: 50 };
+                const apiData = await getGameRanking(params);
                 setGameList(apiData);
                 setIsLoading(false);
             } catch (error) {

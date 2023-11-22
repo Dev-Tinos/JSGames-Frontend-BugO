@@ -39,7 +39,8 @@ const GameItem = ({ item }) => {
         <GameItemBlock>
             <img className="logo-img" src={item.imageUrl} alt={item.gameName} />
             <p className="title">{item.gameName}</p>
-            <p className="text">{item.userId}</p>
+            {/* <p className="text">{item.userId}</p> */}
+            <p className="text">조회수: {item.viewCount}</p>
         </GameItemBlock>
     );
 };

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import GameDetail from "../components/Templat/GameDetail";
-import { getGame } from "../services/gameApi";
 import { useParams } from "react-router-dom";
-import { getCommentList } from "../services/commentApi";
-import { getGameResult, getUserResult } from "../services/resultApi";
-
+import { getReviewList } from "../services/ReviewApi";
+import { getGame } from "../services/GameApi";
+import { getUserLog, getUsersLogs } from "../services/LogApi";
 const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
@@ -19,12 +18,13 @@ const GamePage = () => {
         const getData = async () => {
             try {
                 const game = await getGame(params);
-                const comment = await getCommentList(params.gameId, {
+                const comment = await getReviewList(params.gameId, {
                     size: 10,
                     page: 0,
                 });
                 setGameData(game);
                 setCommentList(comment);
+                console.log(comment);
                 setIsLoading(false);
             } catch (error) {
                 console.error();
@@ -37,11 +37,11 @@ const GamePage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const rankings = await getGameResult(params.gameId, {
+                const rankings = await getUsersLogs(params.gameId, {
                     size: 3,
                     page: rankingPage,
                 });
-                const ranking = await getUserResult(
+                const ranking = await getUserLog(
                     params.gameId,
                     localStorage.getItem("userId")
                 );
@@ -59,7 +59,7 @@ const GamePage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const comment = await getCommentList(params.gameId, {
+                const comment = await getReviewList(params.gameId, {
                     size: 10,
                     page: 0,
                 });
@@ -75,7 +75,7 @@ const GamePage = () => {
     const rankingRefresh = async () => {
         setBtnDisable(true);
         try {
-            const ranking = await getUserResult(
+            const ranking = await getUserLog(
                 params.gameId,
                 localStorage.getItem("userId")
             );

@@ -3,7 +3,7 @@ import Input from "../atoms/Input.js";
 import LoginButton from "../atoms/LoginButton.js";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { postLogin } from "../../services/userApi.js";
+import { postLogin } from "../../services/UserApi.js";
 
 const LoginStyle = styled.div`
     background-color: #d9d9d9;

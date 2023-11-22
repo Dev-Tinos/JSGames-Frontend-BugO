@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getUser } from "../../services/userApi";
+import { getUser } from "../../services/UserApi";
 import RankingCardSkeleton from "../atoms/RankingCardSkeleton";
 
 const CardStyled = styled.div`

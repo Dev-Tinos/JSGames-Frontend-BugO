@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MyTemplat from "../components/Templat/MyTemplat";
-import { getUser } from "../services/userApi";
-import { getUserResults } from "../services/resultApi";
+import { getUser } from "../services/UserApi";
+import { getUserResults } from "../services/LogApi";
 
 const MyPage = () => {
     const [user, setUser] = useState([]);
