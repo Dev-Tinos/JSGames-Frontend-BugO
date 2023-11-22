@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { getUser } from "../../services/UserApi";
-import RankingCardSkeleton from "../atoms/RankingCardSkeleton";
 
 const CardStyled = styled.div`
     margin: auto;
@@ -30,44 +28,24 @@ const CardStyled = styled.div`
 `;
 
 const RankingCard = ({ item, ranking, styled }) => {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const apiData = await getUser(item.userId);
-                setUser(apiData);
-            } catch (error) {
-                console.error();
-            }
-        };
-        getData();
-    }, [item]);
-
     return (
-        <>
-            {user === null ? (
-                <RankingCardSkeleton />
-            ) : (
-                <CardStyled
-                    style={
-                        styled === "my"
-                            ? { boxShadow: "0 0 0 20px #ffffb5 inset" }
-                            : null
-                    }
-                >
-                    <>
-                        <p className="ranking">{ranking}</p>
-                        <img
-                            src={require("../../assets/img/tino.png")}
-                            alt={`${item.userId}`}
-                        />
-                        <p className="name">{user.nickname}</p>
-                        <p className="score">{item.gameScore}</p>
-                    </>
-                </CardStyled>
-            )}
-        </>
+        <CardStyled
+            style={
+                styled === "my"
+                    ? { boxShadow: "0 0 0 20px #ffffb5 inset" }
+                    : null
+            }
+        >
+            <>
+                <p className="ranking">{ranking}</p>
+                <img
+                    src={require("../../assets/img/tino.png")}
+                    alt={`${item.userId}`}
+                />
+                <p className="name">{item.user.nickname}</p>
+                <p className="score">{item.gameScore}</p>
+            </>
+        </CardStyled>
     );
 };
 

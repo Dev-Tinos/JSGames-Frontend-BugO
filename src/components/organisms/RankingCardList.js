@@ -50,7 +50,7 @@ const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
                   })
                 : data.map((item, i) => (
                       <RankingCard
-                          key={item.resultId}
+                          key={item.logId}
                           item={item}
                           ranking={rankingPage * 3 + i + 1}
                       />
