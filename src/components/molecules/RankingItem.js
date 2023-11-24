@@ -36,7 +36,7 @@ const RankingItemStyle = styled.div`
     }
 `;
 
-const RankingItem = ({ item, ranking }) => {
+const RankingItem = ({ item, ranking, type }) => {
     return (
         <RankingItemStyle>
             <p className="ranking">{ranking}</p>
@@ -48,13 +48,9 @@ const RankingItem = ({ item, ranking }) => {
                 />
             </div>
             <p className="name">
-                {item.gameName}
-                {item.userId}
+                {type === 0 ? item.gameName : item.user.nickname}
             </p>
-            <p className="score">
-                {item.viewCount}
-                {item.score}
-            </p>
+            <p className="score">{type === 0 ? item.viewCount : item.score}</p>
         </RankingItemStyle>
     );
 };

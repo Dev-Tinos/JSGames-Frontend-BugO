@@ -47,6 +47,7 @@ const RankingList = ({ data, page, size }) => {
                               key={item.resultId}
                               item={item}
                               ranking={page * size + i + 1}
+                              type={0}
                           />
                       ))}
             </div>

@@ -3,7 +3,8 @@ import RankingTemplat from "../components/Templat/RankingTemplat";
 import { getGameRanking, getUserTop100 } from "../services/RankingApi";
 
 const Ranking = () => {
-    const [ranking, setRanking] = useState(null);
+    const [userRanking, setUserRanking] = useState(null);
+    const [gameRanking, setGameRanking] = useState(null);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [type, setType] = useState(0);
@@ -14,10 +15,12 @@ const Ranking = () => {
                 const params = { page: page, size: size };
                 if (type === 0) {
                     const apiData = await getGameRanking(params);
-                    setRanking(apiData);
+                    setGameRanking(apiData);
+                    console.log(apiData);
                 } else if (type === 1) {
                     const apiData = await getUserTop100(params);
-                    setRanking(apiData);
+                    setUserRanking(apiData);
+                    console.log(apiData);
                 }
             } catch (error) {
                 console.error();
@@ -29,7 +32,7 @@ const Ranking = () => {
     return (
         <div>
             <RankingTemplat
-                data={ranking}
+                data={type === 0 ? gameRanking : userRanking}
                 page={page}
                 size={size}
                 setPage={setPage}

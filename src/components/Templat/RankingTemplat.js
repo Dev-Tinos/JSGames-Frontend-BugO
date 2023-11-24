@@ -4,6 +4,8 @@ import RankingList from "../organisms/RankingList";
 import styled from "styled-components";
 import RankingNav from "../organisms/RankingNav";
 import UserRankingList from "../organisms/UserRankingList";
+import { json } from "react-router-dom";
+import { joinPaths } from "@remix-run/router";
 
 const RankingStyle = styled.div`
     .commentbox {

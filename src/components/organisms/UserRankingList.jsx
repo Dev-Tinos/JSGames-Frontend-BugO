@@ -41,7 +41,7 @@ const UserRankingList = ({ data, page, size, type, setType }) => {
                 </div>
                 {data === null
                     ? null
-                    : data.map((item, i) => (
+                    : data.rankList.map((item, i) => (
                           <RankingItem
                               key={item.resultId}
                               item={item}
