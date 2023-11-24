@@ -8,7 +8,7 @@ export const postEmail = async (params) => {
         "Content-Type": "application/json",
     };
     const data = await axios
-        .post(`${API_URL}/api/email`, params, {
+        .post(`${API_URL}/email`, params, {
             headers: headers,
         })
         .then((response) => {
