@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
 import { postUser } from "../../services/UserApi";
+import { useNavigate } from "react-router-dom";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;
@@ -30,13 +31,13 @@ const SignUpStyle = styled.div`
     }
 `;
 
-const SignUpForm = () => {
-    const [email, setEmail] = useState("");
+const SignUpForm = ({ email }) => {
     const [emailCode, setEamilCode] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [nickname, setNickname] = useState("");
     const [major, setMajor] = useState("");
+    const navigate = useNavigate();
 
     const SignUp = async () => {
         await postUser({
@@ -46,18 +47,13 @@ const SignUpForm = () => {
             major: major,
             code: emailCode,
         });
+        navigate("/login");
     };
 
     return (
         <SignUpStyle>
             <h2>회원가입</h2>
             <div onSubmit={SignUp}>
-                <Input
-                    type="text"
-                    placeholder={"Email"}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
                 <Input
                     type="text"
                     placeholder={"이메인 인증 코드"}

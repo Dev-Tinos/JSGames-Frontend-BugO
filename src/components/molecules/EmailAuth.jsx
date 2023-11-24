@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
@@ -29,10 +29,10 @@ const EmailBox = styled.div`
         }
     }
 `;
-const EmailAuth = () => {
-    const [email, setEmail] = useState("");
+const EmailAuth = ({ setType, setEmail, email }) => {
     const Auth = async () => {
         await postEmail({ email: email });
+        setType(1);
     };
 
     return (
@@ -43,7 +43,6 @@ const EmailAuth = () => {
                 <Input
                     type="text"
                     placeholder={"Email"}
-                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <LoginButton text={"인증코드 발송"} onClick={Auth} />

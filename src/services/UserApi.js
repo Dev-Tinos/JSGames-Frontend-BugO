@@ -36,7 +36,7 @@ export const postLogin = async (params) => {
             return response.data;
         })
         .catch((error) => {
-            console.log(error.response.data.message);
+            alert(error.response.data.message);
             return error;
         });
     return data;

@@ -12,7 +12,7 @@ export const postEmail = async (params) => {
             headers: headers,
         })
         .then((response) => {
-            console.log("인증 코드가 발송되었습니다.");
+            alert("인증 코드가 발송되었습니다.");
             return response;
         })
         .catch((error) => {

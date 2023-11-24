@@ -28,8 +28,10 @@ const LoginForm = (props) => {
     const navigate = useNavigate();
 
     const Login = async () => {
-        await postLogin({ email: email, password: password });
-        navigate("/");
+        try {
+            await postLogin({ email: email, password: password });
+            navigate("/");
+        } catch (error) {}
     };
 
     return (
