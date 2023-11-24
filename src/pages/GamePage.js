@@ -46,7 +46,6 @@ const GamePage = () => {
                 );
                 setRankingList(rankings);
                 setMyRanking(ranking);
-                console.log(rankings);
                 setIsLoading(false);
             } catch (error) {
                 console.error();

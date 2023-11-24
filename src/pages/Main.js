@@ -9,7 +9,7 @@ const Main = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const params = { page: 0, size: 50 };
+                const params = { page: 0, size: 12 };
                 const apiData = await getGameRanking(params);
                 setGameList(apiData);
                 setIsLoading(false);

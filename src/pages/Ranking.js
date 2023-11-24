@@ -16,11 +16,9 @@ const Ranking = () => {
                 if (type === 0) {
                     const apiData = await getGameRanking(params);
                     setGameRanking(apiData);
-                    console.log(apiData);
                 } else if (type === 1) {
                     const apiData = await getUserTop100(params);
                     setUserRanking(apiData);
-                    console.log(apiData);
                 }
             } catch (error) {
                 console.error();
