@@ -4,7 +4,7 @@ import styled from "styled-components";
 const InputBox = styled.input`
     background-color: #fff;
     border: none;
-    width: 450px;
+    width: 90%;
     height: 50px;
     margin: 10px;
 `;

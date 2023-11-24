@@ -4,6 +4,7 @@ import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
 import { postUser } from "../../services/UserApi";
 import { useNavigate } from "react-router-dom";
+import MajorSelect from "../atoms/MajorSelect";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;
@@ -36,9 +37,13 @@ const SignUpForm = ({ email }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [nickname, setNickname] = useState("");
-    const [major, setMajor] = useState("");
+    const [major, setMajor] = useState("게임공학과");
     const navigate = useNavigate();
-
+    const OPTIONS = [
+        { value: "게임공학과" },
+        { value: "컴퓨터공학과" },
+        { value: "소프트웨어공학과" },
+    ];
     const SignUp = async () => {
         await postUser({
             email: email,
@@ -81,12 +86,7 @@ const SignUpForm = ({ email }) => {
                     value={nickname}
                     onChange={(e) => setNickname(e.target.value)}
                 />
-                <Input
-                    type="text"
-                    placeholder={"전공"}
-                    value={major}
-                    onChange={(e) => setMajor(e.target.value)}
-                />
+                <MajorSelect item={OPTIONS} setMajor={setMajor} />
                 {password !== confirmPassword ? (
                     <LoginButton text="회원가입" disabled={true} />
                 ) : (
