@@ -16,7 +16,7 @@ const CardStyled = styled.div`
         width: 150px;
         height: 150px;
         border-radius: 50%;
-        border: 1px solid #000;
+        box-shadow: 0 0 0 2px #000;
     }
     .name {
         font-size: 20px;

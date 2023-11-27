@@ -5,10 +5,11 @@ const GameItemBlock = styled.div`
     background-color: #fff;
     list-style-type: none;
     width: 380px;
+    height: 300px;
     margin: 10px;
     float: left;
     border-radius: 10px;
-    border: 2px solid #ccc;
+    box-shadow: 0 0 0 2px #ccc;
     cursor: pointer;
 
     img {

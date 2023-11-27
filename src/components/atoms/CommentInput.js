@@ -4,7 +4,6 @@ import styled from "styled-components";
 const InputBox = styled.input`
     width: 90%;
     height: 70px;
-    /* border: 2px solid #ccc; */
     border: 0px;
     border-radius: 5px;
 `;

@@ -8,7 +8,7 @@ const SkeletonStyle = styled.div`
     margin: 10px;
     float: left;
     border-radius: 10px;
-    border: 2px solid #ccc;
+    box-shadow: 0 0 0 2px #ccc;
 
     .skeleton-img {
         margin: 10px auto;

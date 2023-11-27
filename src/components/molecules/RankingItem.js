@@ -8,7 +8,7 @@ const RankingItemStyle = styled.div`
     margin: auto;
     display: flex;
     margin-top: 5px;
-    border: 2px solid #ccc;
+    box-shadow: 0 0 0 2px #ccc;
     border-radius: 5px;
 
     .ranking {
@@ -24,7 +24,7 @@ const RankingItemStyle = styled.div`
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            border: 1px solid #000;
+            box-shadow: 0 0 0 1px #ccc;
         }
     }
     .name {
