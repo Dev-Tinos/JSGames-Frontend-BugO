@@ -8,7 +8,8 @@ import UserRankingList from "../organisms/UserRankingList";
 const RankingStyle = styled.div`
     .commentbox {
         width: 1040px;
-        height: 800px;
+        height: auto;
+        overflow: hidden;
     }
     .container {
         display: flex;

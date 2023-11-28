@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const RankingNavStyle = styled.div`
     width: 240px;
-    height: 800px;
     background-color: #fafafa;
     display: block;
     padding: 15px;
