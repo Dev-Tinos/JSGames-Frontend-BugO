@@ -30,7 +30,7 @@ const RankingListStyle = styled.div`
     }
 `;
 
-const RankingList = ({ data, page, size }) => {
+const RankingList = ({ data }) => {
     return (
         <RankingListStyle>
             <div className="commentbox">
@@ -46,7 +46,7 @@ const RankingList = ({ data, page, size }) => {
                           <RankingItem
                               key={item.resultId}
                               item={item}
-                              ranking={page * size + i + 1}
+                              ranking={i + 1}
                               type={0}
                           />
                       ))}

@@ -28,19 +28,19 @@ const RankingStyle = styled.div`
     }
 `;
 
-const RankingTemplat = ({ data, page, size, type, setType }) => {
+const RankingTemplat = ({ data, type, setType, loaderRef }) => {
     const changeRaningPage = () => {
         switch (type) {
             case 0:
                 return (
                     <div className="rankingBox">
-                        <RankingList data={data} page={page} size={size} />
+                        <RankingList data={data} />
                     </div>
                 );
             default:
                 return (
                     <div className="rankingBox">
-                        <UserRankingList data={data} page={page} size={size} />
+                        <UserRankingList data={data} />
                     </div>
                 );
         }
@@ -53,6 +53,7 @@ const RankingTemplat = ({ data, page, size, type, setType }) => {
                 {changeRaningPage()}
                 <div className="space" />
             </div>
+            <div ref={loaderRef} />
         </RankingStyle>
     );
 };
