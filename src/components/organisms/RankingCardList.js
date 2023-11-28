@@ -33,7 +33,11 @@ const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
             {myRanking === null ? (
                 <RankingCardSkeleton type={myRanking} />
             ) : (
-                <RankingCard item={myRanking} ranking={12} styled={"my"} />
+                <RankingCard
+                    item={myRanking}
+                    ranking={myRanking.ranking}
+                    styled={"my"}
+                />
             )}
             <button
                 disabled={rankingPage === 0 ? true : false}
