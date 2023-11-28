@@ -5,6 +5,7 @@ const SkeletonStyle = styled.div`
     background-color: #fff;
     list-style-type: none;
     width: 380px;
+    height: 300px;
     margin: 10px;
     float: left;
     border-radius: 10px;
@@ -16,19 +17,19 @@ const SkeletonStyle = styled.div`
         width: 360px;
         height: 220px;
         object-fit: cover;
-        background-color: #ccc;
+        background-color: #dfdfdf;
         border-radius: 10px;
     }
     .title {
         width: 70%;
         height: 25px;
-        background-color: #ccc;
-        margin: 10px 0px 10px 10px;
+        background-color: #dfdfdf;
+        margin: 0px 10px 5px 10px;
     }
     .text {
-        width: 50%;
+        width: 20%;
         height: 19px;
-        background-color: #ccc;
+        background-color: #dfdfdf;
         margin: 0px 0px 10px 10px;
     }
 `;

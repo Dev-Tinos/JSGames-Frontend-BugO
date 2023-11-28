@@ -6,7 +6,7 @@ import GameItemSkeleton from "../atoms/GameItemSkeleton";
 
 const GameStyle = styled.div`
     margin: auto;
-    width: 1280px;
+    width: 1200px;
     height: auto;
     overflow: hidden;
 `;

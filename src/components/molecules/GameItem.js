@@ -9,7 +9,7 @@ const GameItemBlock = styled.div`
     margin: 10px;
     float: left;
     border-radius: 10px;
-    box-shadow: 0 0 0 2px #ccc;
+    box-shadow: 0 0 0 2px #ddddff;
     cursor: pointer;
 
     img {
@@ -18,13 +18,13 @@ const GameItemBlock = styled.div`
         width: 360px;
         height: 220px;
         object-fit: cover;
-        background-color: #ccc;
+        background-color: #dfdfdf;
         border-radius: 10px;
         color: #000;
     }
     .title {
         font-size: 18px;
-        margin: 10px 0px 10px 10px;
+        margin: 0px 10px 5px 10px;
         color: #000;
         font-weight: bold;
     }
