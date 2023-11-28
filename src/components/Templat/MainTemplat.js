@@ -7,7 +7,7 @@ const MainTemplat = ({ data, isLoading, loaderRef }) => {
         <div>
             <TopNavigationBar />
             <GameList data={data} isLoading={isLoading} />
-            <div ref={loaderRef}>Loading</div>
+            <div ref={loaderRef}></div>
         </div>
     );
 };

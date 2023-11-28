@@ -4,16 +4,18 @@ import GameItem from "../molecules/GameItem";
 import { Link } from "react-router-dom";
 import GameItemSkeleton from "../atoms/GameItemSkeleton";
 
-const GameStyle = styled.ul`
+const GameStyle = styled.div`
     margin: auto;
-    width: 1300px;
+    width: 1280px;
+    height: auto;
+    overflow: hidden;
 `;
 
 const GameList = ({ data, isLoading }) => {
     return (
         <GameStyle>
             {isLoading
-                ? new Array(9).fill(1).map((_, i) => {
+                ? new Array(12).fill(1).map((_, i) => {
                       return <GameItemSkeleton key={i} />;
                   })
                 : data.map((item) => (

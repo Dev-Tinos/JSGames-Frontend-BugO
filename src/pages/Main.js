@@ -3,7 +3,7 @@ import MainTemplat from "../components/Templat/MainTemplat";
 import { getGameRanking } from "../services/RankingApi";
 
 const Main = () => {
-    const [gameList, setGameList] = useState(null);
+    const [gameList, setGameList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [page, setPage] = useState(1);
     const loaderRef = useRef(null);
