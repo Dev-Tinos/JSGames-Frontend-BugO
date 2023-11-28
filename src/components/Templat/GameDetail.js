@@ -29,6 +29,7 @@ const GameDetail = ({
     myRanking,
     rankingRefresh,
     btnDisable,
+    loaderRef,
 }) => {
     return (
         <Detailbox>
@@ -50,6 +51,7 @@ const GameDetail = ({
             />
             <h2>댓글</h2>
             <CommentList data={review} />
+            <div ref={loaderRef}></div>
         </Detailbox>
     );
 };

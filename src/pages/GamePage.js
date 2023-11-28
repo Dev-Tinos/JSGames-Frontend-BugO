@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GameDetail from "../components/Templat/GameDetail";
 import { useParams } from "react-router-dom";
 import { getReviewList } from "../services/ReviewApi";
@@ -8,11 +8,13 @@ const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
+    const [reviewPage, setReviewPage] = useState(1);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [myRanking, setMyRanking] = useState(null);
     const [btnDisable, setBtnDisable] = useState(false);
+    const loaderRef = useRef(null);
 
     useEffect(() => {
         const getData = async () => {
@@ -85,6 +87,34 @@ const GamePage = () => {
         setBtnDisable(false);
     };
 
+    useEffect(() => {
+        const fetchMoreData = async () => {
+            try {
+                const newList = await getReviewList(params.gameId, {
+                    page: reviewPage,
+                    size: 5,
+                });
+                setReviewList((prevList) => [...prevList, ...newList]);
+                setReviewPage((prevPage) => prevPage + 1);
+            } catch (error) {
+                console.error();
+            }
+        };
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const firstEntry = entries[0];
+                if (firstEntry.isIntersecting) {
+                    fetchMoreData();
+                }
+            },
+            { threshold: 1.0 }
+        );
+        if (loaderRef.current) {
+            observer.observe(loaderRef.current);
+        }
+        return () => observer.disconnect();
+    }, [loaderRef, reviewPage, params]);
+
     return (
         <div>
             <GameDetail
@@ -97,6 +127,7 @@ const GamePage = () => {
                 setRankingPage={setRankingPage}
                 rankingRefresh={rankingRefresh}
                 btnDisable={btnDisable}
+                loaderRef={loaderRef}
             />
         </div>
     );
