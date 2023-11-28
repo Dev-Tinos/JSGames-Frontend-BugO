@@ -34,6 +34,7 @@ const Ranking = () => {
                     });
                     setGameRanking((prevList) => [...prevList, ...newList]);
                     setGameRanikngPage((prevPage) => prevPage + 1);
+                    setUserRankingPage(1);
                 } else if (type === 1) {
                     const apiData = await getUserTop100({
                         page: userRankingPage,
@@ -42,6 +43,7 @@ const Ranking = () => {
                     const newList = apiData.rankList;
                     setUserRanking((prevList) => [...prevList, ...newList]);
                     setUserRankingPage((prevPage) => prevPage + 1);
+                    setGameRanikngPage(1);
                 }
             } catch (error) {
                 console.error();
@@ -64,7 +66,8 @@ const Ranking = () => {
     return (
         <div>
             <RankingTemplat
-                data={type === 0 ? gameRanking : userRanking}
+                gameRanking={gameRanking}
+                userRanking={userRanking}
                 type={type}
                 setType={setType}
                 loaderRef={loaderRef}

@@ -28,19 +28,25 @@ const RankingStyle = styled.div`
     }
 `;
 
-const RankingTemplat = ({ data, type, setType, loaderRef }) => {
+const RankingTemplat = ({
+    type,
+    setType,
+    loaderRef,
+    userRanking,
+    gameRanking,
+}) => {
     const changeRaningPage = () => {
         switch (type) {
             case 0:
                 return (
                     <div className="rankingBox">
-                        <RankingList data={data} />
+                        <RankingList data={gameRanking} />
                     </div>
                 );
             default:
                 return (
                     <div className="rankingBox">
-                        <UserRankingList data={data} />
+                        <UserRankingList data={userRanking} />
                     </div>
                 );
         }
