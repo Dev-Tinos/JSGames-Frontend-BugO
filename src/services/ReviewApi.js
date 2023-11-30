@@ -14,3 +14,20 @@ export const getReviewList = async (gameId, params) => {
         });
     return data;
 };
+
+export const postReview = async (params) => {
+    const headers = {
+        "Content-Type": "application/json",
+    };
+    const data = await axios
+        .post(`${API_URL}/review`, params, {
+            headers: headers,
+        })
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return data;
+};
