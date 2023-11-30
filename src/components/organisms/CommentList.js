@@ -12,10 +12,10 @@ const CommentStyle = styled.div`
     border-radius: 10px;
 `;
 
-const CommentList = ({ data }) => {
+const CommentList = ({ data, reviewsubmit }) => {
     return (
         <CommentStyle>
-            <CommentForm />
+            <CommentForm reviewsubmit={reviewsubmit} />
             {data.map((item) => (
                 <Comment key={item.reviewId} item={item} />
             ))}

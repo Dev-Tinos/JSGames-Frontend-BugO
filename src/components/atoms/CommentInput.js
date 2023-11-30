@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const InputBox = styled.input`
-    width: 90%;
+    width: 89%;
     height: 70px;
     border: 0px;
     border-radius: 5px;

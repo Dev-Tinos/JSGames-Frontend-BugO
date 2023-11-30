@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import GameDetail from "../components/Templat/GameDetail";
 import { useParams } from "react-router-dom";
-import { getReviewList } from "../services/ReviewApi";
+import { getReviewList, postReview } from "../services/ReviewApi";
 import { getGame } from "../services/GameApi";
 import { getUserLog, getUsersLogs } from "../services/LogApi";
 const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
-    const [reviewPage, setReviewPage] = useState(1);
+    const [reviewPage, setReviewPage] = useState(0);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -20,12 +20,7 @@ const GamePage = () => {
         const getData = async () => {
             try {
                 const game = await getGame(params);
-                const review = await getReviewList(params.gameId, {
-                    size: 5,
-                    page: 0,
-                });
                 setGameData(game);
-                setReviewList(review);
                 setIsLoading(false);
             } catch (error) {
                 console.error();
@@ -57,21 +52,21 @@ const GamePage = () => {
         getData();
     }, [params, rankingPage]);
 
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const review = await getReviewList(params.gameId, {
-                    size: 10,
-                    page: 0,
-                });
-                setReviewList(review);
-            } catch (error) {
-                console.error();
-            }
-        };
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         try {
+    //             const review = await getReviewList(params.gameId, {
+    //                 size: 10,
+    //                 page: 0,
+    //             });
+    //             setReviewList(review);
+    //         } catch (error) {
+    //             console.error();
+    //         }
+    //     };
 
-        getData();
-    }, [params]);
+    //     getData();
+    // }, [params]);
 
     const rankingRefresh = async () => {
         setBtnDisable(true);
@@ -87,12 +82,27 @@ const GamePage = () => {
         setBtnDisable(false);
     };
 
+    const reviewsubmit = async (reviewText) => {
+        try {
+            await postReview({
+                userId: localStorage.getItem("userId"),
+                gameId: gameData.gameId,
+                reviewContent: reviewText,
+                star: 0,
+                helpful: 0,
+            });
+            alert("리뷰 작성 완료");
+        } catch (error) {
+            console.error();
+        }
+    };
+
     useEffect(() => {
         const fetchMoreData = async () => {
             try {
                 const newList = await getReviewList(params.gameId, {
                     page: reviewPage,
-                    size: 5,
+                    size: 10,
                 });
                 setReviewList((prevList) => [...prevList, ...newList]);
                 setReviewPage((prevPage) => prevPage + 1);
@@ -128,6 +138,7 @@ const GamePage = () => {
                 rankingRefresh={rankingRefresh}
                 btnDisable={btnDisable}
                 loaderRef={loaderRef}
+                reviewsubmit={reviewsubmit}
             />
         </div>
     );

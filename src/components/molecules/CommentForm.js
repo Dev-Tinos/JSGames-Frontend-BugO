@@ -12,26 +12,20 @@ const CommentFormBox = styled.div`
     }
 `;
 
-const CommentForm = ({ onCommentSubmit }) => {
-    const [commentText, setCommentText] = useState("");
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (commentText.trim() === "") return;
-        onCommentSubmit(commentText);
-        setCommentText("");
+const CommentForm = ({ reviewsubmit }) => {
+    const [reviewText, setreviewText] = useState("");
+    const submit = () => {
+        reviewsubmit(reviewText);
     };
     return (
         <CommentFormBox>
-            <form onSubmit={handleSubmit}>
-                <CommentInput
-                    type="text"
-                    placeholder="댓글을 입력하세요..."
-                    value={commentText}
-                    onChange={setCommentText}
-                />
-                <CommentBtn text="입력" />
-            </form>
+            <CommentInput
+                type="text"
+                placeholder="댓글을 입력하세요..."
+                value={reviewText}
+                onChange={setreviewText}
+            />
+            <CommentBtn text="입력" onClick={submit} />
         </CommentFormBox>
     );
 };

@@ -30,6 +30,7 @@ const GameDetail = ({
     rankingRefresh,
     btnDisable,
     loaderRef,
+    reviewsubmit,
 }) => {
     return (
         <Detailbox>
@@ -50,8 +51,8 @@ const GameDetail = ({
                 setRankingPage={setRankingPage}
             />
             <h2>댓글</h2>
-            <CommentList data={review} />
-            <div ref={loaderRef}></div>
+            <CommentList data={review} reviewsubmit={reviewsubmit} />
+            <div ref={loaderRef}>리뷰 로딩</div>
         </Detailbox>
     );
 };
