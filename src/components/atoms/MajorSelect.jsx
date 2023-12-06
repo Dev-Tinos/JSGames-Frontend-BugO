@@ -15,7 +15,13 @@ const MajorSelect = ({ item, setMajor }) => {
     return (
         <SelectStyle onChange={handleChange}>
             {item.map((item) => (
-                <option>{item.value}</option>
+                <option
+                    key={item.value}
+                    value={item.value}
+                    defaultValue={item.defaultValue === item.value}
+                >
+                    {item.value}
+                </option>
             ))}
         </SelectStyle>
     );
