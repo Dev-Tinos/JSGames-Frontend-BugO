@@ -50,7 +50,9 @@ const RankingItem = ({ item, ranking, type }) => {
             <p className="name">
                 {type === 0 ? item.gameName : item.user.nickname}
             </p>
-            <p className="score">{type === 0 ? item.viewCount : item.score}</p>
+            <p className="score">
+                {type === 0 ? item.viewCount : item.rankWeight}
+            </p>
         </RankingItemStyle>
     );
 };
