@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MyTemplat from "../components/Templat/MyTemplat";
 import { getUser } from "../services/UserApi";
-// import { getUserResults } from "../services/LogApi";
 
 const MyPage = () => {
     const [user, setUser] = useState([]);
@@ -32,10 +31,6 @@ const MyPage = () => {
                     const apiData = null;
                     setRankingData(apiData);
                 } else if (type === "history") {
-                    // const apiData = await getUserResults(userId, {
-                    //     page: page,
-                    //     size: size,
-                    // });
                     const apiData = null;
                     setHistoryData(apiData);
                 }

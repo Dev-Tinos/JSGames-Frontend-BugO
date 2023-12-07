@@ -27,16 +27,3 @@ export const getUserLog = async (gameId, userId) => {
         });
     return data;
 };
-
-// UserId로 랭킹 조회???
-export const getUserResults = async (userId, params) => {
-    const data = await axios
-        .get(`${API_URL}/api/results/user/${userId}`, { params })
-        .then((response) => {
-            return response.data;
-        })
-        .catch((error) => {
-            return error;
-        });
-    return data;
-};
