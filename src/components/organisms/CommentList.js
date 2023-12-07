@@ -2,6 +2,7 @@ import React from "react";
 import Comment from "../molecules/Comment";
 import styled from "styled-components";
 import CommentForm from "../molecules/CommentForm";
+import ReviewSortSelect from "../atoms/ReviewSortSelect";
 
 const CommentStyle = styled.div`
     margin: auto;
@@ -12,10 +13,20 @@ const CommentStyle = styled.div`
     border-radius: 10px;
 `;
 
-const CommentList = ({ data, reviewsubmit }) => {
+const CommentList = ({ data, reviewsubmit, setReviewSort }) => {
+    const userId = localStorage.getItem("userId");
+    const OPTIONS = [
+        { value: "recent", name: "최근순" },
+        { value: "oldest", name: "오래된순" },
+        { value: "star", name: "별점순" },
+        { value: "helpful", name: "도움순" },
+    ];
     return (
         <CommentStyle>
-            <CommentForm reviewsubmit={reviewsubmit} />
+            {userId === null ? null : (
+                <CommentForm reviewsubmit={reviewsubmit} />
+            )}
+            <ReviewSortSelect item={OPTIONS} setSort={setReviewSort} />
             {data.map((item) => (
                 <Comment key={item.reviewId} item={item} />
             ))}

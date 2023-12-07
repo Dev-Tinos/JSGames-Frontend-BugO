@@ -8,7 +8,8 @@ const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
-    const [reviewPage, setReviewPage] = useState(0);
+    const [reviewPage, setReviewPage] = useState(1);
+    const [reviewSort, setReviewSort] = useState("recent");
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -52,21 +53,23 @@ const GamePage = () => {
         getData();
     }, [params, rankingPage]);
 
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         try {
-    //             const review = await getReviewList(params.gameId, {
-    //                 size: 10,
-    //                 page: 0,
-    //             });
-    //             setReviewList(review);
-    //         } catch (error) {
-    //             console.error();
-    //         }
-    //     };
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const review = await getReviewList(params.gameId, {
+                    page: 0,
+                    size: 3,
+                    sort: reviewSort,
+                });
+                setReviewList(review);
+                setReviewPage(0);
+            } catch (error) {
+                console.error();
+            }
+        };
 
-    //     getData();
-    // }, [params]);
+        getData();
+    }, [params, reviewSort]);
 
     const rankingRefresh = async () => {
         setBtnDisable(true);
@@ -92,6 +95,7 @@ const GamePage = () => {
                 helpful: 0,
             });
             alert("리뷰 작성 완료");
+            setReviewList([]);
         } catch (error) {
             console.error();
         }
@@ -102,7 +106,8 @@ const GamePage = () => {
             try {
                 const newList = await getReviewList(params.gameId, {
                     page: reviewPage,
-                    size: 10,
+                    size: 3,
+                    sort: reviewSort,
                 });
                 setReviewList((prevList) => [...prevList, ...newList]);
                 setReviewPage((prevPage) => prevPage + 1);
@@ -123,7 +128,7 @@ const GamePage = () => {
             observer.observe(loaderRef.current);
         }
         return () => observer.disconnect();
-    }, [loaderRef, reviewPage, params]);
+    }, [loaderRef, reviewPage, params, reviewSort]);
 
     return (
         <div>
@@ -139,6 +144,7 @@ const GamePage = () => {
                 btnDisable={btnDisable}
                 loaderRef={loaderRef}
                 reviewsubmit={reviewsubmit}
+                setReviewSort={setReviewSort}
             />
         </div>
     );
