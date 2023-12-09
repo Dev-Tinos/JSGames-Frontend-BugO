@@ -14,3 +14,16 @@ export const getGame = async (params) => {
         });
     return data;
 };
+
+// 특정 유저의 플레이한 게임 리스트 조회
+export const getGameUser = async (userId, params) => {
+    const data = await axios
+        .get(`${API_URL}/game/user/${userId}`, { params })
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return data;
+};
