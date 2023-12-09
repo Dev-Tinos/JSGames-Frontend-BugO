@@ -22,8 +22,7 @@ const HistoryStyle = styled.div`
 const HistoryItem = ({ data }) => {
     return (
         <HistoryStyle>
-            <p className="game">{data.gameId}</p>
-            <p className="score">{data.gameScore}</p>
+            <p className="game">{data.gameName}</p>
         </HistoryStyle>
     );
 };

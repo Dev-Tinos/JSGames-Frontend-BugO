@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MyTemplat from "../components/Templat/MyTemplat";
 import { getUser } from "../services/UserApi";
+import { getGameUser } from "../services/GameApi";
 
 const MyPage = () => {
     const [user, setUser] = useState([]);
@@ -26,12 +27,16 @@ const MyPage = () => {
     useEffect(() => {
         // const userId = localStorage.getItem("userId");
         const getData = async () => {
+            const userId = localStorage.getItem("userId");
             try {
                 if (type === "ranking") {
                     const apiData = null;
                     setRankingData(apiData);
                 } else if (type === "history") {
-                    const apiData = null;
+                    const apiData = await getGameUser(userId, {
+                        page: 0,
+                        size: 10,
+                    });
                     setHistoryData(apiData);
                 }
             } catch (error) {

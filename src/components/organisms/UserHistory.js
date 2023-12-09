@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import HistoryItem from "../atoms/HistoryItem";
+import { Link, json } from "react-router-dom";
 
 const DivBox = styled.div`
     margin: auto;
@@ -29,7 +30,9 @@ const UserHistory = ({ data }) => {
             </div>
             {data !== null
                 ? data.map((item) => (
-                      <HistoryItem key={item.resultId} data={item} />
+                      <Link to={`/game/${item.gameId}`}>
+                          <HistoryItem key={item.gameId} data={item} />
+                      </Link>
                   ))
                 : null}
         </DivBox>
