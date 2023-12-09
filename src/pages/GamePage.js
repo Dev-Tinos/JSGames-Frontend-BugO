@@ -8,7 +8,7 @@ const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
-    const [reviewPage, setReviewPage] = useState(1);
+    const [reviewPage, setReviewPage] = useState(0);
     const [reviewSort, setReviewSort] = useState("recent");
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
@@ -56,13 +56,14 @@ const GamePage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
+                setReviewList([]);
                 const review = await getReviewList(params.gameId, {
                     page: 0,
-                    size: 3,
+                    size: 10,
                     sort: reviewSort,
                 });
                 setReviewList(review);
-                setReviewPage(0);
+                setReviewPage(1);
             } catch (error) {
                 console.error();
             }
@@ -96,6 +97,7 @@ const GamePage = () => {
             });
             alert("리뷰 작성 완료");
             setReviewList([]);
+            setReviewPage(0);
         } catch (error) {
             console.error();
         }
@@ -106,7 +108,7 @@ const GamePage = () => {
             try {
                 const newList = await getReviewList(params.gameId, {
                     page: reviewPage,
-                    size: 3,
+                    size: 10,
                     sort: reviewSort,
                 });
                 setReviewList((prevList) => [...prevList, ...newList]);
