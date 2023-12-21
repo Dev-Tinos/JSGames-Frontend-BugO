@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import HistoryItem from "../atoms/HistoryItem";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DivBox = styled.div`
     margin: auto;
