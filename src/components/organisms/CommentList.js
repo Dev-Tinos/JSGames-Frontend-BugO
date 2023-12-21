@@ -16,10 +16,10 @@ const CommentStyle = styled.div`
 const CommentList = ({ data, reviewsubmit, setReviewSort }) => {
     const userId = localStorage.getItem("userId");
     const OPTIONS = [
-        { value: "recent", name: "최근순" },
-        { value: "oldest", name: "오래된순" },
-        { value: "star", name: "별점순" },
-        { value: "helpful", name: "도움순" },
+        { value: "RECENT", name: "최근순" },
+        { value: "OLDEST", name: "오래된순" },
+        { value: "STAR", name: "별점순" },
+        { value: "HELPFUL", name: "도움순" },
     ];
     return (
         <CommentStyle>

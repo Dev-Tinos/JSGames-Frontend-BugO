@@ -8,8 +8,8 @@ const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
-    const [reviewPage, setReviewPage] = useState(0);
-    const [reviewSort, setReviewSort] = useState("recent");
+    const [reviewPage, setReviewPage] = useState(1);
+    const [reviewSort, setReviewSort] = useState("RECENT");
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
