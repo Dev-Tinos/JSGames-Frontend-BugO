@@ -5,46 +5,41 @@ import { getGameRanking, getUserTop100 } from "../services/RankingApi";
 const Ranking = () => {
     const [gameRanking, setGameRanking] = useState([]);
     const [userRanking, setUserRanking] = useState([]);
-    const [gameRankingPage, setGameRanikngPage] = useState(1);
-    const [userRankingPage, setUserRankingPage] = useState(1);
+    const [gameRankingPage, setGameRanikngPage] = useState(0);
+    const [userRankingPage, setUserRankingPage] = useState(0);
+    const [loading, setLoading] = useState(false);
     const [type, setType] = useState(0);
     const loaderRef = useRef(null);
 
     useEffect(() => {
-        const getData = async () => {
-            try {
-                const params = { page: 0, size: 10 };
-                const gameData = await getGameRanking(params);
-                setGameRanking(gameData);
-                const userData = await getUserTop100(params);
-                setUserRanking(userData.rankList);
-            } catch (error) {
-                console.error();
-            }
-        };
-        getData();
-    }, [type]);
-    useEffect(() => {
         const fetchMoreData = async () => {
+            if (loading) return;
+
+            setLoading(true);
+
             try {
-                if (type === 0) {
-                    const newList = await getGameRanking({
-                        page: gameRankingPage,
-                        size: 10,
-                    });
-                    setGameRanking((prevList) => [...prevList, ...newList]);
-                    setGameRanikngPage((prevPage) => prevPage + 1);
-                    setUserRankingPage(1);
-                } else if (type === 1) {
-                    const apiData = await getUserTop100({
-                        page: userRankingPage,
-                        size: 10,
-                    });
-                    const newList = apiData.rankList;
-                    setUserRanking((prevList) => [...prevList, ...newList]);
-                    setUserRankingPage((prevPage) => prevPage + 1);
-                    setGameRanikngPage(1);
-                }
+                setTimeout(async () => {
+                    if (type === 0) {
+                        const newList = await getGameRanking({
+                            page: gameRankingPage,
+                            size: 10,
+                        });
+                        setGameRanking((prevList) => [...prevList, ...newList]);
+                        setGameRanikngPage((prevPage) => prevPage + 1);
+                        setUserRankingPage(0);
+                        setLoading(false);
+                    } else if (type === 1) {
+                        const apiData = await getUserTop100({
+                            page: userRankingPage,
+                            size: 10,
+                        });
+                        const newList = apiData.rankList;
+                        setUserRanking((prevList) => [...prevList, ...newList]);
+                        setUserRankingPage((prevPage) => prevPage + 1);
+                        setGameRanikngPage(0);
+                        setLoading(false);
+                    }
+                }, 100);
             } catch (error) {
                 console.error();
             }
@@ -62,7 +57,8 @@ const Ranking = () => {
             observer.observe(loaderRef.current);
         }
         return () => observer.disconnect();
-    }, [loaderRef, gameRankingPage, type, userRankingPage]);
+    }, [loaderRef, gameRankingPage, type, userRankingPage, loading]);
+
     return (
         <div>
             <RankingTemplat
