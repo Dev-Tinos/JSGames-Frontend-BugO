@@ -37,10 +37,12 @@ const CommentList = ({
     ];
     return (
         <CommentStyle>
-            {userId === null ? null : (
-                <CommentForm reviewsubmit={reviewsubmit} />
+            {userId === null || myReview != null ? null : (
+                <div>
+                    <CommentForm reviewsubmit={reviewsubmit} />
+                    <ReviewSortSelect item={STAR} setSort={setStar} />
+                </div>
             )}
-            <ReviewSortSelect item={STAR} setSort={setStar} />
             {myReview === null ? null : (
                 <Comment item={myReview} STAR={STAR} styled="my" />
             )}
