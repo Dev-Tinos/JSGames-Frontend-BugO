@@ -26,9 +26,14 @@ const Main = () => {
     useEffect(() => {
         const fetchMoreData = async () => {
             try {
-                const newList = await getGameRanking({ page: page, size: 12 });
-                setGameList((prevList) => [...prevList, ...newList]);
-                setPage((prevPage) => prevPage + 1);
+                setTimeout(async () => {
+                    const newList = await getGameRanking({
+                        page: page,
+                        size: 12,
+                    });
+                    setGameList((prevList) => [...prevList, ...newList]);
+                    setPage((prevPage) => prevPage + 1);
+                }, 100);
             } catch (error) {
                 console.error();
             }
