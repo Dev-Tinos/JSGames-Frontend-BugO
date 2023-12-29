@@ -31,9 +31,16 @@ const CommentBox = styled.div`
             font-size: 18px;
             margin: 0px;
         }
+        .helpful {
+            margin: 0px;
+            font-size: 18px;
+            i {
+                color: red;
+            }
+        }
         .text {
             font-size: 15px;
-            margin: 5px 0px 0px 0px;
+            margin: 5px 0px 0px;
             height: 60%;
         }
         .date {
@@ -70,8 +77,13 @@ const Comment = ({ item, STAR }) => {
             </div>
             <div className="comment-content">
                 <p className="name">{item.user.nickname}</p>
-                <p className="name">{star.name}</p>
                 <p className="text">{item.reviewContent}</p>
+                <p className="name">{star.name}</p>
+                <p className="helpful">
+                    <i class="fa-regular fa-heart"></i>
+                    {/* <i class="fa-solid fa-heart"></i> */}
+                    {item.helpful}
+                </p>
                 <p className="date">{formatDate(item.dateTime)}</p>
             </div>
         </CommentBox>
