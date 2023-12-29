@@ -11,6 +11,7 @@ const GamePage = () => {
     const [reviewPage, setReviewPage] = useState(1);
     const [reviewSort, setReviewSort] = useState("RECENT");
     const [star, setStar] = useState(0);
+    const [reviewLoading, setReviewLoading] = useState(false);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -96,8 +97,7 @@ const GamePage = () => {
                 star: star,
             });
             alert("리뷰 작성 완료");
-            setReviewList([]);
-            setReviewPage(0);
+            window.location.reload();
         } catch (error) {
             console.error();
         }
@@ -105,14 +105,21 @@ const GamePage = () => {
 
     useEffect(() => {
         const fetchMoreData = async () => {
+            if (reviewLoading) return;
+
+            setReviewLoading(true);
+
             try {
-                const newList = await getReviewList(params.gameId, {
-                    page: reviewPage,
-                    size: 10,
-                    sort: reviewSort,
-                });
-                setReviewList((prevList) => [...prevList, ...newList]);
-                setReviewPage((prevPage) => prevPage + 1);
+                setTimeout(async () => {
+                    const newList = await getReviewList(params.gameId, {
+                        page: reviewPage,
+                        size: 10,
+                        sort: reviewSort,
+                    });
+                    setReviewList((prevList) => [...prevList, ...newList]);
+                    setReviewPage((prevPage) => prevPage + 1);
+                    setReviewLoading(false);
+                }, 100);
             } catch (error) {
                 console.error();
             }
@@ -130,7 +137,7 @@ const GamePage = () => {
             observer.observe(loaderRef.current);
         }
         return () => observer.disconnect();
-    }, [loaderRef, reviewPage, params, reviewSort]);
+    }, [loaderRef, reviewPage, params, reviewSort, reviewLoading]);
 
     return (
         <div>
