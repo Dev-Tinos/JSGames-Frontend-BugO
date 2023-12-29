@@ -10,6 +10,7 @@ const GamePage = () => {
     const [reviewList, setReviewList] = useState([]);
     const [reviewPage, setReviewPage] = useState(1);
     const [reviewSort, setReviewSort] = useState("RECENT");
+    const [star, setStar] = useState(0);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -92,8 +93,7 @@ const GamePage = () => {
                 userId: localStorage.getItem("userId"),
                 gameId: gameData.gameId,
                 reviewContent: reviewText,
-                star: 0,
-                helpful: 0,
+                star: star,
             });
             alert("리뷰 작성 완료");
             setReviewList([]);
@@ -147,6 +147,7 @@ const GamePage = () => {
                 loaderRef={loaderRef}
                 reviewsubmit={reviewsubmit}
                 setReviewSort={setReviewSort}
+                setStar={setStar}
             />
         </div>
     );

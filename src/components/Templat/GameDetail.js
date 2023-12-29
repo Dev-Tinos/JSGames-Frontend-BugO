@@ -32,6 +32,7 @@ const GameDetail = ({
     loaderRef,
     reviewsubmit,
     setReviewSort,
+    setStar,
 }) => {
     return (
         <Detailbox>
@@ -56,6 +57,7 @@ const GameDetail = ({
                 data={review}
                 reviewsubmit={reviewsubmit}
                 setReviewSort={setReviewSort}
+                setStar={setStar}
             />
             <div ref={loaderRef}>리뷰 로딩</div>
         </Detailbox>
