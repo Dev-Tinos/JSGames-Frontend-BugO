@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const CommentBox = styled.div`
     align-items: center;
-    background-color: #fff;
+    /* background-color: #fff; */
     width: 95%;
     margin: auto;
     display: flex;
@@ -50,6 +50,13 @@ const CommentBox = styled.div`
             vertical-align: bottom;
             color: #888;
         }
+        .btn {
+            button {
+                width: 30px;
+                height: 30px;
+                font-size: 18px;
+            }
+        }
     }
 `;
 
@@ -65,10 +72,20 @@ const formatDate = (dateObj) => {
     return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
 };
 
-const Comment = ({ item, STAR }) => {
+const Comment = ({ item, STAR, styled }) => {
     const star = STAR.find((star) => star.value === item.star);
     return (
-        <CommentBox>
+        <CommentBox
+            style={
+                styled === "my"
+                    ? {
+                          "background-color": " #ffffb5",
+                      }
+                    : {
+                          "background-color": "#fff",
+                      }
+            }
+        >
             <div className="profile">
                 <img
                     src={require("../../assets/img/tino.png")}
@@ -84,6 +101,14 @@ const Comment = ({ item, STAR }) => {
                     {/* <i class="fa-solid fa-heart"></i> */}
                     {item.helpful}
                 </p>
+                <div className="btn">
+                    <button>
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button>
+                        <i class="fa-solid fa-pencil"></i>
+                    </button>
+                </div>
                 <p className="date">{formatDate(item.dateTime)}</p>
             </div>
         </CommentBox>

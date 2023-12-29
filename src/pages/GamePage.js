@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import GameDetail from "../components/Templat/GameDetail";
 import { useParams } from "react-router-dom";
-import { getReviewList, postReview } from "../services/ReviewApi";
+import {
+    getReviewList,
+    getUserReview,
+    postReview,
+} from "../services/ReviewApi";
 import { getGame } from "../services/GameApi";
 import { getUserLog, getUsersLogs } from "../services/LogApi";
 const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
+    const [myReview, setMyReview] = useState(null);
     const [reviewPage, setReviewPage] = useState(1);
     const [reviewSort, setReviewSort] = useState("RECENT");
     const [star, setStar] = useState(0);
@@ -59,12 +64,17 @@ const GamePage = () => {
         const getData = async () => {
             try {
                 setReviewList([]);
-                const review = await getReviewList(params.gameId, {
+                const reviews = await getReviewList(params.gameId, {
                     page: 0,
                     size: 10,
                     sort: reviewSort,
                 });
-                setReviewList(review);
+                const review = await getUserReview(
+                    params.gameId,
+                    localStorage.getItem("userId")
+                );
+                setReviewList(reviews);
+                setMyReview(review);
                 setReviewPage(1);
             } catch (error) {
                 console.error();
@@ -155,6 +165,7 @@ const GamePage = () => {
                 reviewsubmit={reviewsubmit}
                 setReviewSort={setReviewSort}
                 setStar={setStar}
+                myReview={myReview}
             />
         </div>
     );
