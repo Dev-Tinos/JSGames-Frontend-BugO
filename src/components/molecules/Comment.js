@@ -10,8 +10,9 @@ const CommentBox = styled.div`
     margin-top: 10px;
     box-shadow: 0 0 0 1px #000 inset;
     border-radius: 5px;
-    height: 160px;
+    height: auto;
     .profile {
+        margin: 10px 0px;
         width: 11%;
         text-align: center;
         img {
@@ -22,6 +23,7 @@ const CommentBox = styled.div`
         }
     }
     .comment-content {
+        margin: 15px 0px 0px;
         width: 88%;
         height: 80%;
         .name {
@@ -35,7 +37,7 @@ const CommentBox = styled.div`
             height: 60%;
         }
         .date {
-            margin-top: 5px;
+            margin: 0px 0px 10px;
             font-size: 12px;
             text-align: right;
             vertical-align: bottom;
@@ -56,7 +58,8 @@ const formatDate = (dateObj) => {
     return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
 };
 
-const Comment = ({ item }) => {
+const Comment = ({ item, STAR }) => {
+    const star = STAR.find((star) => star.value === item.star);
     return (
         <CommentBox>
             <div className="profile">
@@ -67,6 +70,7 @@ const Comment = ({ item }) => {
             </div>
             <div className="comment-content">
                 <p className="name">{item.user.nickname}</p>
+                <p className="name">{star.name}</p>
                 <p className="text">{item.reviewContent}</p>
                 <p className="date">{formatDate(item.dateTime)}</p>
             </div>
