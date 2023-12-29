@@ -59,7 +59,7 @@ const GameDetail = ({
                 setReviewSort={setReviewSort}
                 setStar={setStar}
             />
-            <div ref={loaderRef}>리뷰 로딩</div>
+            <div ref={loaderRef}></div>
         </Detailbox>
     );
 };
