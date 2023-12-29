@@ -50,3 +50,15 @@ export const putReview = async (reviewId, params) => {
         });
     return data;
 };
+
+export const getUserReview = async (gameId, userId) => {
+    const data = await axios
+        .get(`${API_URL}/review/game/${gameId}/user/${userId}`)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            return null;
+        });
+    return data;
+};
