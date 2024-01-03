@@ -40,7 +40,7 @@ const GameItem = ({ item }) => {
         <GameItemBlock>
             <img
                 className="logo-img"
-                src={item.imageUrl || require("../../assets/img/tino.png")}
+                src={item.gameImage || require("../../assets/img/tino.png")}
                 alt={item.gameName}
             />
             <p className="title">{item.gameName}</p>
