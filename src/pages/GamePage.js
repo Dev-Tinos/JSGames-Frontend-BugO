@@ -15,7 +15,7 @@ const GamePage = () => {
     const [myReview, setMyReview] = useState(null);
     const [reviewPage, setReviewPage] = useState(1);
     const [reviewSort, setReviewSort] = useState("RECENT");
-    const [star, setStar] = useState(0);
+    const [star, setStar] = useState(null);
     const [reviewLoading, setReviewLoading] = useState(false);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
@@ -100,6 +100,10 @@ const GamePage = () => {
 
     const reviewsubmit = async (reviewText) => {
         try {
+            if (star === null) {
+                alert("별점을 선택해 주세요");
+                return;
+            }
             await postReview({
                 userId: localStorage.getItem("userId"),
                 gameId: gameData.gameId,
