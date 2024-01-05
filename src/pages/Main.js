@@ -5,23 +5,25 @@ import { getGameRanking } from "../services/RankingApi";
 const Main = () => {
     const [gameList, setGameList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [gameSort, setGameSort] = useState("VIEW_COUNT");
     const [page, setPage] = useState(1);
     const loaderRef = useRef(null);
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const params = { page: 0, size: 12 };
+                const params = { page: 0, size: 9, sort: gameSort };
                 const apiData = await getGameRanking(params);
                 setGameList(apiData);
                 setIsLoading(false);
+                setPage(1);
             } catch (error) {
                 console.error();
             }
         };
 
         getData();
-    }, []);
+    }, [gameSort]);
 
     useEffect(() => {
         const fetchMoreData = async () => {
@@ -29,7 +31,8 @@ const Main = () => {
                 setTimeout(async () => {
                     const newList = await getGameRanking({
                         page: page,
-                        size: 12,
+                        size: 9,
+                        sort: gameSort,
                     });
                     setGameList((prevList) => [...prevList, ...newList]);
                     setPage((prevPage) => prevPage + 1);
@@ -51,7 +54,7 @@ const Main = () => {
             observer.observe(loaderRef.current);
         }
         return () => observer.disconnect();
-    }, [loaderRef, page]);
+    }, [loaderRef, page, gameSort]);
 
     return (
         <div>
@@ -59,6 +62,7 @@ const Main = () => {
                 data={gameList}
                 isLoading={isLoading}
                 loaderRef={loaderRef}
+                setGameSort={setGameSort}
             />
         </div>
     );
