@@ -7,6 +7,7 @@ const ProfileNavStyle = styled.div`
     ul {
         justify-content: center;
         display: flex;
+        padding: 0px;
         li {
             list-style-type: none;
             font-size: 30px;
@@ -26,8 +27,8 @@ const ProfileNavStyle = styled.div`
 
 const ProfileNav = ({ setType, type }) => {
     const list = [
-        { type: "ranking", text: "랭킹" },
         { type: "history", text: "기록" },
+        { type: "ranking", text: "랭킹" },
     ];
 
     return (

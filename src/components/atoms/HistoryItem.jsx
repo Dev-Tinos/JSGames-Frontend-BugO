@@ -2,26 +2,37 @@ import React from "react";
 import styled from "styled-components";
 
 const HistoryStyle = styled.div`
-    width: 90%;
-    height: 70px;
+    width: 310px;
+    height: auto;
     background-color: #fff;
-    margin: auto;
-    margin-bottom: 10px;
-    display: flex;
+    margin: 5px;
     box-shadow: 0 0 0 2px inset #ddddff;
-    .game {
-        width: 30%;
+    list-style-type: none;
+    float: left;
+    .logo-img {
+        margin: 10px auto;
+        display: block;
+        width: 280px;
+        height: 250px;
         text-align: center;
     }
-    .score {
-        width: 70%;
+    .game {
         text-align: center;
+        color: #000;
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0px 0px 12px;
     }
 `;
 
 const HistoryItem = ({ data }) => {
     return (
         <HistoryStyle>
+            <img
+                className="logo-img"
+                src={data.gameImage || require("../../assets/img/tino.png")}
+                alt={data.gameName}
+            />
             <p className="game">{data.gameName}</p>
         </HistoryStyle>
     );

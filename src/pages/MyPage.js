@@ -5,7 +5,7 @@ import { getGameUser } from "../services/GameApi";
 
 const MyPage = () => {
     const [user, setUser] = useState([]);
-    const [type, setType] = useState("ranking");
+    const [type, setType] = useState("history");
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [rankingData, setRankingData] = useState(null);
@@ -35,7 +35,7 @@ const MyPage = () => {
                 } else if (type === "history") {
                     const apiData = await getGameUser(userId, {
                         page: 0,
-                        size: 10,
+                        size: 8,
                     });
                     setHistoryData(apiData);
                 }

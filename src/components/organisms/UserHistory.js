@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 
 const DivBox = styled.div`
     margin: auto;
+    height: auto;
     width: 1280px;
+    overflow: hidden;
     .title {
         width: 90%;
         display: flex;
@@ -24,10 +26,6 @@ const DivBox = styled.div`
 const UserHistory = ({ data }) => {
     return (
         <DivBox>
-            <div className="title">
-                <p className="game">게임</p>
-                <p className="score">점수</p>
-            </div>
             {data !== null
                 ? data.map((item) => (
                       <Link to={`/game/${item.gameId}`}>
