@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const FrameStyle = styled.div`
     width: 1280px;
     height: 800px;
-    background-color: #d9d9d9;
+    background-color: #fff;
     margin: auto;
     iframe {
         width: 1280px;
@@ -32,17 +32,30 @@ const GameFrame = ({ gameUrl }) => {
     const handleIframeError = () => {
         setError("Invalid protocol. Please use HTTP or HTTPS.");
     };
+
+    const iframeRef = useRef(null);
+
+    const sendDataToIframe = () => {
+        const dataToSend = localStorage.getItem("userId");
+        iframeRef.current.contentWindow.postMessage(dataToSend, "*");
+    };
+
     return (
         <FrameStyle>
             {error ? (
                 <p>{error}</p>
             ) : (
                 <iframe
+                    ref={iframeRef}
                     src={isProtocolValid(gameUrl) ? gameUrl : ""}
                     title="게임 화면"
                     onError={handleIframeError}
+                    onLoad={() => {
+                        console.log("Iframe has loaded!");
+                    }}
                 ></iframe>
             )}
+            <button onClick={sendDataToIframe}>Send Data to Iframe</button>
         </FrameStyle>
     );
 };
