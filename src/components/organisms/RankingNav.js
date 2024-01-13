@@ -30,6 +30,8 @@ const RankingNav = ({ setType, type }) => {
     const list = [
         { type: 0, text: "게임 랭킹" },
         { type: 1, text: "유저 랭킹" },
+        { type: 2, text: "학과별 랭킹" },
+        { type: 3, text: "학과내 랭킹" },
     ];
 
     return (

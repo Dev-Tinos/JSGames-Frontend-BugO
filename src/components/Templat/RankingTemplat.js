@@ -3,7 +3,6 @@ import TopNavigationBar from "../organisms/TopNavigationBar";
 import RankingList from "../organisms/RankingList";
 import styled from "styled-components";
 import RankingNav from "../organisms/RankingNav";
-import UserRankingList from "../organisms/UserRankingList";
 
 const RankingStyle = styled.div`
     .commentbox {
@@ -37,16 +36,28 @@ const RankingTemplat = ({
 }) => {
     const changeRaningPage = () => {
         switch (type) {
-            case 0:
+            case 1:
                 return (
                     <div className="rankingBox">
-                        <RankingList data={gameRanking} />
+                        <RankingList data={userRanking} type={1} />
                     </div>
                 );
+            // case 1:
+            //     return (
+            //         <div className="rankingBox">
+            //             <RankingList data={gameRanking} type={1} />
+            //         </div>
+            //     );
+            // case 2:
+            //     return (
+            //         <div className="rankingBox">
+            //             <RankingList data={gameRanking} type={2} />
+            //         </div>
+            //     );
             default:
                 return (
                     <div className="rankingBox">
-                        <UserRankingList data={userRanking} />
+                        <RankingList data={gameRanking} type={0} />
                     </div>
                 );
         }

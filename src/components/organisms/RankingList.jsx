@@ -29,17 +29,33 @@ const RankingListStyle = styled.div`
         }
     }
 `;
-
-const RankingList = ({ data }) => {
+const RankingList = ({ data, type }) => {
+    const onChangeRanking = () => {
+        switch (type) {
+            case 1:
+                return (
+                    <div className="title">
+                        <p className="ranking">랭킹</p>
+                        <p className="img" />
+                        <p className="nickname">닉네임</p>
+                        <p className="score">점수</p>
+                    </div>
+                );
+            default:
+                return (
+                    <div className="title">
+                        <p className="ranking">랭킹</p>
+                        <p className="img" />
+                        <p className="nickname">게임 이름</p>
+                        <p className="score">조회수</p>
+                    </div>
+                );
+        }
+    };
     return (
         <RankingListStyle>
             <div className="commentbox">
-                <div className="title">
-                    <p className="ranking">랭킹</p>
-                    <p className="img" />
-                    <p className="nickname">게임 이름</p>
-                    <p className="score">조회수</p>
-                </div>
+                {onChangeRanking()}
                 {data === null
                     ? null
                     : data.map((item, i) => (
@@ -47,7 +63,7 @@ const RankingList = ({ data }) => {
                               key={item.resultId}
                               item={item}
                               ranking={i + 1}
-                              type={0}
+                              type={type}
                           />
                       ))}
             </div>

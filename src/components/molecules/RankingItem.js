@@ -37,24 +37,36 @@ const RankingItemStyle = styled.div`
 `;
 
 const RankingItem = ({ item, ranking, type }) => {
-    return (
-        <RankingItemStyle>
-            <p className="ranking">{ranking}</p>
-            <div className="imgbox">
-                {/* <img src={item.imageUrl} alt={`${item.userId}`} /> */}
-                <img
-                    src={require("../../assets/img/tino.png")}
-                    alt={`${item.userId}`}
-                />
-            </div>
-            <p className="name">
-                {type === 0 ? item.gameName : item.user.nickname}
-            </p>
-            <p className="score">
-                {type === 0 ? item.viewCount : item.rankWeight}
-            </p>
-        </RankingItemStyle>
-    );
+    const onChangeRanking = () => {
+        switch (type) {
+            case 1:
+                return (
+                    <RankingItemStyle>
+                        <p className="ranking">{ranking}</p>
+                        <div className="imgbox">
+                            <img
+                                src={require("../../assets/img/tino.png")}
+                                alt={`${item.userId}`}
+                            />
+                        </div>
+                        <p className="name">{item.user.nickname}</p>
+                        <p className="score">{item.rankWeight}</p>
+                    </RankingItemStyle>
+                );
+            default:
+                return (
+                    <RankingItemStyle>
+                        <p className="ranking">{ranking}</p>
+                        <div className="imgbox">
+                            <img src={item.gameImage} alt={`${item.userId}`} />
+                        </div>
+                        <p className="name">{item.gameName}</p>
+                        <p className="score">{item.viewCount}</p>
+                    </RankingItemStyle>
+                );
+        }
+    };
+    return onChangeRanking();
 };
 
 export default RankingItem;
