@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Logoblock = styled.div`
     margin: 10px;
     img {
-        background-color: #4249e5;
+        background-color: #fff;
         width: 75px;
         height: 75px;
         display: block;

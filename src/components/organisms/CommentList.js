@@ -27,7 +27,9 @@ const CommentList = ({
         { value: "STAR", name: "별점순" },
         { value: "HELPFUL", name: "도움순" },
     ];
+
     const STAR = [
+        { value: null, name: "error" },
         { value: 0, name: "☆☆☆☆☆" },
         { value: 1, name: "★☆☆☆☆" },
         { value: 2, name: "★★☆☆☆" },
@@ -35,6 +37,7 @@ const CommentList = ({
         { value: 4, name: "★★★★☆" },
         { value: 5, name: "★★★★★" },
     ];
+
     return (
         <CommentStyle>
             {userId === null || myReview != null ? null : (

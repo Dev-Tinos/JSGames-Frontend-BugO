@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ProfileImgStyle = styled.div`
     .roundimg {
-        background-color: #ccc;
+        background-color: #fff;
         border-radius: 50%;
     }
 `;
