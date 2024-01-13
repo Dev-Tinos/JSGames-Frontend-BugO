@@ -42,7 +42,7 @@ const RankingItem = ({ item, ranking, type }) => {
             case 1:
                 return (
                     <RankingItemStyle>
-                        <p className="ranking">{ranking}</p>
+                        <p className="ranking">{item.totalRank}</p>
                         <div className="imgbox">
                             <img
                                 src={require("../../assets/img/tino.png")}
@@ -53,6 +53,22 @@ const RankingItem = ({ item, ranking, type }) => {
                         <p className="score">{item.rankWeight}</p>
                     </RankingItemStyle>
                 );
+            case 2:
+                return (
+                    <RankingItemStyle>
+                        <p className="ranking">{item.totalRank}</p>
+                        <div className="imgbox">
+                            <img
+                                src={require("../../assets/img/tino.png")}
+                                alt={`${item.userId}`}
+                            />
+                        </div>
+                        <p className="name">{item.major}</p>
+                        <p className="score">{item.rankWeight}</p>
+                    </RankingItemStyle>
+                );
+            case 3:
+                return <RankingItemStyle></RankingItemStyle>;
             default:
                 return (
                     <RankingItemStyle>

@@ -41,6 +41,24 @@ const RankingList = ({ data, type }) => {
                         <p className="score">점수</p>
                     </div>
                 );
+            case 2:
+                return (
+                    <div className="title">
+                        <p className="ranking">랭킹</p>
+                        <p className="img" />
+                        <p className="nickname">학과</p>
+                        <p className="score">점수</p>
+                    </div>
+                );
+            case 3:
+                return (
+                    <div className="title">
+                        <p className="ranking">랭킹</p>
+                        <p className="img" />
+                        <p className="nickname">닉네임</p>
+                        <p className="score">점수</p>
+                    </div>
+                );
             default:
                 return (
                     <div className="title">

@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import RankingTemplat from "../components/Templat/RankingTemplat";
-import { getGameRanking, getUserTop100 } from "../services/RankingApi";
+import {
+    getGameRanking,
+    getMajorRanking,
+    getUserTop100,
+} from "../services/RankingApi";
 
 const Ranking = () => {
     const [gameRanking, setGameRanking] = useState([]);
     const [userRanking, setUserRanking] = useState([]);
     const [gameRankingPage, setGameRanikngPage] = useState(0);
     const [userRankingPage, setUserRankingPage] = useState(0);
+    const [majorRanking, setMajorRanking] = useState([]);
     const [loading, setLoading] = useState(false);
     const [type, setType] = useState(0);
     const loaderRef = useRef(null);
@@ -26,7 +31,6 @@ const Ranking = () => {
                         });
                         setGameRanking((prevList) => [...prevList, ...newList]);
                         setGameRanikngPage((prevPage) => prevPage + 1);
-                        setUserRankingPage(0);
                         setLoading(false);
                     } else if (type === 1) {
                         const apiData = await getUserTop100({
@@ -36,7 +40,10 @@ const Ranking = () => {
                         const newList = apiData.rankList;
                         setUserRanking((prevList) => [...prevList, ...newList]);
                         setUserRankingPage((prevPage) => prevPage + 1);
-                        setGameRanikngPage(0);
+                        setLoading(false);
+                    } else if (type === 2) {
+                        const apiData = await getMajorRanking();
+                        setMajorRanking(apiData.rankList);
                         setLoading(false);
                     }
                 }, 100);
@@ -64,6 +71,7 @@ const Ranking = () => {
             <RankingTemplat
                 gameRanking={gameRanking}
                 userRanking={userRanking}
+                majorRanking={majorRanking}
                 type={type}
                 setType={setType}
                 loaderRef={loaderRef}

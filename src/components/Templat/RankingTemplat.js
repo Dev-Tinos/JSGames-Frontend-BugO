@@ -33,6 +33,7 @@ const RankingTemplat = ({
     loaderRef,
     userRanking,
     gameRanking,
+    majorRanking,
 }) => {
     const changeRaningPage = () => {
         switch (type) {
@@ -42,18 +43,18 @@ const RankingTemplat = ({
                         <RankingList data={userRanking} type={1} />
                     </div>
                 );
-            // case 1:
-            //     return (
-            //         <div className="rankingBox">
-            //             <RankingList data={gameRanking} type={1} />
-            //         </div>
-            //     );
-            // case 2:
-            //     return (
-            //         <div className="rankingBox">
-            //             <RankingList data={gameRanking} type={2} />
-            //         </div>
-            //     );
+            case 2:
+                return (
+                    <div className="rankingBox">
+                        <RankingList data={majorRanking} type={2} />
+                    </div>
+                );
+            case 3:
+                return (
+                    <div className="rankingBox">
+                        <RankingList data={null} type={3} />
+                    </div>
+                );
             default:
                 return (
                     <div className="rankingBox">
