@@ -27,3 +27,18 @@ export const getGameRanking = async (params) => {
         });
     return data;
 };
+
+// 학과별 랭킹 조회
+export const getMajorRanking = async () => {
+    const data = await axios
+        .get(`${API_URL}/major`)
+        .then((response) => {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+            return error;
+        });
+    return data;
+};
