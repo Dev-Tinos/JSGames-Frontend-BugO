@@ -29,7 +29,6 @@ const CommentList = ({
     ];
 
     const STAR = [
-        { value: null, name: "error" },
         { value: 0, name: "☆☆☆☆☆" },
         { value: 1, name: "★☆☆☆☆" },
         { value: 2, name: "★★☆☆☆" },
