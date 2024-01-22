@@ -15,6 +15,7 @@ const FrameStyle = styled.div`
 
 const GameFrame = ({ gameUrl }) => {
     const [error, setError] = useState(null);
+    const userId = localStorage.getItem("userId");
 
     const isProtocolValid = (url) => {
         try {
@@ -47,7 +48,11 @@ const GameFrame = ({ gameUrl }) => {
             ) : (
                 <iframe
                     ref={iframeRef}
-                    src={isProtocolValid(gameUrl) ? gameUrl : ""}
+                    src={
+                        isProtocolValid(gameUrl)
+                            ? `${gameUrl}?userId=${userId}`
+                            : ""
+                    }
                     title="게임 화면"
                     onError={handleIframeError}
                     onLoad={() => {
