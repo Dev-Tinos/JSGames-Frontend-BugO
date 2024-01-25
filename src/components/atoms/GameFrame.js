@@ -36,11 +36,6 @@ const GameFrame = ({ gameUrl }) => {
 
     const iframeRef = useRef(null);
 
-    const sendDataToIframe = () => {
-        const dataToSend = localStorage.getItem("userId");
-        iframeRef.current.contentWindow.postMessage(dataToSend, "*");
-    };
-
     return (
         <FrameStyle>
             {error ? (
@@ -60,7 +55,6 @@ const GameFrame = ({ gameUrl }) => {
                     }}
                 ></iframe>
             )}
-            <button onClick={sendDataToIframe}>Send Data to Iframe</button>
         </FrameStyle>
     );
 };
