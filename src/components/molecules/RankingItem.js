@@ -36,6 +36,93 @@ const RankingItemStyle = styled.div`
     }
 `;
 
+const MajorImg = [
+    {
+        major: "소프트웨어학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_5.jpg",
+    },
+    {
+        major: "컴퓨터공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_5.jpg",
+    },
+    {
+        major: "인공지능학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_14.jpg",
+    },
+    {
+        major: "게임공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_6.jpg",
+    },
+    {
+        major: "산업경영학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_10.jpg",
+    },
+    {
+        major: "IT경영학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_10.jpg",
+    },
+    {
+        major: "데이터사이언스경영학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_10.jpg",
+    },
+    {
+        major: "글로벌융합공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_13.jpg",
+    },
+    {
+        major: "기계공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_1.jpg",
+    },
+    {
+        major: "기계설계공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_2.jpg",
+    },
+    {
+        major: "나노반도체공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_11.jpg",
+    },
+    {
+        major: "메카트로닉스학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_3.jpg",
+    },
+    {
+        major: "AI로봇학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_3.jpg",
+    },
+    {
+        major: "산업디자인공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_9.jpg",
+    },
+    {
+        major: "미디어디자인학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_9.jpg",
+    },
+    {
+        major: "생명화학공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_8.jpg",
+    },
+    {
+        major: "신소재공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_7.jpg",
+    },
+    {
+        major: "에너지전기공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_12.jpg",
+    },
+    {
+        major: "지식융합학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_13.jpg",
+    },
+    {
+        major: "전자공학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_4.jpg",
+    },
+    {
+        major: "임베디드시스템학과",
+        url: "https://www.tukorea.ac.kr/sites/tukorea/images/sub/depart_4.jpg",
+    },
+];
+
 const RankingItem = ({ item, ranking, type }) => {
     const onChangeRanking = () => {
         switch (type) {
@@ -59,7 +146,10 @@ const RankingItem = ({ item, ranking, type }) => {
                         <p className="ranking">{item.totalRank}</p>
                         <div className="imgbox">
                             <img
-                                src={require("../../assets/img/tino.png")}
+                                src={
+                                    MajorImg.find((i) => i.major === item.major)
+                                        .url
+                                }
                                 alt={`${item.userId}`}
                             />
                         </div>
