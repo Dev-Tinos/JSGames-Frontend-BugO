@@ -29,7 +29,8 @@ const RankingListStyle = styled.div`
         }
     }
 `;
-const RankingList = ({ data, type }) => {
+
+const RankingList = ({ data, type, MajorImg }) => {
     const onChangeRanking = () => {
         switch (type) {
             case 1:
@@ -82,6 +83,7 @@ const RankingList = ({ data, type }) => {
                               item={item}
                               ranking={i + 1}
                               type={type}
+                              MajorImg={MajorImg}
                           />
                       ))}
             </div>

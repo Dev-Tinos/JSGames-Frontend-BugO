@@ -20,6 +20,7 @@ export const getGameRanking = async (params) => {
     const data = await axios
         .get(`${API_URL}/games`, { params })
         .then((response) => {
+            console.log(response.data);
             return response.data;
         })
         .catch((error) => {
@@ -33,11 +34,25 @@ export const getMajorRanking = async () => {
     const data = await axios
         .get(`${API_URL}/major`)
         .then((response) => {
-            console.log(response.data);
             return response.data;
         })
         .catch((error) => {
             console.log(error);
+            return error;
+        });
+    return data;
+};
+
+// 학과내 랭킹 조회
+export const getRankMajor = async (params) => {
+    const data = await axios
+        .get(`${API_URL}/rank/major`, { params })
+        .then((response) => {
+            console.log(response.data);
+            console.log(params);
+            return response.data;
+        })
+        .catch((error) => {
             return error;
         });
     return data;
