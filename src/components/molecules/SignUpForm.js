@@ -5,7 +5,6 @@ import LoginButton from "../atoms/LoginButton";
 import { postUser } from "../../services/UserApi";
 import { useNavigate } from "react-router-dom";
 import MajorSelect from "../atoms/MajorSelect";
-import { getActiveElement } from "@testing-library/user-event/dist/utils";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;

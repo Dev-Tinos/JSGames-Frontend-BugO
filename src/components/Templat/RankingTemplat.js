@@ -165,7 +165,6 @@ const RankingTemplat = ({
         <RankingStyle>
             <TopNavigationBar />
             <div className="container">
-                ``
                 <RankingNav setType={setType} type={type} />
                 {changeRaningPage()}
                 <div className="space" />
