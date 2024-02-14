@@ -9,8 +9,9 @@ import { getGameRanking } from "../services/GameApi";
 
 const Ranking = () => {
     const [gameRanking, setGameRanking] = useState([]);
+    const [gameRankingPage, setGameRanikngPage] = useState(1);
+    const [gameSort, setGameSort] = useState("VIEW_COUNT");
     const [userRanking, setUserRanking] = useState([]);
-    const [gameRankingPage, setGameRanikngPage] = useState(0);
     const [userRankingPage, setUserRankingPage] = useState(0);
     const [majorRanking, setMajorRanking] = useState([]);
     const [majorUserRanking, setMajorUserRanking] = useState([]);
@@ -24,6 +25,25 @@ const Ranking = () => {
     useEffect(() => {
         setLoading(false);
     }, [major, type]);
+
+    useEffect(() => {
+        setLoading(true);
+        const getData = async () => {
+            try {
+                const apiData = await getGameRanking({
+                    page: 0,
+                    size: 10,
+                    sort: gameSort,
+                });
+                setGameRanking(apiData);
+                setGameRanikngPage(1);
+                setLoading(false);
+            } catch (error) {
+                console.error();
+            }
+        };
+        getData();
+    }, [gameSort]);
 
     //학과내랭킹에서 학과변경시 랭킹리스트 초기화 및 변경된 학과페이지 0호출
     useEffect(() => {
@@ -55,6 +75,7 @@ const Ranking = () => {
                         const newList = await getGameRanking({
                             page: gameRankingPage,
                             size: 10,
+                            sort: gameSort,
                         });
                         //받은 데이터 길이가 0일경우 무한스크롤 중지
                         if (newList.length === 0) {
@@ -124,12 +145,14 @@ const Ranking = () => {
         loading,
         major,
         majorUserPage,
+        gameSort,
     ]);
 
     return (
         <div>
             <RankingTemplat
                 gameRanking={gameRanking}
+                setGameSort={setGameSort}
                 userRanking={userRanking}
                 majorRanking={majorRanking}
                 majorUserRanking={majorUserRanking}

@@ -4,6 +4,7 @@ import RankingList from "../organisms/RankingList";
 import styled from "styled-components";
 import RankingNav from "../organisms/RankingNav";
 import MajorSelect from "../atoms/MajorSelect";
+import SortSelect from "../atoms/SortSelect";
 
 const RankingStyle = styled.div`
     .commentbox {
@@ -115,12 +116,20 @@ const MajorImg = [
     },
 ];
 
+const SORT = [
+    { value: "VIEW_COUNT", name: "조회 수 높은 순" },
+    { value: "LOG_COUNT", name: "로그 많은 순" },
+    { value: "RECENT", name: "최신순" },
+    { value: "REVIEW_COUNT", name: "리뷰 많은 순" },
+];
+
 const RankingTemplat = ({
     type,
     setType,
     loaderRef,
     userRanking,
     gameRanking,
+    setGameSort,
     majorRanking,
     majorUserRanking,
     setMajor,
@@ -156,6 +165,7 @@ const RankingTemplat = ({
             default:
                 return (
                     <div className="rankingBox">
+                        <SortSelect item={SORT} setSort={setGameSort} />
                         <RankingList data={gameRanking} type={0} />
                     </div>
                 );
