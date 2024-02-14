@@ -15,20 +15,6 @@ export const getUserTop100 = async (params) => {
     return data;
 };
 
-// 게임 랭킹 조회 (페이징)
-export const getGameRanking = async (params) => {
-    const data = await axios
-        .get(`${API_URL}/games`, { params })
-        .then((response) => {
-            console.log(response.data);
-            return response.data;
-        })
-        .catch((error) => {
-            return error;
-        });
-    return data;
-};
-
 // 학과별 랭킹 조회
 export const getMajorRanking = async () => {
     const data = await axios
