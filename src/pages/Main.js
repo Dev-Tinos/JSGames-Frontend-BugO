@@ -34,6 +34,9 @@ const Main = () => {
                         size: 9,
                         sort: gameSort,
                     });
+                    if (newList.length === 0) {
+                        return;
+                    }
                     setGameList((prevList) => [...prevList, ...newList]);
                     setPage((prevPage) => prevPage + 1);
                 }, 100);
