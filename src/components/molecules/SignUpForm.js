@@ -5,6 +5,7 @@ import LoginButton from "../atoms/LoginButton";
 import { postUser } from "../../services/UserApi";
 import { useNavigate } from "react-router-dom";
 import MajorSelect from "../atoms/MajorSelect";
+import { getActiveElement } from "@testing-library/user-event/dist/utils";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;
@@ -37,7 +38,7 @@ const SignUpForm = ({ email }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [nickname, setNickname] = useState("");
-    const [major, setMajor] = useState("게임공학과");
+    const [major, setMajor] = useState(null);
     const navigate = useNavigate();
     const OPTIONS = [
         { value: "소프트웨어학과" },
@@ -63,6 +64,10 @@ const SignUpForm = ({ email }) => {
         { value: "임베디드시스템학과" },
     ];
     const SignUp = async () => {
+        if (major === null) {
+            alert("학과를 선택해 주세요");
+            return;
+        }
         await postUser({
             email: email,
             password: password,
