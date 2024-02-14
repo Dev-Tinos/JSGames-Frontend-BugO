@@ -51,6 +51,7 @@ export const putReview = async (reviewId, params) => {
     return data;
 };
 
+// 본인이 작성한 리뷰 조회
 export const getUserReview = async (gameId, userId) => {
     const data = await axios
         .get(`${API_URL}/review/game/${gameId}/user/${userId}`)

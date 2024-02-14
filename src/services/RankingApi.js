@@ -23,7 +23,6 @@ export const getMajorRanking = async () => {
             return response.data;
         })
         .catch((error) => {
-            console.log(error);
             return error;
         });
     return data;
@@ -34,8 +33,6 @@ export const getRankMajor = async (params) => {
     const data = await axios
         .get(`${API_URL}/rank/major`, { params })
         .then((response) => {
-            console.log(response.data);
-            console.log(params);
             return response.data;
         })
         .catch((error) => {

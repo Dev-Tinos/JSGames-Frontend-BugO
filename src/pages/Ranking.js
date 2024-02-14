@@ -79,7 +79,7 @@ const Ranking = () => {
                     } else if (type === 2) {
                         const apiData = await getMajorRanking();
                         setMajorRanking(apiData.rankList);
-                        setLoading(false);
+                        // setLoading(false);
                     } else if (type === 3) {
                         const apiData = await getRankMajor({
                             page: majorUserPage,
@@ -97,7 +97,6 @@ const Ranking = () => {
                         ]);
                         setMajorUserPage((prevPage) => prevPage + 1);
                         setLoading(false);
-                        console.log(newList.length);
                     }
                 }, 100);
             } catch (error) {

@@ -33,7 +33,6 @@ export const getGameRanking = async (params) => {
     const data = await axios
         .get(`${API_URL}/games`, { params })
         .then((response) => {
-            console.log(response.data);
             return response.data;
         })
         .catch((error) => {
