@@ -55,6 +55,19 @@ export const getUser = async (params) => {
     return data;
 };
 
+// 유저 정보 수정
+export const putUser = async (params) => {
+    const data = await axios
+        .put(`${API_URL}/user`, params)
+        .then((response) => {
+            console.log(response);
+            return response;
+        })
+        .catch((error) => {
+            return error;
+        });
+    return data;
+};
 // test
 export const apiTest = async () => {
     const response = await fetch(`${API_URL}/`, {
