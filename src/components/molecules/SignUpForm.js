@@ -46,7 +46,7 @@ const SignUpForm = ({ email }) => {
         { value: "게임공학과" },
         { value: "산업경영학과" },
         { value: "IT경영학과" },
-        { value: "데이터삿이언스경영학과" },
+        { value: "데이터사이언스경영학과" },
         { value: "글로벌융합공학과" },
         { value: "기계공학과" },
         { value: "기계설계공학과" },
