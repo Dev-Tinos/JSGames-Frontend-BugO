@@ -130,6 +130,9 @@ const GamePage = () => {
                         size: 10,
                         sort: reviewSort,
                     });
+                    if (newList.length === 0) {
+                        return;
+                    }
                     setReviewList((prevList) => [...prevList, ...newList]);
                     setReviewPage((prevPage) => prevPage + 1);
                     setReviewLoading(false);
