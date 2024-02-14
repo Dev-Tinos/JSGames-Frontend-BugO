@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import MainTemplat from "../components/Templat/MainTemplat";
-import { getGameRanking } from "../services/RankingApi";
+import { getGameRanking } from "../services/GameApi";
 
 const Main = () => {
     const [gameList, setGameList] = useState([]);
