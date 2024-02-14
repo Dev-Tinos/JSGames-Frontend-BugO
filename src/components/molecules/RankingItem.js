@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const RankingItemStyle = styled.div`
@@ -37,6 +37,8 @@ const RankingItemStyle = styled.div`
 `;
 
 const RankingItem = ({ item, ranking, type, MajorImg }) => {
+    const [imgError, setImgError] = useState(false);
+
     const onChangeRanking = () => {
         switch (type) {
             case 1:
@@ -45,7 +47,12 @@ const RankingItem = ({ item, ranking, type, MajorImg }) => {
                         <p className="ranking">{item.totalRank}</p>
                         <div className="imgbox">
                             <img
-                                src={require("../../assets/img/tino.png")}
+                                src={
+                                    imgError
+                                        ? require("../../assets/img/tino.png")
+                                        : item.user.profileImageURL
+                                }
+                                onError={() => setImgError(true)}
                                 alt={`${item.userId}`}
                             />
                         </div>
