@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getHelpful } from "../../services/HelpfulApi";
+import {
+    deleteHelpful,
+    getHelpful,
+    postHelpful,
+} from "../../services/HelpfulApi";
 
 const CommentBox = styled.div`
     align-items: center;
@@ -75,6 +79,7 @@ const formatDate = (dateObj) => {
 
 const Comment = ({ item, STAR, styled }) => {
     const [ishelpful, setIshelpful] = useState();
+    const [clicked, setClicked] = useState(false);
     const star = STAR.find((star) => star.value === item.star);
     useEffect(() => {
         const getData = async () => {
@@ -85,7 +90,28 @@ const Comment = ({ item, STAR, styled }) => {
             setIshelpful(Ishelpful.helpful);
         };
         getData();
-    }, [item.reviewId]);
+    }, [item.reviewId, ishelpful]);
+
+    const Onhelpful = async () => {
+        setClicked(true);
+        await postHelpful({
+            userId: localStorage.getItem("userId"),
+            reviewId: item.reviewId,
+        });
+        setIshelpful(true);
+        window.location.reload();
+        setClicked(false);
+    };
+    const Offhelpful = async () => {
+        setClicked(true);
+        await deleteHelpful({
+            userId: localStorage.getItem("userId"),
+            reviewId: item.reviewId,
+        });
+        setIshelpful(false);
+        window.location.reload();
+        setClicked(false);
+    };
     return (
         <CommentBox
             style={
@@ -113,11 +139,21 @@ const Comment = ({ item, STAR, styled }) => {
                 <p className="name">{star.name}</p>
                 <p className="helpful">
                     {ishelpful === true ? (
-                        <i class="fa-solid fa-heart"></i>
+                        <button
+                            onClick={() => Offhelpful()}
+                            disabled={clicked ? true : false}
+                        >
+                            <i class="fa-solid fa-heart" />
+                        </button>
                     ) : (
-                        <i class="fa-regular fa-heart"></i>
+                        <button
+                            onClick={() => Onhelpful()}
+                            disabled={clicked ? true : false}
+                        >
+                            <i class="fa-regular fa-heart" />
+                        </button>
                     )}
-                    {item.helpful}
+                    {" " + item.helpful}
                 </p>
                 {styled === "my" ? (
                     <div className="btn">

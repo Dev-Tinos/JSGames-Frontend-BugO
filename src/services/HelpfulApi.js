@@ -3,20 +3,16 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 // helpful 추가 api
-export const postHelpful = async ({ userId, reviewId }) => {
-    const headers = {
-        "Content-Type": "application/json",
-    };
+export const postHelpful = async (params) => {
     const data = await axios
-        .post(`${API_URL}/helpful/user/${userId}/review/${reviewId}`, {
-            headers: headers,
-        })
+        .post(
+            `${API_URL}/helpful/user/{userId}/review/{reviewId}?userId=${params.userId}&reviewId=${params.reviewId}`
+        )
         .then((response) => {
-            alert("인증 코드가 발송되었습니다.");
+            alert("Helpful을 추가했습니다.");
             return response;
         })
         .catch((error) => {
-            alert(error.response.data.message);
             return error;
         });
     return data;
@@ -27,32 +23,25 @@ export const getHelpful = async (params) => {
     const data = await axios
         .get(`${API_URL}/helpful/user/{userId}/review/{reviewId}`, { params })
         .then((response) => {
-            console.log(params);
-            console.log(response.data);
             return response.data;
         })
         .catch((error) => {
-            alert(error.response.data.message);
             return error;
         });
     return data;
 };
 
 // helpful 삭제
-export const deleteHelpful = async ({ userId, reviewId }) => {
-    const headers = {
-        "Content-Type": "application/json",
-    };
+export const deleteHelpful = async (params) => {
     const data = await axios
-        .delete(`${API_URL}/helpful/user/${userId}/review/${reviewId}/delete`, {
-            headers: headers,
+        .delete(`${API_URL}/helpful/user/{userId}/review/{reviewId}`, {
+            params,
         })
         .then((response) => {
-            alert("인증 코드가 발송되었습니다.");
+            alert("Helpful을 삭제했습니다.");
             return response;
         })
         .catch((error) => {
-            alert(error.response.data.message);
             return error;
         });
     return data;
