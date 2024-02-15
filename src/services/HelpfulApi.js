@@ -23,17 +23,13 @@ export const postHelpful = async ({ userId, reviewId }) => {
 };
 
 // helpful 여부 조회
-export const getHelpful = async ({ userId, reviewId }) => {
-    const headers = {
-        "Content-Type": "application/json",
-    };
+export const getHelpful = async (params) => {
     const data = await axios
-        .get(`${API_URL}/helpful/user/${userId}/review/${reviewId}`, {
-            headers: headers,
-        })
+        .get(`${API_URL}/helpful/user/{userId}/review/{reviewId}`, { params })
         .then((response) => {
-            alert("인증 코드가 발송되었습니다.");
-            return response;
+            console.log(params);
+            console.log(response.data);
+            return response.data;
         })
         .catch((error) => {
             alert(error.response.data.message);

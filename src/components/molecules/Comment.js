@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getHelpful } from "../../services/HelpfulApi";
 
 const CommentBox = styled.div`
     align-items: center;
@@ -73,7 +74,18 @@ const formatDate = (dateObj) => {
 };
 
 const Comment = ({ item, STAR, styled }) => {
+    const [ishelpful, setIshelpful] = useState();
     const star = STAR.find((star) => star.value === item.star);
+    useEffect(() => {
+        const getData = async () => {
+            const Ishelpful = await getHelpful({
+                userId: localStorage.getItem("userId"),
+                reviewId: item.reviewId,
+            });
+            setIshelpful(Ishelpful.helpful);
+        };
+        getData();
+    }, [item.reviewId]);
     return (
         <CommentBox
             style={
@@ -93,12 +105,18 @@ const Comment = ({ item, STAR, styled }) => {
                 />
             </div>
             <div className="comment-content">
-                <p className="name">{item.user.nickname}</p>
+                <p className="name">
+                    {item.user.nickname}
+                    {item.reviewId}
+                </p>
                 <p className="text">{item.reviewContent}</p>
                 <p className="name">{star.name}</p>
                 <p className="helpful">
-                    <i class="fa-regular fa-heart"></i>
-                    {/* <i class="fa-solid fa-heart"></i> */}
+                    {ishelpful === true ? (
+                        <i class="fa-solid fa-heart"></i>
+                    ) : (
+                        <i class="fa-regular fa-heart"></i>
+                    )}
                     {item.helpful}
                 </p>
                 {styled === "my" ? (
