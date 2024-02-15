@@ -26,14 +26,24 @@ const ProfileBoxStyle = styled.div`
         margin-top: 0px;
         margin-bottom: 5px;
     }
+    button {
+        font-size: 20px;
+        background-color: #fff;
+        margin-left: 20px;
+    }
 `;
 
-const ProfileBox = ({ data }) => {
+const ProfileBox = ({ data, onClicked }) => {
     return (
         <ProfileBoxStyle>
             <ProfileImg />
             <div className="textbox">
-                <p className="title">{data.nickname}</p>
+                <p className="title">
+                    {data.nickname}
+                    <button onClick={onClicked}>
+                        <i class="fa-solid fa-pencil"></i>
+                    </button>
+                </p>
                 <p className="text">{data.email}</p>
                 <p className="text">{data.major}</p>
             </div>

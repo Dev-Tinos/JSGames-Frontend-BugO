@@ -57,8 +57,13 @@ export const getUser = async (params) => {
 
 // 유저 정보 수정
 export const putUser = async (params) => {
+    const headers = {
+        "Content-Type": "application/json",
+    };
     const data = await axios
-        .put(`${API_URL}/user`, params)
+        .put(`${API_URL}/user`, params, {
+            headers: headers,
+        })
         .then((response) => {
             return response;
         })
