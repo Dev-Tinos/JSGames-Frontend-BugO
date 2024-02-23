@@ -117,10 +117,10 @@ const MajorImg = [
 ];
 
 const SORT = [
-    { value: "VIEW_COUNT", name: "조회 수 높은 순" },
-    { value: "LOG_COUNT", name: "로그 많은 순" },
-    { value: "RECENT", name: "최신순" },
-    { value: "REVIEW_COUNT", name: "리뷰 많은 순" },
+    { value: "VIEW_COUNT", name: "조회 수 높은 순", text: "조회 수" },
+    { value: "LOG_COUNT", name: "로그 많은 순", text: "" },
+    { value: "RECENT", name: "최신순", text: "등록 일자" },
+    { value: "REVIEW_COUNT", name: "리뷰 많은 순", text: "" },
 ];
 
 const RankingTemplat = ({
@@ -129,6 +129,7 @@ const RankingTemplat = ({
     loaderRef,
     userRanking,
     gameRanking,
+    gameSort,
     setGameSort,
     majorRanking,
     majorUserRanking,
@@ -166,7 +167,12 @@ const RankingTemplat = ({
                 return (
                     <div className="rankingBox">
                         <SortSelect item={SORT} setSort={setGameSort} />
-                        <RankingList data={gameRanking} type={0} />
+                        <RankingList
+                            data={gameRanking}
+                            type={0}
+                            gameSort={gameSort}
+                            SORT={SORT}
+                        />
                     </div>
                 );
         }

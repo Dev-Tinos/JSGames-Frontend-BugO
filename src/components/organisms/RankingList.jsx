@@ -30,7 +30,7 @@ const RankingListStyle = styled.div`
     }
 `;
 
-const RankingList = ({ data, type, MajorImg }) => {
+const RankingList = ({ data, type, MajorImg, gameSort, SORT }) => {
     const onChangeRanking = () => {
         switch (type) {
             case 1:
@@ -66,7 +66,9 @@ const RankingList = ({ data, type, MajorImg }) => {
                         <p className="ranking">랭킹</p>
                         <p className="img" />
                         <p className="nickname">게임 이름</p>
-                        <p className="score">조회수</p>
+                        <p className="score">
+                            {SORT.find((i) => i.value === gameSort).text}
+                        </p>
                     </div>
                 );
         }
@@ -84,6 +86,7 @@ const RankingList = ({ data, type, MajorImg }) => {
                               ranking={i + 1}
                               type={type}
                               MajorImg={MajorImg}
+                              gameSort={gameSort}
                           />
                       ))}
             </div>

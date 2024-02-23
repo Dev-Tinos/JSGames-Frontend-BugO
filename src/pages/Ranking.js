@@ -152,6 +152,7 @@ const Ranking = () => {
         <div>
             <RankingTemplat
                 gameRanking={gameRanking}
+                gameSort={gameSort}
                 setGameSort={setGameSort}
                 userRanking={userRanking}
                 majorRanking={majorRanking}
