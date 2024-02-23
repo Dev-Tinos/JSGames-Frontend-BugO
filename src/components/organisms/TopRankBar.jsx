@@ -12,6 +12,7 @@ const BarStyle = styled.div`
         float: left;
         list-style-type: none;
         margin: 10px 20px;
+        cursor: pointer;
     }
 `;
 
