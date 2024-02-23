@@ -155,6 +155,7 @@ const Ranking = () => {
                 gameSort={gameSort}
                 setGameSort={setGameSort}
                 userRanking={userRanking}
+                major={major}
                 majorRanking={majorRanking}
                 majorUserRanking={majorUserRanking}
                 setMajor={setMajor}

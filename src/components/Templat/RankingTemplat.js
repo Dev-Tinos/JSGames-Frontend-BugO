@@ -3,8 +3,8 @@ import TopNavigationBar from "../organisms/TopNavigationBar";
 import RankingList from "../organisms/RankingList";
 import styled from "styled-components";
 import RankingNav from "../organisms/RankingNav";
-import MajorSelect from "../atoms/MajorSelect";
 import SortSelect from "../atoms/SortSelect";
+import TopRankBar from "../organisms/TopRankBar";
 
 const RankingStyle = styled.div`
     .commentbox {
@@ -134,6 +134,7 @@ const RankingTemplat = ({
     majorRanking,
     majorUserRanking,
     setMajor,
+    major,
 }) => {
     const changeRaningPage = () => {
         switch (type) {
@@ -156,10 +157,11 @@ const RankingTemplat = ({
             case 3:
                 return (
                     <div className="rankingBox">
-                        <MajorSelect
-                            item={MajorImg}
-                            setMajor={setMajor}
-                        ></MajorSelect>
+                        <TopRankBar
+                            items={MajorImg}
+                            setItem={setMajor}
+                            item={major}
+                        />
                         <RankingList data={majorUserRanking} type={3} />
                     </div>
                 );
