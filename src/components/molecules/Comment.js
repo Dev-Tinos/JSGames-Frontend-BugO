@@ -158,9 +158,6 @@ const Comment = ({ item, STAR, styled }) => {
                 {styled === "my" ? (
                     <div className="btn">
                         <button>
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                        <button>
                             <i class="fa-solid fa-pencil"></i>
                         </button>
                     </div>

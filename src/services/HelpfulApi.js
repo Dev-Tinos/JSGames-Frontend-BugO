@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const postHelpful = async (params) => {
     const data = await axios
         .post(
-            `${API_URL}/helpful/user/{userId}/review/{reviewId}?userId=${params.userId}&reviewId=${params.reviewId}`
+            `${API_URL}/helpful/user/${params.userId}/review/${params.reviewId}`
         )
         .then((response) => {
             alert("Helpful을 추가했습니다.");
@@ -21,7 +21,9 @@ export const postHelpful = async (params) => {
 // helpful 여부 조회
 export const getHelpful = async (params) => {
     const data = await axios
-        .get(`${API_URL}/helpful/user/{userId}/review/{reviewId}`, { params })
+        .get(
+            `${API_URL}/helpful/user/${params.userId}/review/${params.reviewId}`
+        )
         .then((response) => {
             return response.data;
         })
@@ -34,9 +36,9 @@ export const getHelpful = async (params) => {
 // helpful 삭제
 export const deleteHelpful = async (params) => {
     const data = await axios
-        .delete(`${API_URL}/helpful/user/{userId}/review/{reviewId}`, {
-            params,
-        })
+        .delete(
+            `${API_URL}/helpful/user/${params.userId}/review/${params.reviewId}`
+        )
         .then((response) => {
             alert("Helpful을 삭제했습니다.");
             return response;
