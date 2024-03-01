@@ -25,7 +25,7 @@ const TopRankBar = ({ items, setItem, item }) => {
                     key={i.value}
                     className={i.value === item ? "select" : null}
                 >
-                    <li>{i.value}</li>
+                    <li>{i.name}</li>
                 </div>
             ))}
         </BarStyle>
