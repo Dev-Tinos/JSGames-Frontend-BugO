@@ -24,6 +24,20 @@ const RankingNavStyle = styled.div`
             font-weight: bold;
         }
     }
+    .title {
+    }
+    .text {
+        width: 300px;
+        padding: 15px 20px;
+        background-color: #444444;
+        border-radius: 5px;
+        color: #ffffff;
+        display: none;
+    }
+    .title:hover + .text {
+        display: block;
+        z-index: -1;
+    }
 `;
 
 const RankingNav = ({ setType, type }) => {
@@ -47,6 +61,25 @@ const RankingNav = ({ setType, type }) => {
                     </li>
                 ))}
             </ul>
+            <div className="title">
+                랭킹 설정 기준 <i class="fa-regular fa-circle-question"></i>
+            </div>
+            <div className="text">
+                각 Game마다 1~100등까지 결과들에 점수를 매겨 전체 게임 유저
+                랭킹을 설정
+                <li>
+                    게임마다 10등 부터 1등까지 20의 배수로 증가 (10명)
+                    (10등)270점 ~ (1등)450점
+                </li>
+                <li>
+                    게임마다 10등 부터 1등까지 20의 배수로 증가 (10명)
+                    (10등)270점 ~ (1등)450점
+                </li>
+                <li>
+                    게임마다 10등 부터 1등까지 20의 배수로 증가 (10명)
+                    (10등)270점 ~ (1등)450점
+                </li>
+            </div>
         </RankingNavStyle>
     );
 };
