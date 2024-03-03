@@ -97,6 +97,9 @@ const TopNavigationBar = () => {
                     </div>
                 ) : (
                     <div className="leftMenu">
+                        <button className="button">
+                            <i class="fa-solid fa-users"></i>
+                        </button>
                         <Link to="/mypage">
                             <ProfileImg />
                         </Link>
