@@ -7,6 +7,7 @@ import Main from "./pages/Main.js";
 import GamePage from "./pages/GamePage.js";
 import TestPage from "./pages/TestPage.js";
 import SignUpPage from "./pages/SignUpPage.js";
+import FriendPage from "./pages/FriendPage.jsx";
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/signup" Component={SignUpPage} />
             <Route path="/game/:gameId" Component={GamePage} />
             <Route path="/test" Component={TestPage} />
+            <Route path="/friend" Component={FriendPage} />
         </Routes>
     );
 };
