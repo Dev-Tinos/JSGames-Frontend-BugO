@@ -25,9 +25,11 @@ const RankingNavStyle = styled.div`
         }
     }
     .title {
+        margin-left: 40px;
+        margin-top: 30px;
     }
     .text {
-        width: 300px;
+        width: 600px;
         padding: 15px 20px;
         background-color: #444444;
         border-radius: 5px;
@@ -36,7 +38,8 @@ const RankingNavStyle = styled.div`
     }
     .title:hover + .text {
         display: block;
-        z-index: -1;
+        position: relative;
+        z-index: 5;
     }
 `;
 
