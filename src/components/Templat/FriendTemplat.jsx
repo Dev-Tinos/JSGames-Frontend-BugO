@@ -100,7 +100,25 @@ const Friends = [
     },
 ];
 
-const FriendTemplat = ({ type, setType, closeModal }) => {
+const FriendTemplat = ({
+    type,
+    setType,
+    closeModal,
+    friend,
+    requested,
+    request,
+}) => {
+    const changeFriendList = () => {
+        switch (type) {
+            case 1:
+                return <FriendList item={requested} type={type} />;
+            case 2:
+                return <FriendList item={request} type={type} />;
+            default:
+                return <FriendList item={Friends} type={type} />;
+        }
+    };
+
     return (
         <ModalStyle onClick={closeModal}>
             <ModalPageStyle onClick={(e) => e.stopPropagation()}>
@@ -114,7 +132,7 @@ const FriendTemplat = ({ type, setType, closeModal }) => {
                 </div>
                 <FriendNav type={type} setType={setType} />
                 <FriendSearchBar />
-                <FriendList item={Friends} />
+                {changeFriendList()}
             </ModalPageStyle>
         </ModalStyle>
     );

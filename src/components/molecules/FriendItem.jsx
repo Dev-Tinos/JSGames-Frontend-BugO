@@ -26,16 +26,18 @@ const FriendStyle = styled.div`
             }
             .name {
                 font-size: 16px;
-                margin-bottom: 10px;
                 font-weight: bold;
             }
             .major {
                 font-size: 12px;
+                margin-top: 10px;
             }
         }
     }
     .buttonbox {
         margin-right: 5px;
+        font-size: 16px;
+        color: #999999;
         button {
             width: 94px;
             height: 44px;
@@ -43,7 +45,7 @@ const FriendStyle = styled.div`
             border: 0px;
             border-radius: 10px;
             font-size: 16px;
-            margin: 26px 10px 26px 0px;
+            margin: 26px 10px 26px 15px;
             background-color: #f2f2f2;
             color: #999999;
         }
@@ -51,11 +53,39 @@ const FriendStyle = styled.div`
             background-color: #5383e8;
             color: #ffffff;
             box-shadow: 0 0 0 0;
+            margin-left: -5px;
         }
     }
 `;
 
-const FriendItem = ({ item }) => {
+const FriendItem = ({ item, type }) => {
+    const buttonChange = () => {
+        switch (type) {
+            case 1:
+                return (
+                    <div className="buttonbox">
+                        <button>거절</button>
+                        <button className="button2">수락</button>
+                    </div>
+                );
+            case 2:
+                return (
+                    <div className="buttonbox">
+                        {item.friendStatus === "PENDING"
+                            ? "수락대기중"
+                            : "요청이 거절 되었습니다."}
+                        <button>거절</button>
+                    </div>
+                );
+            default:
+                return (
+                    <div className="buttonbox">
+                        <button>삭제</button>
+                    </div>
+                );
+        }
+    };
+
     return (
         <FriendStyle>
             <div className="profile">
@@ -68,10 +98,7 @@ const FriendItem = ({ item }) => {
                     <p className="major">{item.major}</p>
                 </div>
             </div>
-            <div className="buttonbox">
-                <button>거절</button>
-                <button className="button2">수락</button>
-            </div>
+            {buttonChange()}
         </FriendStyle>
     );
 };
