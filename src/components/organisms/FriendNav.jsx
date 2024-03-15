@@ -2,16 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const NavStyle = styled.div`
-    width: 100%;
-    height: auto;
-    text-align: center;
+    width: 600px;
+    height: 34px;
+    margin: auto;
+    color: #999999;
+    font-size: 18px;
     li {
-        display: inline;
-        margin: 20px;
+        width: 200px;
+        height: 34px;
+        justify-content: center;
+        display: inline-block;
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 2px #999999 solid;
         cursor: pointer;
     }
     .clicked {
-        color: blue;
+        color: #333333;
+        border-color: #333333;
     }
 `;
 

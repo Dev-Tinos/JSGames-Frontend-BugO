@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../atoms/Logo";
 import styled from "styled-components";
 import ProfileImg from "../atoms/ProfileImg";
+import FriendPage from "../../pages/FriendPage";
 
 const TopBar = styled.div`
     background-color: #5383e8;
@@ -36,24 +37,37 @@ const TopBar = styled.div`
     }
     .leftMenu {
         display: flex;
-        /* width: 200px; */
         .button {
             margin: auto;
             background-color: #5383e8;
             color: white;
             text-decoration: none;
             width: 100px;
+            height: auto;
             display: block;
             text-align: center;
             margin-left: 10px;
             border: 0px;
             font-size: 18px;
+            i {
+                font-size: 25px;
+            }
         }
     }
 `;
 
 const TopNavigationBar = () => {
     const [userId, setUserId] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     const navigate = useNavigate();
 
     const LogOut = () => {
@@ -98,7 +112,11 @@ const TopNavigationBar = () => {
                 ) : (
                     <div className="leftMenu">
                         <button className="button">
-                            <i class="fa-solid fa-users"></i>
+                            <i
+                                class="fa-solid fa-users fa-sm"
+                                style={{ cursor: "pointer" }}
+                                onClick={openModal}
+                            />
                         </button>
                         <Link to="/mypage">
                             <ProfileImg />
@@ -109,6 +127,10 @@ const TopNavigationBar = () => {
                     </div>
                 )}
             </div>
+            <FriendPage
+                isOpen={isModalOpen}
+                closeModal={closeModal}
+            ></FriendPage>
         </TopBar>
     );
 };
