@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FriendTemplat from "../components/Templat/FriendTemplat";
 import {
     getFriend,
@@ -8,15 +8,15 @@ import {
 
 const FriendPage = ({ isOpen, closeModal }) => {
     const [type, setType] = useState(0);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [friend, setFriend] = useState([]);
-    const [friendPage, setFrienPage] = useState(0);
+    // const [friendPage, setFrienPage] = useState(0);
     const [request, setRequest] = useState([]);
-    const [requestPage, setRequestPage] = useState(0);
+    // const [requestPage, setRequestPage] = useState(0);
     const [requested, setRequested] = useState([]);
-    const [requestedPage, setrequestedPage] = useState(0);
+    // const [requestedPage, setrequestedPage] = useState(0);
     const userId = localStorage.getItem("userId");
-    const loaderRef = useRef(null);
+    // const loaderRef = useRef(null);
 
     // 모달이 열릴 경우 스크롤 방지
     useEffect(() => {
@@ -43,26 +43,26 @@ const FriendPage = ({ isOpen, closeModal }) => {
         const fetchData = async () => {
             if (type === 0) {
                 const newList = await getFriend(userId, {
-                    page: friendPage,
+                    page: 0,
                     size: 10,
                 });
                 setFriend(newList);
             } else if (type === 1) {
                 const newList = await getRequestFriend(userId, {
-                    page: requestPage,
+                    page: 0,
                     size: 10,
                 });
                 setRequest(newList);
             } else if (type === 2) {
                 const newList = await getRequestedFriend(userId, {
-                    page: requestedPage,
+                    page: 0,
                     size: 10,
                 });
                 setRequested(newList);
             }
         };
         fetchData();
-    }, [userId, friendPage, requestPage, requestedPage, type]);
+    }, [userId, type]);
 
     // useEffect(() => {
     //     const fetchMoreData = async () => {
@@ -130,7 +130,14 @@ const FriendPage = ({ isOpen, closeModal }) => {
     if (!isOpen) return null;
 
     return (
-        <FriendTemplat type={type} setType={setType} closeModal={closeModal} />
+        <FriendTemplat
+            type={type}
+            setType={setType}
+            closeModal={closeModal}
+            friend={friend}
+            request={request}
+            requested={requested}
+        />
     );
 };
 
