@@ -39,30 +39,27 @@ const FriendPage = ({ isOpen, closeModal }) => {
         };
     }, [isOpen]);
 
+    // 데이터 받기 테스트
     useEffect(() => {
         const fetchData = async () => {
-            if (type === 0) {
-                const newList = await getFriend(userId, {
-                    page: 0,
-                    size: 10,
-                });
-                setFriend(newList);
-            } else if (type === 1) {
-                const newList = await getRequestFriend(userId, {
-                    page: 0,
-                    size: 10,
-                });
-                setRequest(newList);
-            } else if (type === 2) {
-                const newList = await getRequestedFriend(userId, {
-                    page: 0,
-                    size: 10,
-                });
-                setRequested(newList);
-            }
+            const newList1 = await getFriend(userId, {
+                page: 0,
+                size: 10,
+            });
+            setFriend(newList1);
+            const newList2 = await getRequestedFriend(userId, {
+                page: 0,
+                size: 10,
+            });
+            setRequested(newList2);
+            const newList3 = await getRequestFriend(userId, {
+                page: 0,
+                size: 10,
+            });
+            setRequest(newList3);
         };
         fetchData();
-    }, [userId, type]);
+    }, [userId]);
 
     // useEffect(() => {
     //     const fetchMoreData = async () => {
@@ -135,8 +132,8 @@ const FriendPage = ({ isOpen, closeModal }) => {
             setType={setType}
             closeModal={closeModal}
             friend={friend}
-            request={request}
             requested={requested}
+            request={request}
         />
     );
 };
