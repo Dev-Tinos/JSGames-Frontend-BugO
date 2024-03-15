@@ -1,13 +1,19 @@
 import React from "react";
 import FriendItem from "../molecules/FriendItem";
+import styled from "styled-components";
+
+const ListStyle = styled.div`
+    overflow-y: auto;
+    height: 55vh;
+`;
 
 const FriendList = ({ item }) => {
     return (
-        <div>
+        <ListStyle>
             {item.map((i) => (
                 <FriendItem item={i} />
             ))}
-        </div>
+        </ListStyle>
     );
 };
 
