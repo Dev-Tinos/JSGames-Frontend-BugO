@@ -11,7 +11,7 @@ const FriendList = ({ item }) => {
     return (
         <ListStyle>
             {item.map((i) => (
-                <FriendItem item={i} />
+                <FriendItem item={i} key={i.friendEmail} />
             ))}
         </ListStyle>
     );
