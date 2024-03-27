@@ -4,6 +4,7 @@ import GameItem from "../molecules/GameItem";
 import { Link } from "react-router-dom";
 import GameItemSkeleton from "../atoms/GameItemSkeleton";
 import SortSelect from "../atoms/SortSelect";
+import AdBlock from "../atoms/AdBlock";
 
 const GameStyle = styled.div`
     margin: auto;
@@ -34,11 +35,12 @@ const GameList = ({ data, isLoading, setGameSort }) => {
             <div className="sortbox">
                 <SortSelect item={SORT} setSort={setGameSort} />
             </div>
+            <AdBlock />
             {isLoading
                 ? new Array(12).fill(1).map((_, i) => {
                       return <GameItemSkeleton key={i} />;
                   })
-                : data.map((item) => (
+                : data.map((item, i) => (
                       <Link to={`/game/${item.gameId}`}>
                           <GameItem key={item.gameId} item={item} />
                       </Link>
