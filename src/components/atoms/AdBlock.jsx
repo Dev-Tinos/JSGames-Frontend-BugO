@@ -11,33 +11,21 @@ const BlockStyle = styled.div`
     border-radius: 10px;
     box-shadow: 0 0 0 2px #ccc;
 
-    .skeleton-img {
+    .ad {
         margin: 10px auto;
         display: block;
         width: 360px;
-        height: 220px;
+        height: 280px;
         object-fit: cover;
         background-color: #dfdfdf;
         border-radius: 10px;
-    }
-    .title {
-        width: 70%;
-        height: 25px;
-        background-color: #dfdfdf;
-        margin: 0px 10px 5px 10px;
-    }
-    .text {
-        width: 20%;
-        height: 19px;
-        background-color: #dfdfdf;
-        margin: 0px 0px 10px 10px;
     }
 `;
 
 const AdBlock = () => {
     return (
         <BlockStyle>
-            <div className="skeleton-img">
+            <div className="ad">
                 <script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3414009965030523"

@@ -35,16 +35,19 @@ const GameList = ({ data, isLoading, setGameSort }) => {
             <div className="sortbox">
                 <SortSelect item={SORT} setSort={setGameSort} />
             </div>
-            <AdBlock />
             {isLoading
                 ? new Array(12).fill(1).map((_, i) => {
                       return <GameItemSkeleton key={i} />;
                   })
-                : data.map((item, i) => (
-                      <Link to={`/game/${item.gameId}`}>
-                          <GameItem key={item.gameId} item={item} />
-                      </Link>
-                  ))}
+                : data.map((item, i) =>
+                      item.gameId === "ad" ? (
+                          <AdBlock />
+                      ) : (
+                          <Link to={`/game/${item.gameId}`}>
+                              <GameItem key={item.gameId} item={item} />
+                          </Link>
+                      )
+                  )}
         </GameStyle>
     );
 };
