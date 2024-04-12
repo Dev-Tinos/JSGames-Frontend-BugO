@@ -17,6 +17,7 @@ const FriendPage = ({ isOpen, closeModal }) => {
     // const [requestedPage, setrequestedPage] = useState(0);
     const userId = localStorage.getItem("userId");
     // const loaderRef = useRef(null);
+    // const [refresh, setRefresh] = useState(false);
 
     // 모달이 열릴 경우 스크롤 방지
     useEffect(() => {
@@ -42,24 +43,28 @@ const FriendPage = ({ isOpen, closeModal }) => {
     // 데이터 받기 테스트
     useEffect(() => {
         const fetchData = async () => {
-            const newList1 = await getFriend(userId, {
-                page: 0,
-                size: 10,
-            });
-            setFriend(newList1);
-            const newList2 = await getRequestedFriend(userId, {
-                page: 0,
-                size: 10,
-            });
-            setRequested(newList2);
-            const newList3 = await getRequestFriend(userId, {
-                page: 0,
-                size: 10,
-            });
-            setRequest(newList3);
+            if (type === 0) {
+                const newList1 = await getFriend(userId, {
+                    page: 0,
+                    size: 10,
+                });
+                setFriend(newList1);
+            } else if (type === 1) {
+                const newList2 = await getRequestedFriend(userId, {
+                    page: 0,
+                    size: 10,
+                });
+                setRequested(newList2);
+            } else if (type === 2) {
+                const newList3 = await getRequestFriend(userId, {
+                    page: 0,
+                    size: 10,
+                });
+                setRequest(newList3);
+            }
         };
         fetchData();
-    }, [userId]);
+    }, [userId, type]);
 
     // useEffect(() => {
     //     const fetchMoreData = async () => {

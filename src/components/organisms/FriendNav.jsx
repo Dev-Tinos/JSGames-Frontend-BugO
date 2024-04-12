@@ -24,7 +24,7 @@ const NavStyle = styled.div`
 `;
 
 const list = [
-    { type: 0, text: "친구 목록" },
+    { type: 0, text: "유저 목록" },
     { type: 1, text: "받은 요청" },
     { type: 2, text: "보낸 요청" },
 ];

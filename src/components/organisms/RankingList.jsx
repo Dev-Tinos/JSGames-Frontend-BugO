@@ -77,18 +77,20 @@ const RankingList = ({ data, type, MajorImg, gameSort, SORT }) => {
         <RankingListStyle>
             <div className="commentbox">
                 {onChangeRanking()}
-                {data === null
-                    ? null
-                    : data.map((item, i) => (
-                          <RankingItem
-                              key={item.resultId}
-                              item={item}
-                              ranking={i + 1}
-                              type={type}
-                              MajorImg={MajorImg}
-                              gameSort={gameSort}
-                          />
-                      ))}
+                {data.length === 0 ? (
+                    <div>데이터가 없습니다</div>
+                ) : (
+                    data.map((item, i) => (
+                        <RankingItem
+                            key={item.resultId}
+                            item={item}
+                            ranking={i + 1}
+                            type={type}
+                            MajorImg={MajorImg}
+                            gameSort={gameSort}
+                        />
+                    ))
+                )}
             </div>
         </RankingListStyle>
     );

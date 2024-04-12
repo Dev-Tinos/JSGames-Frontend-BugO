@@ -8,14 +8,13 @@ export const postRequestFriend = async (params) => {
         "Content-Type": "application/json",
     };
     const data = await axios
-        .post(`${API_URL}/friend/requests/`, params, {
+        .post(`${API_URL}/friend/request/`, params, {
             headers: headers,
         })
         .then((response) => {
             return response;
         })
         .catch((error) => {
-            alert(error.response.data.message);
             return error;
         });
     return data;
@@ -24,8 +23,9 @@ export const postRequestFriend = async (params) => {
 // 친구 추가 보낸 요청 삭제
 export const deleteRequestFriend = async (params) => {
     const data = await axios
-        .delete(`${API_URL}/friend/requests/`, params)
+        .delete(`${API_URL}/friend/request/`, { data: params })
         .then((response) => {
+            alert("친구 추가 요청을 취소하였습니다.");
             return response;
         })
         .catch((error) => {
@@ -44,10 +44,10 @@ export const postRejectFriend = async (params) => {
             headers: headers,
         })
         .then((response) => {
+            alert("친구 추가 요청을 거절하였습니다.");
             return response;
         })
         .catch((error) => {
-            alert(error.response.data.message);
             return error;
         });
     return data;
@@ -63,10 +63,10 @@ export const postAcceptFriend = async (params) => {
             headers: headers,
         })
         .then((response) => {
+            alert("친구 추가 요청을 수락하였습니다.");
             return response;
         })
         .catch((error) => {
-            alert(error.response.data.message);
             return error;
         });
     return data;
@@ -75,7 +75,7 @@ export const postAcceptFriend = async (params) => {
 // 친구 목록
 export const getFriend = async (userId, params) => {
     const data = await axios
-        .get(`${API_URL}/friend/${userId}`, { params })
+        .get(`${API_URL}/friends/${userId}`, { params })
         .then((response) => {
             return response.data;
         })
@@ -114,8 +114,9 @@ export const getRequestedFriend = async (userId, params) => {
 // 친구 삭제
 export const deleteFriend = async (params) => {
     const data = await axios
-        .delete(`${API_URL}/friend`, params)
+        .delete(`${API_URL}/friend`, { data: params })
         .then((response) => {
+            alert("친구를 삭제하였습니다.");
             return response;
         })
         .catch((error) => {

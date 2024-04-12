@@ -1,5 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import {
+    deleteFriend,
+    deleteRequestFriend,
+    postAcceptFriend,
+    postRejectFriend,
+} from "../../services/FriendApi";
 
 const FriendStyle = styled.div`
     width: 600px;
@@ -59,13 +65,40 @@ const FriendStyle = styled.div`
 `;
 
 const FriendItem = ({ item, type }) => {
+    const rejectFriend = () => {
+        postRejectFriend({
+            userId: localStorage.getItem("userId"),
+            friendEmail: item.friendEmail,
+        });
+    };
+    const acceptFriend = () => {
+        postAcceptFriend({
+            userId: localStorage.getItem("userId"),
+            friendEmail: item.friendEmail,
+        });
+    };
+    const deleteRequest = () => {
+        deleteRequestFriend({
+            userId: localStorage.getItem("userId"),
+            friendEmail: item.friendEmail,
+        });
+    };
+    const FriendDelete = () => {
+        deleteFriend({
+            userId: localStorage.getItem("userId"),
+            friendEmail: item.friendEmail,
+        });
+    };
+
     const buttonChange = () => {
         switch (type) {
             case 1:
                 return (
                     <div className="buttonbox">
-                        <button>거절</button>
-                        <button className="button2">수락</button>
+                        <button onClick={rejectFriend}>거절</button>
+                        <button className="button2" onClick={acceptFriend}>
+                            수락
+                        </button>
                     </div>
                 );
             case 2:
@@ -73,14 +106,14 @@ const FriendItem = ({ item, type }) => {
                     <div className="buttonbox">
                         {item.friendStatus === "PENDING"
                             ? "수락대기중"
-                            : "요청이 거절 되었습니다."}
-                        <button>거절</button>
+                            : "요청이 취소 되었습니다."}
+                        <button onClick={deleteRequest}>취소</button>
                     </div>
                 );
             default:
                 return (
                     <div className="buttonbox">
-                        <button>삭제</button>
+                        <button onClick={FriendDelete}>삭제</button>
                     </div>
                 );
         }

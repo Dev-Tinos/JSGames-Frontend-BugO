@@ -43,63 +43,6 @@ const ModalPageStyle = styled.div`
     }
 `;
 
-const Friends = [
-    {
-        friendEmail: "이메일1",
-        friendName: "친구1",
-        friendProfile: "프로필1",
-        parentMajor: "컴퓨터공학부",
-        major: "소프트웨어학과",
-        createdAt: "2024-03-03T07:29:13.035Z",
-        recentPlay: "2024-03-03T07:29:13.035Z",
-    },
-    {
-        friendEmail: "이메일2",
-        friendName: "친구2",
-        friendProfile: "프로필2",
-        parentMajor: "컴퓨터공학부",
-        major: "소프트웨어학과",
-        createdAt: "2024-03-03T07:29:13.035Z",
-        recentPlay: "2024-03-03T07:29:13.035Z",
-    },
-    {
-        friendEmail: "이메일3",
-        friendName: "친구3",
-        friendProfile: "프로필3",
-        parentMajor: "컴퓨터공학부",
-        major: "소프트웨어학과",
-        createdAt: "2024-03-03T07:29:13.035Z",
-        recentPlay: "2024-03-03T07:29:13.035Z",
-    },
-    {
-        friendEmail: "이메일4",
-        friendName: "친구4",
-        friendProfile: "프로필4",
-        parentMajor: "컴퓨터공학부",
-        major: "소프트웨어학과",
-        createdAt: "2024-03-03T07:29:13.035Z",
-        recentPlay: "2024-03-03T07:29:13.035Z",
-    },
-    {
-        friendEmail: "이메일5",
-        friendName: "친구5",
-        friendProfile: "프로필5",
-        parentMajor: "컴퓨터공학부",
-        major: "소프트웨어학과",
-        createdAt: "2024-03-03T07:29:13.035Z",
-        recentPlay: "2024-03-03T07:29:13.035Z",
-    },
-    {
-        friendEmail: "이메일6",
-        friendName: "친구6",
-        friendProfile: "프로필6",
-        parentMajor: "컴퓨터공학부",
-        major: "소프트웨어학과",
-        createdAt: "2024-03-03T07:29:13.035Z",
-        recentPlay: "2024-03-03T07:29:13.035Z",
-    },
-];
-
 const FriendTemplat = ({
     type,
     setType,
@@ -115,7 +58,7 @@ const FriendTemplat = ({
             case 2:
                 return <FriendList item={request} type={type} />;
             default:
-                return <FriendList item={Friends} type={type} />;
+                return <FriendList item={friend} type={type} />;
         }
     };
 
