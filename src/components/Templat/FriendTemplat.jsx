@@ -50,15 +50,58 @@ const FriendTemplat = ({
     friend,
     requested,
     request,
+    Search,
+    searched,
+    nickname,
+    setNickname,
+    refresh,
+    setRefresh,
 }) => {
+    const handleSearch = (event) => {
+        setNickname(event.target.value);
+    };
+    const activeEnter = (event) => {
+        if (event.key === "Enter") {
+            if (nickname === "") {
+                alert("닉네임를 입력해주세요");
+                return;
+            }
+            Search();
+        }
+    };
+
     const changeFriendList = () => {
         switch (type) {
             case 1:
-                return <FriendList item={requested} type={type} />;
+                return (
+                    <FriendList
+                        item={requested}
+                        type={type}
+                        refresh={refresh}
+                        setRefresh={setRefresh}
+                    />
+                );
             case 2:
-                return <FriendList item={request} type={type} />;
+                return (
+                    <FriendList
+                        item={request}
+                        type={type}
+                        refresh={refresh}
+                        setRefresh={setRefresh}
+                    />
+                );
             default:
-                return <FriendList item={friend} type={type} />;
+                return (
+                    <div>
+                        <FriendList
+                            item={friend}
+                            type={type}
+                            searched={searched}
+                            refresh={refresh}
+                            setRefresh={setRefresh}
+                        />
+                    </div>
+                );
         }
     };
 
@@ -74,7 +117,11 @@ const FriendTemplat = ({
                     />
                 </div>
                 <FriendNav type={type} setType={setType} />
-                <FriendSearchBar />
+                <FriendSearchBar
+                    value={nickname}
+                    handleChange={handleSearch}
+                    activeEnter={activeEnter}
+                />
                 {changeFriendList()}
             </ModalPageStyle>
         </ModalStyle>

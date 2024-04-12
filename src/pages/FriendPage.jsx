@@ -5,19 +5,17 @@ import {
     getRequestFriend,
     getRequestedFriend,
 } from "../services/FriendApi";
+import { searchUser } from "../services/UserApi";
 
 const FriendPage = ({ isOpen, closeModal }) => {
+    const [refresh, setRefresh] = useState(true);
+    const [nickname, setNickname] = useState();
+    const [searched, setSearched] = useState([]);
     const [type, setType] = useState(0);
-    // const [loading, setLoading] = useState(false);
     const [friend, setFriend] = useState([]);
-    // const [friendPage, setFrienPage] = useState(0);
     const [request, setRequest] = useState([]);
-    // const [requestPage, setRequestPage] = useState(0);
     const [requested, setRequested] = useState([]);
-    // const [requestedPage, setrequestedPage] = useState(0);
     const userId = localStorage.getItem("userId");
-    // const loaderRef = useRef(null);
-    // const [refresh, setRefresh] = useState(false);
 
     // 모달이 열릴 경우 스크롤 방지
     useEffect(() => {
@@ -64,70 +62,17 @@ const FriendPage = ({ isOpen, closeModal }) => {
             }
         };
         fetchData();
-    }, [userId, type]);
+    }, [userId, type, refresh]);
 
-    // useEffect(() => {
-    //     const fetchMoreData = async () => {
-    //         if (loading) return;
-
-    //         setLoading(true);
-
-    //         try {
-    //             setTimeout(async () => {
-    //                 if (type === 0) {
-    //                     const newList = await getFriend(userId, {
-    //                         page: friendPage,
-    //                         size: 10,
-    //                     });
-    //                     //받은 데이터 길이가 0일경우 무한스크롤 중지
-    //                     if (newList.length === 0) {
-    //                         return;
-    //                     }
-    //                     setFriend((prevList) => [...prevList, ...newList]);
-    //                     setRequestPage((prevPage) => prevPage + 1);
-    //                     setLoading(false);
-    //                 } else if (type === 1) {
-    //                     const newList = await getRequestFriend(userId, {
-    //                         page: requestPage,
-    //                         size: 10,
-    //                     });
-    //                     if (newList.length === 0) {
-    //                         return;
-    //                     }
-    //                     setRequest((prevList) => [...prevList, ...newList]);
-    //                     setFrienPage((prevPage) => prevPage + 1);
-    //                     setLoading(false);
-    //                 } else if (type === 2) {
-    //                     const newList = await getRequestedFriend(userId, {
-    //                         page: requestedPage,
-    //                         size: 10,
-    //                     });
-    //                     if (newList.length === 0) {
-    //                         return;
-    //                     }
-    //                     setRequested((prevList) => [...prevList, ...newList]);
-    //                     setrequestedPage((prevPage) => prevPage + 1);
-    //                     setLoading(false);
-    //                 }
-    //             }, 100);
-    //         } catch (error) {
-    //             console.error();
-    //         }
-    //     };
-    //     const observer = new IntersectionObserver(
-    //         (entries) => {
-    //             const firstEntry = entries[0];
-    //             if (firstEntry.isIntersecting) {
-    //                 fetchMoreData();
-    //             }
-    //         },
-    //         { threshold: 1.0 }
-    //     );
-    //     if (loaderRef.current) {
-    //         observer.observe(loaderRef.current);
-    //     }
-    //     return () => observer.disconnect();
-    // }, [userId, loading, type, friendPage, requestPage, requestedPage]);
+    const Search = async () => {
+        const data = await searchUser({
+            nickname: nickname,
+            page: 0,
+            size: 10,
+        });
+        setSearched(data);
+        setType(0);
+    };
 
     if (!isOpen) return null;
 
@@ -139,6 +84,12 @@ const FriendPage = ({ isOpen, closeModal }) => {
             friend={friend}
             requested={requested}
             request={request}
+            searched={searched}
+            Search={Search}
+            setNickname={setNickname}
+            nickname={nickname}
+            refresh={refresh}
+            setRefresh={setRefresh}
         />
     );
 };

@@ -7,14 +7,17 @@ export const postRequestFriend = async (params) => {
     const headers = {
         "Content-Type": "application/json",
     };
+
     const data = await axios
-        .post(`${API_URL}/friend/request/`, params, {
+        .post(`${API_URL}/friend/request`, params, {
             headers: headers,
         })
         .then((response) => {
+            alert("친구를 요청하였습니다.");
             return response;
         })
         .catch((error) => {
+            alert("에러");
             return error;
         });
     return data;
