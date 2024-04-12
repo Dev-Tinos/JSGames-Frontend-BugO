@@ -73,6 +73,21 @@ export const putUser = async (params) => {
     return data;
 };
 
+// 사용자 검색 목록 조회
+export const searchUser = async (params) => {
+    const data = await axios
+        .get(`${API_URL}/user/search`, { params })
+        .then((response) => {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+            return error;
+        });
+    return data;
+};
+
 // test
 export const apiTest = async () => {
     const response = await fetch(`${API_URL}/`, {
