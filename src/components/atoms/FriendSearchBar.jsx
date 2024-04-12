@@ -17,7 +17,7 @@ const InputBox = styled.div`
     }
 `;
 
-const FriendSearchBar = ({ value, handleChange }) => {
+const FriendSearchBar = ({ value, handleChange, activeEnter }) => {
     return (
         <InputBox>
             <input
@@ -25,6 +25,7 @@ const FriendSearchBar = ({ value, handleChange }) => {
                 value={value}
                 onChange={handleChange}
                 placeholder={"사용자 검색"}
+                onKeyDown={activeEnter}
             ></input>
         </InputBox>
     );

@@ -5,6 +5,7 @@ import {
     deleteRequestFriend,
     postAcceptFriend,
     postRejectFriend,
+    postRequestFriend,
 } from "../../services/FriendApi";
 
 const FriendStyle = styled.div`
@@ -54,8 +55,16 @@ const FriendStyle = styled.div`
             margin: 26px 10px 26px 15px;
             background-color: #f2f2f2;
             color: #999999;
+            cursor: pointer;
         }
         .button2 {
+            background-color: #5383e8;
+            color: #ffffff;
+            box-shadow: 0 0 0 0;
+            margin-left: -5px;
+        }
+        .button3 {
+            width: 123px;
             background-color: #5383e8;
             color: #ffffff;
             box-shadow: 0 0 0 0;
@@ -64,30 +73,41 @@ const FriendStyle = styled.div`
     }
 `;
 
-const FriendItem = ({ item, type }) => {
-    const rejectFriend = () => {
-        postRejectFriend({
+const FriendItem = ({ item, type, refresh, setRefresh }) => {
+    const requestFriend = async () => {
+        await postRequestFriend({
             userId: localStorage.getItem("userId"),
             friendEmail: item.friendEmail,
         });
+        setRefresh(!refresh);
     };
-    const acceptFriend = () => {
-        postAcceptFriend({
+    const rejectFriend = async () => {
+        await postRejectFriend({
             userId: localStorage.getItem("userId"),
             friendEmail: item.friendEmail,
         });
+        setRefresh(!refresh);
     };
-    const deleteRequest = () => {
-        deleteRequestFriend({
+    const acceptFriend = async () => {
+        await postAcceptFriend({
             userId: localStorage.getItem("userId"),
             friendEmail: item.friendEmail,
         });
+        setRefresh(!refresh);
     };
-    const FriendDelete = () => {
-        deleteFriend({
+    const deleteRequest = async () => {
+        await deleteRequestFriend({
             userId: localStorage.getItem("userId"),
             friendEmail: item.friendEmail,
         });
+        setRefresh(!refresh);
+    };
+    const FriendDelete = async () => {
+        await deleteFriend({
+            userId: localStorage.getItem("userId"),
+            friendEmail: item.friendEmail,
+        });
+        setRefresh(!refresh);
     };
 
     const buttonChange = () => {
@@ -110,6 +130,14 @@ const FriendItem = ({ item, type }) => {
                         <button onClick={deleteRequest}>취소</button>
                     </div>
                 );
+            case 3:
+                return (
+                    <div className="buttonbox">
+                        <button className="button3" onClick={requestFriend}>
+                            친구 요청
+                        </button>
+                    </div>
+                );
             default:
                 return (
                     <div className="buttonbox">
@@ -127,7 +155,7 @@ const FriendItem = ({ item, type }) => {
                     alt={`${item.friendProfile}`}
                 />
                 <div className="textbox">
-                    <p className="name">{item.friendName}</p>
+                    <p className="name">{item.friendName || item.nickname}</p>
                     <p className="major">{item.major}</p>
                 </div>
             </div>
