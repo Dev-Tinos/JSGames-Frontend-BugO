@@ -71,6 +71,9 @@ const FriendPage = ({ isOpen, closeModal }) => {
             size: 10,
         });
         setSearched(data);
+        if (data.length === 0) {
+            alert("검색 결과가 없습니다.");
+        }
         setType(0);
     };
 
