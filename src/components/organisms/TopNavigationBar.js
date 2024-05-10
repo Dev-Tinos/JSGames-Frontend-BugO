@@ -140,7 +140,7 @@ const TopNavigationBar = () => {
                                 onClick={openModal}
                             />
                         </button>
-                        <Link to={`/mypage/${localStorage.getItem("userId")}`}>
+                        <Link to={`/mypage`}>
                             <ProfileImg />
                         </Link>
                         <button className="button" onClick={LogOut}>
