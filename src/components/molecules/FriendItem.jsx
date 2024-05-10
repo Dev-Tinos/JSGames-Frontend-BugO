@@ -79,7 +79,6 @@ const FriendItem = ({
     refresh,
     setRefresh,
     openModal2,
-    closeModal2,
     setData,
 }) => {
     const requestFriend = async () => {

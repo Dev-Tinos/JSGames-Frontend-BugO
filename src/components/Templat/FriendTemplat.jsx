@@ -6,6 +6,23 @@ import FriendSearchBar from "../atoms/FriendSearchBar";
 import Modal from "react-modal";
 import FriendProfile from "../organisms/FriendProfile";
 
+const customStyles = {
+    content: {
+        width: "1280px",
+        height: "800px",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        backgroundColor: "#ffffff",
+        borderRadius: "10px",
+        boxShadow: "0 0 0 1px inset #cccccc",
+    },
+};
+
 const ModalPageStyle = styled.div`
     .title {
         height: 72px;
@@ -73,7 +90,6 @@ const FriendTemplat = ({
                         refresh={refresh}
                         setRefresh={setRefresh}
                         openModal2={openModal2}
-                        closeModal2={closeModal2}
                         setData={setData}
                     />
                 );
@@ -85,7 +101,6 @@ const FriendTemplat = ({
                         refresh={refresh}
                         setRefresh={setRefresh}
                         openModal2={openModal2}
-                        closeModal2={closeModal2}
                         setData={setData}
                     />
                 );
@@ -99,7 +114,6 @@ const FriendTemplat = ({
                             refresh={refresh}
                             setRefresh={setRefresh}
                             openModal2={openModal2}
-                            closeModal2={closeModal2}
                             setData={setData}
                         />
                     </div>
@@ -128,8 +142,9 @@ const FriendTemplat = ({
                 isOpen={isModal2Open}
                 onRequestClose={closeModal2}
                 contentLabel="Friend Profile Modal"
+                style={customStyles}
             >
-                <FriendProfile data={data} />
+                <FriendProfile data={data} closeModal2={closeModal2} />
             </Modal>
         </ModalPageStyle>
     );

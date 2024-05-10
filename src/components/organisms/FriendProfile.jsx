@@ -3,7 +3,7 @@ import ProfileBox from "../molecules/ProfileBox";
 import { getGameUser } from "../../services/GameApi";
 import UserHistory from "./UserHistory";
 
-const FriendProfile = ({ data }) => {
+const FriendProfile = ({ data, closeModal2 }) => {
     const [historyData, setHistoryData] = useState(null);
 
     useEffect(() => {
@@ -23,6 +23,16 @@ const FriendProfile = ({ data }) => {
 
     return (
         <div>
+            <i
+                class="fa-solid fa-xmark"
+                style={{
+                    color: "#999999",
+                    cursor: "pointer",
+                    float: "right",
+                    fontSize: "20px",
+                }}
+                onClick={closeModal2}
+            />
             <ProfileBox data={data} />
             <UserHistory data={historyData} />
         </div>

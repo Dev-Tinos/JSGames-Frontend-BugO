@@ -14,7 +14,6 @@ const FriendList = ({
     refresh,
     setRefresh,
     openModal2,
-    closeModal2,
     setData,
 }) => {
     return (
@@ -29,7 +28,6 @@ const FriendList = ({
                               refresh={refresh}
                               setRefresh={setRefresh}
                               openModal2={openModal2}
-                              closeModal2={closeModal2}
                               setData={setData}
                           />
                       )
@@ -43,7 +41,6 @@ const FriendList = ({
                     refresh={refresh}
                     setRefresh={setRefresh}
                     openModal2={openModal2}
-                    closeModal2={closeModal2}
                     setData={setData}
                 />
             ))}

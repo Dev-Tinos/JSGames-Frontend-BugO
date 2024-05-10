@@ -22,6 +22,7 @@ const customStyles = {
         backgroundColor: "#ffffff",
         borderRadius: "10px",
         boxShadow: "0 0 0 1px inset #cccccc",
+        padding: "0px",
     },
 };
 
