@@ -7,7 +7,7 @@ import {
 } from "../services/FriendApi";
 import { searchUser } from "../services/UserApi";
 
-const FriendPage = ({ isOpen, closeModal }) => {
+const FriendPage = ({ closeModal }) => {
     const [refresh, setRefresh] = useState(true);
     const [nickname, setNickname] = useState();
     const [searched, setSearched] = useState([]);
@@ -16,27 +16,6 @@ const FriendPage = ({ isOpen, closeModal }) => {
     const [request, setRequest] = useState([]);
     const [requested, setRequested] = useState([]);
     const userId = localStorage.getItem("userId");
-
-    // 모달이 열릴 경우 스크롤 방지
-    useEffect(() => {
-        const currentScrollY = window.scrollY;
-        if (isOpen) {
-            document.body.style.position = "fixed";
-            document.body.style.width = "100%";
-            document.body.style.top = `-${currentScrollY}px`;
-            document.body.style.overflowY = "scroll";
-        } else {
-            document.body.style.position = "";
-            document.body.style.width = "";
-            document.body.style.top = "";
-            document.body.style.overflowY = "";
-            window.scrollTo(0, currentScrollY);
-        }
-
-        return () => {
-            window.scrollTo(0, currentScrollY);
-        };
-    }, [isOpen]);
 
     // 데이터 받기 테스트
     useEffect(() => {
@@ -76,8 +55,6 @@ const FriendPage = ({ isOpen, closeModal }) => {
         }
         setType(0);
     };
-
-    if (!isOpen) return null;
 
     return (
         <FriendTemplat

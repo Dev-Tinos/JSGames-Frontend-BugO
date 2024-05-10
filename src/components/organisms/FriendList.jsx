@@ -7,7 +7,16 @@ const ListStyle = styled.div`
     height: 500px;
 `;
 
-const FriendList = ({ item, type, searched, refresh, setRefresh }) => {
+const FriendList = ({
+    item,
+    type,
+    searched,
+    refresh,
+    setRefresh,
+    openModal2,
+    closeModal2,
+    setData,
+}) => {
     return (
         <ListStyle>
             {type === 0
@@ -19,6 +28,9 @@ const FriendList = ({ item, type, searched, refresh, setRefresh }) => {
                               type={3}
                               refresh={refresh}
                               setRefresh={setRefresh}
+                              openModal2={openModal2}
+                              closeModal2={closeModal2}
+                              setData={setData}
                           />
                       )
                   )
@@ -30,6 +42,9 @@ const FriendList = ({ item, type, searched, refresh, setRefresh }) => {
                     type={type}
                     refresh={refresh}
                     setRefresh={setRefresh}
+                    openModal2={openModal2}
+                    closeModal2={closeModal2}
+                    setData={setData}
                 />
             ))}
         </ListStyle>

@@ -4,6 +4,26 @@ import Logo from "../atoms/Logo";
 import styled from "styled-components";
 import ProfileImg from "../atoms/ProfileImg";
 import FriendPage from "../../pages/FriendPage";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
+
+const customStyles = {
+    content: {
+        width: "660px",
+        height: "780px",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        backgroundColor: "#ffffff",
+        borderRadius: "10px",
+        boxShadow: "0 0 0 1px inset #cccccc",
+    },
+};
 
 const TopBar = styled.div`
     background-color: #5383e8;
@@ -62,10 +82,12 @@ const TopNavigationBar = () => {
 
     const openModal = () => {
         setIsModalOpen(true);
+        document.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
+        document.body.style.overflow = "unset";
     };
 
     const navigate = useNavigate();
@@ -118,7 +140,7 @@ const TopNavigationBar = () => {
                                 onClick={openModal}
                             />
                         </button>
-                        <Link to="/mypage">
+                        <Link to={`/mypage/${localStorage.getItem("userId")}`}>
                             <ProfileImg />
                         </Link>
                         <button className="button" onClick={LogOut}>
@@ -127,10 +149,17 @@ const TopNavigationBar = () => {
                     </div>
                 )}
             </div>
-            <FriendPage
+            <Modal
                 isOpen={isModalOpen}
-                closeModal={closeModal}
-            ></FriendPage>
+                onRequestClose={closeModal}
+                contentLabel="Friend Modal"
+                style={customStyles}
+            >
+                <FriendPage
+                    isOpen={isModalOpen}
+                    closeModal={closeModal}
+                ></FriendPage>
+            </Modal>
         </TopBar>
     );
 };

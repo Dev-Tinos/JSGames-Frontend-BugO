@@ -1,31 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import FriendNav from "../organisms/FriendNav";
 import styled from "styled-components";
 import FriendList from "../organisms/FriendList";
 import FriendSearchBar from "../atoms/FriendSearchBar";
-
-export const ModalStyle = styled.div`
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    left: 0;
-`;
+import Modal from "react-modal";
+import FriendProfile from "../organisms/FriendProfile";
 
 const ModalPageStyle = styled.div`
-    width: 660px;
-    height: 780px;
-    z-index: 100;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 0 1px inset #cccccc;
     .title {
         height: 72px;
         font-size: 20px;
@@ -57,6 +38,17 @@ const FriendTemplat = ({
     refresh,
     setRefresh,
 }) => {
+    const [isModal2Open, setIsModal2Open] = useState(false);
+    const [data, setData] = useState();
+
+    const openModal2 = () => {
+        setIsModal2Open(true);
+    };
+
+    const closeModal2 = () => {
+        setIsModal2Open(false);
+    };
+
     const handleSearch = (event) => {
         setNickname(event.target.value);
     };
@@ -80,6 +72,9 @@ const FriendTemplat = ({
                         type={type}
                         refresh={refresh}
                         setRefresh={setRefresh}
+                        openModal2={openModal2}
+                        closeModal2={closeModal2}
+                        setData={setData}
                     />
                 );
             case 2:
@@ -89,6 +84,9 @@ const FriendTemplat = ({
                         type={type}
                         refresh={refresh}
                         setRefresh={setRefresh}
+                        openModal2={openModal2}
+                        closeModal2={closeModal2}
+                        setData={setData}
                     />
                 );
             default:
@@ -100,6 +98,9 @@ const FriendTemplat = ({
                             searched={searched}
                             refresh={refresh}
                             setRefresh={setRefresh}
+                            openModal2={openModal2}
+                            closeModal2={closeModal2}
+                            setData={setData}
                         />
                     </div>
                 );
@@ -107,25 +108,30 @@ const FriendTemplat = ({
     };
 
     return (
-        <ModalStyle onClick={closeModal}>
-            <ModalPageStyle onClick={(e) => e.stopPropagation()}>
-                <div className="title">
-                    <i class="fa-solid fa-users"> 친구</i>
-                    <i
-                        class="fa-solid fa-xmark"
-                        style={{ color: "#999999", cursor: "pointer" }}
-                        onClick={closeModal}
-                    />
-                </div>
-                <FriendNav type={type} setType={setType} />
-                <FriendSearchBar
-                    value={nickname}
-                    handleChange={handleSearch}
-                    activeEnter={activeEnter}
+        <ModalPageStyle onClick={(e) => e.stopPropagation()}>
+            <div className="title">
+                <i class="fa-solid fa-users"> 친구</i>
+                <i
+                    class="fa-solid fa-xmark"
+                    style={{ color: "#999999", cursor: "pointer" }}
+                    onClick={closeModal}
                 />
-                {changeFriendList()}
-            </ModalPageStyle>
-        </ModalStyle>
+            </div>
+            <FriendNav type={type} setType={setType} />
+            <FriendSearchBar
+                value={nickname}
+                handleChange={handleSearch}
+                activeEnter={activeEnter}
+            />
+            {changeFriendList()}
+            <Modal
+                isOpen={isModal2Open}
+                onRequestClose={closeModal2}
+                contentLabel="Friend Profile Modal"
+            >
+                <FriendProfile data={data} />
+            </Modal>
+        </ModalPageStyle>
     );
 };
 

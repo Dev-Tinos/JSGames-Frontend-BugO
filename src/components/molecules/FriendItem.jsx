@@ -73,7 +73,15 @@ const FriendStyle = styled.div`
     }
 `;
 
-const FriendItem = ({ item, type, refresh, setRefresh }) => {
+const FriendItem = ({
+    item,
+    type,
+    refresh,
+    setRefresh,
+    openModal2,
+    closeModal2,
+    setData,
+}) => {
     const requestFriend = async () => {
         await postRequestFriend({
             userId: localStorage.getItem("userId"),
@@ -153,6 +161,10 @@ const FriendItem = ({ item, type, refresh, setRefresh }) => {
                 <img
                     src={require("../../assets/img/tino.png")}
                     alt={`${item.friendProfile}`}
+                    onClick={() => {
+                        openModal2();
+                        setData(item);
+                    }}
                 />
                 <div className="textbox">
                     <p className="name">{item.friendName || item.nickname}</p>

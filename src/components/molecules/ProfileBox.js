@@ -39,12 +39,12 @@ const ProfileBox = ({ data, onClicked }) => {
             <ProfileImg />
             <div className="textbox">
                 <p className="title">
-                    {data.nickname}
+                    {data.nickname || data.friendName}
                     <button onClick={onClicked}>
                         <i class="fa-solid fa-pencil"></i>
                     </button>
                 </p>
-                <p className="text">{data.email}</p>
+                <p className="text">{data.email || data.friendEmail}</p>
                 <p className="text">{data.major}</p>
             </div>
         </ProfileBoxStyle>
