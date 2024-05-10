@@ -5,10 +5,8 @@ import { getGameUser } from "../services/GameApi";
 
 const MyPage = () => {
     const [user, setUser] = useState([]);
-    const [type, setType] = useState("history");
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
-    const [rankingData, setRankingData] = useState(null);
     const [historyData, setHistoryData] = useState(null);
 
     useEffect(() => {
@@ -25,34 +23,25 @@ const MyPage = () => {
     }, []);
 
     useEffect(() => {
-        // const userId = localStorage.getItem("userId");
+        const userId = localStorage.getItem("userId");
         const getData = async () => {
-            const userId = localStorage.getItem("userId");
             try {
-                if (type === "ranking") {
-                    const apiData = null;
-                    setRankingData(apiData);
-                } else if (type === "history") {
-                    const apiData = await getGameUser(userId, {
-                        page: 0,
-                        size: 8,
-                    });
-                    setHistoryData(apiData);
-                }
+                const apiData = await getGameUser(userId, {
+                    page: 0,
+                    size: 8,
+                });
+                setHistoryData(apiData);
             } catch (error) {
                 console.error();
             }
         };
         getData();
-    }, [page, size, type]);
+    }, [page, size]);
 
     return (
         <div>
             <MyTemplat
                 user={user}
-                type={type}
-                setType={setType}
-                rankingData={rankingData}
                 historyData={historyData}
                 setPage={setPage}
                 setSize={setSize}
