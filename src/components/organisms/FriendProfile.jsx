@@ -5,11 +5,11 @@ import UserHistory from "./UserHistory";
 
 const FriendProfile = ({ data, closeModal2 }) => {
     const [historyData, setHistoryData] = useState(null);
-
+    const userId = data.userId || data.friendId;
     useEffect(() => {
         const getData = async () => {
             try {
-                const apiData = await getGameUser(data.userId, {
+                const apiData = await getGameUser(userId, {
                     page: 0,
                     size: 8,
                 });
@@ -19,7 +19,7 @@ const FriendProfile = ({ data, closeModal2 }) => {
             }
         };
         getData();
-    }, [data]);
+    }, [userId]);
 
     return (
         <div>
