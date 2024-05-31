@@ -22,7 +22,7 @@ const InputBox = styled.div`
         border-radius: 10px;
         border: 0px;
         color: #999999;
-        padding-left: 30px;
+        padding-left: 32px;
     }
 `;
 
