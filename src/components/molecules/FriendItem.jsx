@@ -84,7 +84,7 @@ const FriendItem = ({
     const requestFriend = async () => {
         await postRequestFriend({
             userId: localStorage.getItem("userId"),
-            friendEmail: item.friendEmail,
+            friendEmail: item.email,
         });
         setRefresh(!refresh);
     };
