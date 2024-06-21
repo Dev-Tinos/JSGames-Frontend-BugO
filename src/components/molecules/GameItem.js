@@ -7,7 +7,7 @@ const GameItemBlock = styled.div`
     width: 380px;
     height: 300px;
     margin: 10px;
-    float: left;
+    display: inline-block;
     border-radius: 10px;
     box-shadow: 0 0 0 2px #ddddff;
     cursor: pointer;

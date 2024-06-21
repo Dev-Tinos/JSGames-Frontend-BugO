@@ -7,10 +7,14 @@ import SortSelect from "../atoms/SortSelect";
 import AdBlock from "../atoms/AdBlock";
 
 const GameStyle = styled.div`
+    @media (max-width: 950px) {
+        width: 800px;
+    }
     margin: auto;
-    width: 1200px;
+    width: 90%;
     height: auto;
     overflow: hidden;
+    text-align: center;
     .sortbox {
         text-align: right;
         select {
