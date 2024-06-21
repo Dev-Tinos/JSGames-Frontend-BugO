@@ -16,7 +16,7 @@ export const postUser = async (params) => {
             return response.data;
         })
         .catch((error) => {
-            alert(error.response.data.message);
+            alert("에러가 발생했습니다.");
             return error;
         });
     return data;
