@@ -27,23 +27,20 @@ const customStyles = {
 };
 
 const TopBar = styled.div`
+    @media (max-width: 950px) {
+        width: 900px;
+    }
+
     background-color: #5383e8;
     height: 80px;
-    .nav {
-        height: 80px;
-        width: 1280px;
-        display: flex;
-        align-items: center;
-        margin: auto;
-    }
+    display: flex;
+    align-items: center;
+    padding: 0 30px 0 30px;
     .space {
         flex: 1;
     }
     .nav-link-activev {
         color: #fff;
-    }
-    .nav-link {
-        /* color: #fff; */
     }
     a {
         color: #b3cdff;
@@ -64,9 +61,7 @@ const TopBar = styled.div`
             color: white;
             text-decoration: none;
             width: 100px;
-            height: auto;
             display: block;
-            text-align: center;
             margin-left: 10px;
             border: 0px;
             font-size: 18px;
@@ -105,51 +100,52 @@ const TopNavigationBar = () => {
 
     return (
         <TopBar className="top-nav-bar">
-            <div className="nav">
-                <Link to="/">
-                    <Logo />
-                </Link>
-                <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link-active" : "nav-link"
-                    }
-                >
-                    홈
-                </NavLink>
-                <Link
-                    to="/ranking"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link-active" : "nav-link"
-                    }
-                >
-                    랭킹
-                </Link>
-                <div className="space" />
-                {userId === null ? (
-                    <div className="leftMenu">
-                        <Link to="/login" className="button">
-                            로그인
-                        </Link>
-                    </div>
-                ) : (
-                    <div className="leftMenu">
-                        <button className="button">
-                            <i
-                                class="fa-solid fa-users fa-sm"
-                                style={{ cursor: "pointer" }}
-                                onClick={openModal}
-                            />
-                        </button>
-                        <Link to={`/mypage`}>
-                            <ProfileImg />
-                        </Link>
-                        <button className="button" onClick={LogOut}>
-                            로그아웃
-                        </button>
-                    </div>
-                )}
-            </div>
+            <Link to="/">
+                <Logo />
+            </Link>
+            <NavLink
+                to="/"
+                className={({ isActive }) =>
+                    isActive ? "nav-link-active" : "nav-link"
+                }
+            >
+                홈
+            </NavLink>
+            <Link
+                to="/ranking"
+                className={({ isActive }) =>
+                    isActive ? "nav-link-active" : "nav-link"
+                }
+            >
+                랭킹
+            </Link>
+            <div className="space" />
+            {userId === null ? (
+                <div className="leftMenu">
+                    <Link to="/login" className="button">
+                        로그인
+                    </Link>
+                </div>
+            ) : (
+                <div className="leftMenu">
+                    <button className="button">
+                        <i
+                            class="fa-solid fa-users fa-sm"
+                            style={{
+                                cursor: "pointer",
+                                justifyContent: "center",
+                            }}
+                            onClick={openModal}
+                        />
+                    </button>
+                    <Link to={`/mypage`}>
+                        <ProfileImg />
+                    </Link>
+                    <button className="button" onClick={LogOut}>
+                        로그아웃
+                    </button>
+                </div>
+            )}
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}

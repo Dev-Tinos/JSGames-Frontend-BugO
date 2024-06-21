@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const ProfileImgStyle = styled.div`
+    width: 64px;
+    height: 64px;
     .roundimg {
         background-color: #fff;
         border-radius: 50%;
