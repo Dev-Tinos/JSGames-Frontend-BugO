@@ -6,7 +6,7 @@ import { postEmail } from "../../services/EmailApi";
 
 const EmailBox = styled.div`
     background-color: #d9d9d9;
-    padding: 10px;
+    padding: 10px 10px 30px 10px;
     width: 500px;
     text-align: center;
     margin: 50px auto;

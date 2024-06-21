@@ -8,7 +8,7 @@ import MajorSelect from "../atoms/MajorSelect";
 
 const SignUpStyle = styled.div`
     background-color: #d9d9d9;
-    padding: 10px;
+    padding: 10px 10px 20px;
     width: 500px;
     text-align: center;
     margin: 50px auto;
@@ -37,9 +37,10 @@ const SignUpForm = ({ email }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [nickname, setNickname] = useState("");
-    const [major, setMajor] = useState(null);
+    const [major, setMajor] = useState("(학과)");
     const navigate = useNavigate();
     const OPTIONS = [
+        { value: "(학과)" },
         { value: "소프트웨어학과" },
         { value: "컴퓨터공학과" },
         { value: "인공지능학과" },
@@ -63,7 +64,7 @@ const SignUpForm = ({ email }) => {
         { value: "임베디드시스템학과" },
     ];
     const SignUp = async () => {
-        if (major === null) {
+        if (major === "(학과)") {
             alert("학과를 선택해 주세요");
             return;
         }
