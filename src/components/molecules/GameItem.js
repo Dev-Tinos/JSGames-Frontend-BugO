@@ -11,6 +11,7 @@ const GameItemBlock = styled.div`
     border-radius: 10px;
     box-shadow: 0 0 0 2px #ddddff;
     cursor: pointer;
+    text-align: left;
 
     img {
         margin: 10px auto;
