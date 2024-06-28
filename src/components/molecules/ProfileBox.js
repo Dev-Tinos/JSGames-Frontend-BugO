@@ -3,13 +3,20 @@ import styled from "styled-components";
 import ProfileImg from "../atoms/ProfileImg";
 
 const ProfileBoxStyle = styled.div`
+    /* float: left; */
     display: flex;
     width: 1280px;
+    height: auto;
     margin: auto;
+    .img {
+        width: 300px;
+        height: 300px;
+    }
     .roundimg {
         width: 250px;
         height: 250px;
         margin: 30px;
+        box-shadow: 0 0 0 2px inset #cccccc;
     }
     .textbox {
         margin-top: auto;
@@ -31,12 +38,16 @@ const ProfileBoxStyle = styled.div`
         background-color: #fff;
         margin-left: 20px;
     }
+    img {
+    }
 `;
 
 const ProfileBox = ({ data, onClicked }) => {
     return (
         <ProfileBoxStyle>
-            <ProfileImg />
+            <div className="img">
+                <ProfileImg />
+            </div>
             <div className="textbox">
                 <p className="title">
                     {data.nickname || data.friendName}
