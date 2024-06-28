@@ -33,11 +33,10 @@ export const postLogin = async (params) => {
         })
         .then((response) => {
             localStorage.setItem("userId", response.data.userId);
-            return response.data;
+            return response;
         })
         .catch((error) => {
-            alert(error.response.data.message);
-            return error;
+            return error.response;
         });
     return data;
 };

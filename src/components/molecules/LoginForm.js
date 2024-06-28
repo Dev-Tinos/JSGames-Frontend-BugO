@@ -29,8 +29,12 @@ const LoginForm = (props) => {
 
     const Login = async () => {
         try {
-            await postLogin({ email: email, password: password });
-            navigate("/");
+            const data = await postLogin({ email: email, password: password });
+            if (data.status === 200) {
+                navigate("/");
+            } else {
+                alert(data.data.message);
+            }
         } catch (error) {}
     };
 
