@@ -10,12 +10,12 @@ const ProfileImgStyle = styled.div`
     }
 `;
 
-const ProfileImg = () => {
+const ProfileImg = ({ img }) => {
     return (
         <ProfileImgStyle>
             <img
                 className="roundimg"
-                src={require("../../assets/img/tino.png")}
+                src={img || require("../../assets/img/tino.png")}
                 alt="티노"
             />
         </ProfileImgStyle>

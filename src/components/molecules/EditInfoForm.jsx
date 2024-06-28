@@ -47,7 +47,7 @@ const MAJOR = [
 const EditInfoForm = ({ onClicked }) => {
     const [nickname, setNickname] = useState("");
     const [img, setImg] = useState("");
-    const [major, setMajor] = useState(null);
+    const [major, setMajor] = useState("소프트웨어학과");
 
     return (
         <FormStyle>
@@ -68,20 +68,26 @@ const EditInfoForm = ({ onClicked }) => {
             <MajorSelect item={MAJOR} setMajor={setMajor} />
             <div>
                 <button
-                    onClick={() => {
+                    onClick={async () => {
                         console.log({
                             userId: localStorage.getItem("userId"),
                             nickname: nickname,
                             img: img,
                             major: major,
                         });
-                        const data = putUser({
+                        const data = await putUser({
                             userId: localStorage.getItem("userId"),
                             nickname: nickname,
-                            img: img,
+                            profileImageURL: img,
                             major: major,
                         });
-                        alert(data);
+                        console.log(data.status);
+                        if (data.status === 200) {
+                            alert("회원 정보가 변경되었습니다.");
+                            window.location.reload();
+                        } else {
+                            alert("오류가 발생하였습니다.");
+                        }
                     }}
                 >
                     수정

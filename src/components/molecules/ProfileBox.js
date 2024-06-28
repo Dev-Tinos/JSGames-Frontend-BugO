@@ -46,7 +46,7 @@ const ProfileBox = ({ data, onClicked }) => {
     return (
         <ProfileBoxStyle>
             <div className="img">
-                <ProfileImg />
+                <ProfileImg img={data.profileImageURL} />
             </div>
             <div className="textbox">
                 <p className="title">
