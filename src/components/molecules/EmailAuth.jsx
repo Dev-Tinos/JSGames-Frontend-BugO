@@ -5,26 +5,35 @@ import LoginButton from "../atoms/LoginButton";
 import { postEmail } from "../../services/EmailApi";
 
 const EmailBox = styled.div`
-    background-color: #d9d9d9;
-    padding: 10px 10px 30px 10px;
-    width: 500px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 600px;
     text-align: center;
     margin: 50px auto;
-    .warning {
-        color: red;
-        margin: 0px;
+    font-size: 18px;
+    h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 24px 0;
     }
-    Button {
+    label {
+        display: inline-block;
+        text-align: left;
+        margin: 30px auto 20px;
     }
     .emailBox {
-        margin: 10px;
-        height: 50px;
+        display: flex;
+        padding: 20px 30px;
+        height: auto;
+        gap: 10px;
         Input {
-            width: 350px;
+            width: 500px;
             margin: 0px;
         }
         Button {
-            width: 100px;
+            width: 150px;
             margin: 0px;
         }
     }
@@ -37,11 +46,11 @@ const EmailAuth = ({ setType, setEmail, email }) => {
 
     return (
         <EmailBox>
-            <h2>Email 인증</h2>
-            <p>@tukorea.ac.kr 인 도메인만 사용 가능합니다.</p>
+            <h1>Email 인증</h1>
+            <label>@tukorea.ac.kr 인 도메인만 사용 가능합니다.</label>
             <div className="emailBox">
                 <Input
-                    type="text"
+                    type="email"
                     placeholder={"Email"}
                     onChange={(e) => setEmail(e.target.value)}
                 />

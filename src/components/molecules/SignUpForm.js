@@ -7,16 +7,28 @@ import { useNavigate } from "react-router-dom";
 import MajorSelect from "../atoms/MajorSelect";
 
 const SignUpStyle = styled.div`
-    background-color: #d9d9d9;
-    padding: 10px 10px 20px;
-    width: 500px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 600px;
     text-align: center;
     margin: 50px auto;
+    font-size: 18px;
+    h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 24px 0 54px;
+    }
+    label {
+        display: block;
+        text-align: left;
+        margin: 20px auto 0;
+        width: 500px;
+    }
     .warning {
         color: red;
         margin: 0px;
-    }
-    Button {
     }
     .emailBox {
         margin: 10px;
@@ -80,14 +92,16 @@ const SignUpForm = ({ email }) => {
 
     return (
         <SignUpStyle>
-            <h2>회원가입</h2>
+            <h1>회원가입</h1>
             <div onSubmit={SignUp}>
+                <label>이메일</label>
                 <Input
-                    type="text"
+                    type="email"
                     placeholder={"이메인 인증 코드"}
                     value={emailCode}
                     onChange={(e) => setEamilCode(e.target.value)}
                 />
+                <label>비밀번호</label>
                 <Input
                     type="password"
                     placeholder={"비밀번호"}
@@ -103,12 +117,14 @@ const SignUpForm = ({ email }) => {
                 {password !== confirmPassword ? (
                     <p className="warning">비밀번호와 동일하지 않습니다.</p>
                 ) : null}
+                <label>닉네임</label>
                 <Input
                     type="text"
                     placeholder={"닉네임"}
                     value={nickname}
                     onChange={(e) => setNickname(e.target.value)}
                 />
+                <label>학과</label>
                 <MajorSelect item={OPTIONS} setMajor={setMajor} />
                 {password !== confirmPassword ? (
                     <LoginButton text="회원가입" disabled={true} />

@@ -6,9 +6,12 @@ const Button = styled.button`
     color: #fff;
     border: none;
     cursor: pointer;
-    width: 450px;
-    height: 50px;
-    margin: 10px;
+    width: 500px;
+    height: 70px;
+    margin: 30px auto 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: "SUIT-Regular", sans-serif;
 `;
 
 const LoginButton = ({ text, onClick, disabled }) => {

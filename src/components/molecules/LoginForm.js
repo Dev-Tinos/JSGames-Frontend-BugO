@@ -6,14 +6,24 @@ import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/UserApi.js";
 
 const LoginStyle = styled.div`
-    background-color: #d9d9d9;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
     padding: 10px;
-    width: 500px;
+    width: 600px;
     text-align: center;
     margin: 50px auto;
-    .btn {
-        height: 50px;
-        cursor: pointer;
+    font-size: 18px;
+    h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 24px 0 54px;
+    }
+    label {
+        display: block;
+        text-align: left;
+        margin: 30px auto 0;
+        width: 500px;
     }
     .signup {
         a {
@@ -40,13 +50,15 @@ const LoginForm = (props) => {
 
     return (
         <LoginStyle>
-            <h2>로그인</h2>
+            <h1>로그인</h1>
+            <label>이메일</label>
             <Input
-                type="text"
+                type="email"
                 placeholder={"Email"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
+            <label>비밀번호</label>
             <Input
                 type="password"
                 placeholder={"Password"}
