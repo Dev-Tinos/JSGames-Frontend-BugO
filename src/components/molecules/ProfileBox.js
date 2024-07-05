@@ -34,9 +34,11 @@ const ProfileBoxStyle = styled.div`
         margin-bottom: 5px;
     }
     button {
+        width: 34px;
+        height: 34px;
         font-size: 20px;
         background-color: #fff;
-        margin-left: 20px;
+        margin-left: 10px;
     }
     img {
     }

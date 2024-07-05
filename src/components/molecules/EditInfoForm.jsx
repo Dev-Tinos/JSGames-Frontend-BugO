@@ -4,20 +4,39 @@ import MajorSelect from "../atoms/MajorSelect";
 import { putUser } from "../../services/UserApi";
 
 const FormStyle = styled.div`
-    width: 800px;
-    background-color: #cecece;
-    margin: auto;
+    box-sizing: border-box;
+    border: 1px solid #5383e3;
+    border-radius: 10px;
+    width: 600px;
+    background-color: #ffffff;
+    margin: 50px auto;
+    text-align: center;
+    padding: 50px 40px;
     input {
+        box-sizing: border-box;
+        display: block;
         background-color: #fff;
         border: none;
-        width: 90%;
-        height: 50px;
-        margin: 10px;
-        box-shadow: 0 0 0 2px #000;
+        width: 500px;
+        height: 70px;
+        margin: 10px auto;
+        border: 1px solid #5383e3;
+        border-radius: 5px;
+        padding: 10px 16px;
+        font-size: 18px;
+        font-family: "SUIT-Regular", sans-serif;
     }
     button {
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 10px;
+        background-color: #5383e3;
+        color: #ffffff;
+        margin: 10px;
         font-size: 20px;
-        width: 70px;
+        width: 100px;
+        height: 50px;
+        font-family: "SUIT-Regular", sans-serif;
     }
 `;
 const MAJOR = [
