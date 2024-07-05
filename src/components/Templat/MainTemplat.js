@@ -2,7 +2,7 @@ import React from "react";
 import TopNavigationBar from "../organisms/TopNavigationBar";
 import GameList from "../organisms/GameList";
 
-const MainTemplat = ({ data, isLoading, loaderRef, setGameSort }) => {
+const MainTemplat = ({ data, isLoading, loaderRef, gameSort, setGameSort }) => {
     return (
         <div>
             <TopNavigationBar />
@@ -10,6 +10,7 @@ const MainTemplat = ({ data, isLoading, loaderRef, setGameSort }) => {
                 data={data}
                 isLoading={isLoading}
                 setGameSort={setGameSort}
+                gameSort={gameSort}
             />
             <div ref={loaderRef} />
         </div>

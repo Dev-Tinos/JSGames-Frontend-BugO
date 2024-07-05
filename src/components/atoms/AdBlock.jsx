@@ -5,7 +5,7 @@ const BlockStyle = styled.div`
     list-style-type: none;
     width: 380px;
     height: 300px;
-    margin: 10px 10px -16px 10px;
+    margin: 10px 10px -19px 10px;
     display: inline-block;
     border-radius: 10px;
     box-shadow: 0 0 0 2px #ccc;

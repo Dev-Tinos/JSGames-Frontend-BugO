@@ -69,6 +69,7 @@ const Main = () => {
                 data={gameList}
                 isLoading={isLoading}
                 loaderRef={loaderRef}
+                gameSort={gameSort}
                 setGameSort={setGameSort}
             />
         </div>

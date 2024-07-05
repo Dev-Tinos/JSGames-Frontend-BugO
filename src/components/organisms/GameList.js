@@ -27,7 +27,7 @@ const GameStyle = styled.div`
     }
 `;
 
-const GameList = ({ data, isLoading, setGameSort }) => {
+const GameList = ({ data, isLoading, gameSort, setGameSort }) => {
     const SORT = [
         { value: "VIEW_COUNT", name: "조회 수 높은 순" },
         { value: "LOG_COUNT", name: "로그 많은 순" },
@@ -37,7 +37,7 @@ const GameList = ({ data, isLoading, setGameSort }) => {
     return (
         <GameStyle>
             <div className="sortbox">
-                <SortSelect item={SORT} setSort={setGameSort} />
+                <SortSelect item={SORT} setSort={setGameSort} sort={gameSort} />
             </div>
             {isLoading
                 ? new Array(12).fill(1).map((_, i) => {

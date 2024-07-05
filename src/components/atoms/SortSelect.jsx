@@ -1,26 +1,46 @@
 import React from "react";
 import styled from "styled-components";
 
-const SelectStyle = styled.select`
-    height: 50px;
+const SelectStyle = styled.ul`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
-    border: 0px;
+    gap: 20px;
+    margin: 10px 0 0;
+    height: 100px;
+    padding: 0;
+    li {
+        background-color: #efefef;
+        display: inline-block;
+        padding: 15px 20px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 20px;
+        &.active {
+            background-color: #5383e8;
+            color: white;
+        }
+        &:hover {
+            background-color: #5383e8;
+            color: white;
+        }
+    }
 `;
 
-const SortSelect = ({ item, setSort }) => {
-    const handleChange = (e) => {
-        setSort(e.target.value);
-    };
+const SortSelect = ({ item, setSort, sort }) => {
     return (
-        <SelectStyle onChange={handleChange}>
+        <SelectStyle>
             {item.map((item) => (
-                <option
+                <li
                     key={item.value}
                     value={item.value}
+                    className={sort === item.value ? "active" : ""}
                     defaultValue={item.defaultValue === item.value}
+                    onClick={() => setSort(item.value)}
                 >
                     {item.name}
-                </option>
+                </li>
             ))}
         </SelectStyle>
     );
