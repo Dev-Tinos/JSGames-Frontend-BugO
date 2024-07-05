@@ -8,10 +8,12 @@ import RefreshBtn from "../atoms/RefreshBtn";
 
 const Detailbox = styled.div`
     .gameDocs {
-        width: 1240px;
+        box-sizing: border-box;
+        width: 1280px;
         margin: 20px auto;
-        background-color: #d9d9d9;
+        background-color: #ffffff;
         padding: 20px;
+        border: 1px solid #5383e8;
         border-radius: 10px;
     }
     h2 {
@@ -31,7 +33,9 @@ const GameDetail = ({
     btnDisable,
     loaderRef,
     reviewsubmit,
+    reviewSort,
     setReviewSort,
+    star,
     setStar,
     myReview,
 }) => {
@@ -58,7 +62,9 @@ const GameDetail = ({
                 data={review}
                 reviewsubmit={reviewsubmit}
                 setReviewSort={setReviewSort}
+                star={star}
                 setStar={setStar}
+                reviewSort={reviewSort}
                 myReview={myReview}
             />
             <div ref={loaderRef}></div>

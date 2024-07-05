@@ -4,7 +4,7 @@ import styled from "styled-components";
 const FrameStyle = styled.div`
     width: 1280px;
     height: 800px;
-    background-color: #fff;
+    background-color: #efefef;
     margin: auto;
     iframe {
         width: 1280px;

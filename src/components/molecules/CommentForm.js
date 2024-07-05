@@ -4,6 +4,7 @@ import CommentBtn from "../atoms/CommentBtn";
 import styled from "styled-components";
 
 const CommentFormBox = styled.div`
+    box-sizing: border-box;
     width: 95%;
     margin: auto;
     text-align: center;

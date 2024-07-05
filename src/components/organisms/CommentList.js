@@ -5,11 +5,13 @@ import CommentForm from "../molecules/CommentForm";
 import ReviewSortSelect from "../atoms/ReviewSortSelect";
 
 const CommentStyle = styled.div`
+    box-sizing: border-box;
+    border: 1px solid #5383e8;
     margin: auto;
     width: 1280px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #d9d9d9;
+    background-color: #ffffff;
     border-radius: 10px;
 `;
 
@@ -17,7 +19,9 @@ const CommentList = ({
     data,
     reviewsubmit,
     setReviewSort,
+    star,
     setStar,
+    reviewSort,
     myReview,
 }) => {
     const userId = localStorage.getItem("userId");
@@ -29,7 +33,6 @@ const CommentList = ({
     ];
 
     const STAR = [
-        { value: 0, name: "☆☆☆☆☆" },
         { value: 1, name: "★☆☆☆☆" },
         { value: 2, name: "★★☆☆☆" },
         { value: 3, name: "★★★☆☆" },
@@ -42,13 +45,22 @@ const CommentList = ({
             {userId === null || myReview != null ? null : (
                 <div>
                     <CommentForm reviewsubmit={reviewsubmit} />
-                    <ReviewSortSelect item={STAR} setSort={setStar} />
+                    <ReviewSortSelect
+                        item={STAR}
+                        setSort={setStar}
+                        sort={star}
+                        type={"star"}
+                    />
                 </div>
             )}
             {myReview === null ? null : (
                 <Comment item={myReview} STAR={STAR} styled="my" />
             )}
-            <ReviewSortSelect item={OPTIONS} setSort={setReviewSort} />
+            <ReviewSortSelect
+                item={OPTIONS}
+                setSort={setReviewSort}
+                sort={reviewSort}
+            />
             {data.map((item) => (
                 <Comment key={item.reviewId} item={item} STAR={STAR} />
             ))}

@@ -11,6 +11,7 @@ const SelectStyle = styled.select`
     border-radius: 5px;
     font-size: 18px;
     padding: 10px 16px;
+    font-family: "SUIT-Regular", sans-serif;
 
     option {
         border: 1px solid red;

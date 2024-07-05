@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const CardStyled = styled.div`
+    box-sizing: border-box;
     margin: auto;
     background-color: #fff;
-    border-radius: 15px;
+    border-radius: 10px;
+    border: 1px solid #5383e8;
     width: 280px;
     height: 448px;
     text-align: center;
@@ -16,7 +18,7 @@ const CardStyled = styled.div`
         width: 150px;
         height: 150px;
         border-radius: 50%;
-        box-shadow: 0 0 0 2px #000;
+        box-shadow: 0 0 0 2px #efefef;
     }
     .name {
         font-size: 20px;

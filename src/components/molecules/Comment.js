@@ -7,14 +7,15 @@ import {
 } from "../../services/HelpfulApi";
 
 const CommentBox = styled.div`
+    box-sizing: border-box;
     align-items: center;
     /* background-color: #fff; */
     width: 95%;
     margin: auto;
     display: flex;
     margin-top: 10px;
-    box-shadow: 0 0 0 1px #000 inset;
-    border-radius: 5px;
+    border: 1px solid #5383e8;
+    border-radius: 10px;
     height: auto;
     .profile {
         margin: 10px 0px;

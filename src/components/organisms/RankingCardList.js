@@ -4,13 +4,16 @@ import RankingCard from "../molecules/RankingCard";
 import RankingCardSkeleton from "../atoms/RankingCardSkeleton";
 
 const CardListStyled = styled.div`
+    box-sizing: border-box;
     margin: auto;
     width: 1280px;
     height: 500px;
-    background-color: #d9d9d9;
-    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #5383e8;
     border-radius: 10px;
+    display: flex;
     button {
+        width: 26px;
         background-color: #4249e5;
         border: 0px;
         color: #fff;

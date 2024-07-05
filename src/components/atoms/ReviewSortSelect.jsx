@@ -1,26 +1,47 @@
 import React from "react";
 import styled from "styled-components";
 
-const SelectStyle = styled.select`
+const SelectStyle = styled.ul`
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 95%;
     height: 50px;
     margin: auto;
     border: 0px;
+    padding: 0;
+    gap: 20px;
+    li {
+        display: inline-block;
+        cursor: pointer;
+        &.active {
+            color: #5383e8;
+        }
+        &.star {
+            color: #ff0000;
+        }
+    }
 `;
 
-const ReviewSortSelect = ({ item, setSort }) => {
-    const handleChange = (e) => {
-        setSort(e.target.value);
-    };
+const ReviewSortSelect = ({ item, setSort, sort, type }) => {
     return (
-        <SelectStyle onChange={handleChange}>
+        <SelectStyle>
             {item.map((item) => (
-                <option
+                <li
                     key={item.value}
                     value={item.value}
                     defaultValue={item.defaultValue === item.value}
+                    className={
+                        type === "star" && sort === item.value
+                            ? "star"
+                            : sort === item.value
+                            ? "active"
+                            : ""
+                    }
+                    onClick={() => setSort(item.value)}
                 >
                     {item.name}
-                </option>
+                </li>
             ))}
         </SelectStyle>
     );

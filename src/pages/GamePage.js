@@ -170,7 +170,9 @@ const GamePage = () => {
                 btnDisable={btnDisable}
                 loaderRef={loaderRef}
                 reviewsubmit={reviewsubmit}
+                reviewSort={reviewSort}
                 setReviewSort={setReviewSort}
+                star={star}
                 setStar={setStar}
                 myReview={myReview}
             />
