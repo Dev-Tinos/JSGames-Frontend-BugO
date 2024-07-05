@@ -7,7 +7,7 @@ import TopRankBar from "../organisms/TopRankBar";
 
 const RankingStyle = styled.div`
     .commentbox {
-        width: 1040px;
+        width: auto;
         height: auto;
         overflow: hidden;
     }
@@ -17,7 +17,6 @@ const RankingStyle = styled.div`
     }
     .commentbox {
         background-color: #fff;
-        margin: auto;
     }
     .space {
         width: 270px;

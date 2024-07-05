@@ -3,7 +3,6 @@ import styled from "styled-components";
 import RankingItem from "../molecules/RankingItem";
 
 const RankingListStyle = styled.div`
-    margin: auto;
     width: 1280px;
     .commentbox {
         background-color: #fff;
