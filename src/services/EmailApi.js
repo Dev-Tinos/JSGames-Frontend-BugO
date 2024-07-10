@@ -17,7 +17,7 @@ export const postEmail = async (params) => {
         })
         .catch((error) => {
             alert(error.response.data.message);
-            return error;
+            return error.response;
         });
     return data;
 };

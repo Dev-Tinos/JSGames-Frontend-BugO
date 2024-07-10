@@ -88,19 +88,12 @@ const EditInfoForm = ({ onClicked }) => {
             <div>
                 <button
                     onClick={async () => {
-                        console.log({
-                            userId: localStorage.getItem("userId"),
-                            nickname: nickname,
-                            img: img,
-                            major: major,
-                        });
                         const data = await putUser({
                             userId: localStorage.getItem("userId"),
                             nickname: nickname,
                             profileImageURL: img,
                             major: major,
                         });
-                        console.log(data.status);
                         if (data.status === 200) {
                             alert("회원 정보가 변경되었습니다.");
                             window.location.reload();

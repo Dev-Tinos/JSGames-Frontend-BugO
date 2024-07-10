@@ -19,7 +19,7 @@ const SignupTemplat = () => {
                     email={email}
                 />
             ) : (
-                <SignUpForm email={email} />
+                <SignUpForm email={email} setEmail={setEmail} />
             )}
         </SignUpStyle>
     );

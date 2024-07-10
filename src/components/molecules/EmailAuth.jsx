@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import Input from "../atoms/Input";
 import LoginButton from "../atoms/LoginButton";
@@ -37,11 +37,26 @@ const EmailBox = styled.div`
             margin: 0px;
         }
     }
+
+    .pass {
+        cursor: pointer;
+        color: #4249e5;
+    }
 `;
 const EmailAuth = ({ setType, setEmail, email }) => {
+    const throttling = useRef(false);
+
     const Auth = async () => {
-        await postEmail({ email: email });
-        setType(1);
+        if (!throttling.current) {
+            throttling.current = true;
+            const data = await postEmail({ email: email });
+            if (data.status === 200) {
+                setType(1);
+            }
+            setTimeout(() => {
+                throttling.current = false;
+            }, 1000);
+        }
     };
 
     return (
@@ -56,6 +71,9 @@ const EmailAuth = ({ setType, setEmail, email }) => {
                 />
                 <LoginButton text={"인증코드 발송"} onClick={Auth} />
             </div>
+            <p className="pass" onClick={() => setType(1)}>
+                이미 이메일을 을 받으셨나요?
+            </p>
         </EmailBox>
     );
 };

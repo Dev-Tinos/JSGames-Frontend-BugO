@@ -28,6 +28,7 @@ const LoginStyle = styled.div`
     .signup {
         a {
             text-decoration: none;
+            color: #4249e5;
         }
     }
 `;

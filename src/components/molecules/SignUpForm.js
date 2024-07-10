@@ -44,7 +44,7 @@ const SignUpStyle = styled.div`
     }
 `;
 
-const SignUpForm = ({ email }) => {
+const SignUpForm = ({ email, setEmail }) => {
     const [emailCode, setEamilCode] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -80,14 +80,16 @@ const SignUpForm = ({ email }) => {
             alert("학과를 선택해 주세요");
             return;
         }
-        await postUser({
+        const data = await postUser({
             email: email,
             password: password,
             nickname: nickname,
             major: major,
             code: emailCode,
         });
-        navigate("/login");
+        if (data.status === 200) {
+            navigate("/login");
+        }
     };
 
     return (
@@ -97,6 +99,13 @@ const SignUpForm = ({ email }) => {
                 <label>이메일</label>
                 <Input
                     type="email"
+                    placeholder={"이메인 인증 코드"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <label>이메일 인증 코드</label>
+                <Input
+                    type="text"
                     placeholder={"이메인 인증 코드"}
                     value={emailCode}
                     onChange={(e) => setEamilCode(e.target.value)}

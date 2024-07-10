@@ -13,11 +13,11 @@ export const postUser = async (params) => {
         })
         .then((response) => {
             alert("회원가입이 완료되었습니다.");
-            return response.data;
+            return response;
         })
         .catch((error) => {
-            alert("에러가 발생했습니다.");
-            return error;
+            alert(error.response.data.message);
+            return error.response;
         });
     return data;
 };
@@ -77,11 +77,9 @@ export const searchUser = async (params) => {
     const data = await axios
         .get(`${API_URL}/user/search`, { params })
         .then((response) => {
-            console.log(response.data);
             return response.data;
         })
         .catch((error) => {
-            console.log(error);
             return error;
         });
     return data;
