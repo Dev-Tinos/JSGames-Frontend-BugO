@@ -32,10 +32,11 @@ const TopBar = styled.div`
     }
 
     background-color: #5383e8;
-    height: 80px;
+    height: 100px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 30px 0 30px;
+    padding: 0 200px;
     .space {
         flex: 1;
     }
@@ -54,6 +55,10 @@ const TopBar = styled.div`
         color: #fff;
     }
     .leftMenu {
+        display: flex;
+        align-items: center;
+    }
+    .rightMenu {
         display: flex;
         .button {
             margin: auto;
@@ -99,35 +104,36 @@ const TopNavigationBar = () => {
     }, [userId]);
 
     return (
-        <TopBar className="top-nav-bar">
-            <Link to="/">
-                <Logo />
-            </Link>
-            <NavLink
-                to="/"
-                className={({ isActive }) =>
-                    isActive ? "nav-link-active" : "nav-link"
-                }
-            >
-                홈
-            </NavLink>
-            <Link
-                to="/ranking"
-                className={({ isActive }) =>
-                    isActive ? "nav-link-active" : "nav-link"
-                }
-            >
-                랭킹
-            </Link>
-            <div className="space" />
+        <TopBar>
+            <div className="leftMenu">
+                <Link to="/">
+                    <Logo />
+                </Link>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? "nav-link-active" : "nav-link"
+                    }
+                >
+                    홈
+                </NavLink>
+                <Link
+                    to="/ranking"
+                    className={({ isActive }) =>
+                        isActive ? "nav-link-active" : "nav-link"
+                    }
+                >
+                    랭킹
+                </Link>
+            </div>
             {userId === null ? (
-                <div className="leftMenu">
+                <div className="rightMenu">
                     <Link to="/login" className="button">
                         로그인
                     </Link>
                 </div>
             ) : (
-                <div className="leftMenu">
+                <div className="rightMenu">
                     <button className="button">
                         <i
                             class="fa-solid fa-users fa-sm"
@@ -141,9 +147,9 @@ const TopNavigationBar = () => {
                     <Link to={`/mypage`}>
                         <ProfileImg />
                     </Link>
-                    <button className="button" onClick={LogOut}>
+                    {/* <button className="button" onClick={LogOut}>
                         로그아웃
-                    </button>
+                    </button> */}
                 </div>
             )}
             <Modal
