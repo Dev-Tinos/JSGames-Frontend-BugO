@@ -18,6 +18,7 @@ const App = () => {
             <Route path="/signup" Component={SignUpPage} />
             <Route path="/game/:gameId" Component={GamePage} />
             <Route path="/test" Component={TestPage} />
+            <Route Component={"index.html"} />
         </Routes>
     );
 };
