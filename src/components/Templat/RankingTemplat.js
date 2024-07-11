@@ -4,6 +4,7 @@ import RankingList from "../organisms/RankingList";
 import styled from "styled-components";
 import RankingNav from "../organisms/RankingNav";
 import TopRankBar from "../organisms/TopRankBar";
+import Footer from "../organisms/Footer";
 
 const RankingStyle = styled.div`
     .commentbox {
@@ -211,6 +212,7 @@ const RankingTemplat = ({
                 <div className="space" />
             </div>
             <div ref={loaderRef} />
+            <Footer />
         </RankingStyle>
     );
 };

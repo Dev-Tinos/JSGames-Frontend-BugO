@@ -5,6 +5,7 @@ import CommentList from "../organisms/CommentList";
 import RankingCardList from "../organisms/RankingCardList";
 import GameFrame from "../atoms/GameFrame";
 import RefreshBtn from "../atoms/RefreshBtn";
+import Footer from "../organisms/Footer";
 
 const Detailbox = styled.div`
     .gameDocs {
@@ -68,6 +69,7 @@ const GameDetail = ({
                 myReview={myReview}
             />
             <div ref={loaderRef}></div>
+            <Footer />
         </Detailbox>
     );
 };
