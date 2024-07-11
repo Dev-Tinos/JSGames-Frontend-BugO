@@ -10,7 +10,6 @@ const CommentFormBox = styled.div`
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    margin: auto;
     text-align: center;
     gap: 20px;
     overflow: -moz-hidden-unscrollable;

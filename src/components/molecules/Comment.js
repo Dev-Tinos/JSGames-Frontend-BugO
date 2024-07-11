@@ -5,81 +5,70 @@ import {
     getHelpful,
     postHelpful,
 } from "../../services/HelpfulApi";
+import ProfileImg from "../atoms/ProfileImg";
+import TimeAgo from "../../services/function/TimeAgo";
 
 const CommentBox = styled.div`
     box-sizing: border-box;
+    width: 100%;
+    border-bottom: 3px solid #ddddff;
     align-items: center;
-    /* background-color: #fff; */
-    width: 95%;
-    margin: auto;
-    display: flex;
-    margin-top: 10px;
-    border: 1px solid #5383e8;
-    border-radius: 10px;
-    height: auto;
-    .profile {
-        margin: 10px 0px;
-        width: 11%;
-        text-align: center;
-        img {
-            width: 100px;
-            height: 100px;
-            box-shadow: 0 0 0 1px inset #000;
-            margin: auto;
-        }
+    padding: 40px;
+    &.my {
+        border: 3px solid #ddddff;
+        border-radius: 10px;
     }
-    .comment-content {
-        margin: 15px 0px 0px;
-        width: 88%;
-        height: 80%;
-        .name {
-            font-weight: bold;
-            font-size: 18px;
-            margin: 0px;
-        }
-        .helpful {
-            margin: 0px;
-            font-size: 18px;
-            i {
-                color: red;
-            }
-        }
-        .text {
-            font-size: 15px;
-            margin: 5px 0px 0px;
-            height: 60%;
-        }
-        .date {
-            margin: 0px 0px 10px;
-            font-size: 12px;
-            text-align: right;
-            vertical-align: bottom;
-            color: #888;
-        }
-        .btn {
-            button {
-                width: 30px;
-                height: 30px;
-                font-size: 18px;
-            }
-        }
-        .fa-solid.fa-star {
+    .info {
+        display: flex;
+        font-size: 24px;
+    }
+    .imgbox {
+        width: 100px;
+        height: 100px;
+        margin: 0 20px 0 0;
+    }
+    .roundimg {
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #dfdfdf;
+    }
+    .name {
+        display: flex;
+        font-weight: 700;
+        margin: 0;
+        gap: 10px;
+    }
+    button {
+        cursor: pointer;
+        background-color: #ffffff;
+        border: 0;
+        padding: 0;
+    }
+    i {
+        font-size: 20px;
+    }
+    .star {
+        margin: 10px 0;
+        .fa-solid {
             color: #ffcc00;
         }
     }
+    .helpful {
+        margin: 0;
+        .fa-solid {
+            color: #ff0000;
+        }
+    }
+    .text {
+        margin: 20px 0 0;
+        font-size: 20px;
+    }
+    .date {
+        margin: 0 0 -10px;
+        text-align: end;
+    }
 `;
-
-const formatDate = (dateObj) => {
-    const date = new Date(dateObj);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-
-    return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
-};
 
 const Comment = ({ item, styled }) => {
     const [ishelpful, setIshelpful] = useState();
@@ -118,80 +107,72 @@ const Comment = ({ item, styled }) => {
         setClicked(false);
     };
     return (
-        <CommentBox
-            style={
-                styled === "my"
-                    ? {
-                          "background-color": " #ffffb5",
-                      }
-                    : {
-                          "background-color": "#fff",
-                      }
-            }
-        >
-            <div className="profile">
-                <img
-                    src={require("../../assets/img/tino.png")}
-                    alt={`${item.user.profileImage}`}
-                />
+        <CommentBox className={styled === "my" ? "my" : null}>
+            <div className="info">
+                <div className="imgbox">
+                    <ProfileImg img={item.user.profileImageURL} />
+                </div>
+                <div>
+                    <p className="name">
+                        {item.user.nickname}
+                        {styled === "my" ? (
+                            <button>
+                                <i class="fa-solid fa-pencil"></i>
+                            </button>
+                        ) : null}
+                    </p>
+                    <p className="star">
+                        {star >= 1 ? (
+                            <i class="fa-solid fa-star" />
+                        ) : (
+                            <i class="fa-regular fa-star" />
+                        )}
+                        {star >= 2 ? (
+                            <i class="fa-solid fa-star" />
+                        ) : (
+                            <i class="fa-regular fa-star" />
+                        )}
+                        {star >= 3 ? (
+                            <i class="fa-solid fa-star" />
+                        ) : (
+                            <i class="fa-regular fa-star" />
+                        )}
+                        {star >= 4 ? (
+                            <i class="fa-solid fa-star" />
+                        ) : (
+                            <i class="fa-regular fa-star" />
+                        )}
+                        {star === 5 ? (
+                            <i class="fa-solid fa-star" />
+                        ) : (
+                            <i class="fa-regular fa-star" />
+                        )}
+                    </p>
+                    <p className="helpful">
+                        {ishelpful === true ? (
+                            <button
+                                onClick={() => Offhelpful()}
+                                disabled={clicked ? true : false}
+                            >
+                                <i class="fa-solid fa-heart" />
+                            </button>
+                        ) : (
+                            <button
+                                onClick={() => Onhelpful()}
+                                disabled={clicked ? true : false}
+                            >
+                                <i class="fa-regular fa-heart" />
+                            </button>
+                        )}
+                        {" " + item.helpful}
+                    </p>
+                    <div className="buttonBox"></div>
+                </div>
             </div>
-            <div className="comment-content">
-                <p className="name">{item.user.nickname}</p>
-                <p className="text">{item.reviewContent}</p>
-                <p className="name">
-                    {star >= 1 ? (
-                        <i class="fa-solid fa-star" />
-                    ) : (
-                        <i class="fa-regular fa-star" />
-                    )}
-                    {star >= 2 ? (
-                        <i class="fa-solid fa-star" />
-                    ) : (
-                        <i class="fa-regular fa-star" />
-                    )}
-                    {star >= 3 ? (
-                        <i class="fa-solid fa-star" />
-                    ) : (
-                        <i class="fa-regular fa-star" />
-                    )}
-                    {star >= 4 ? (
-                        <i class="fa-solid fa-star" />
-                    ) : (
-                        <i class="fa-regular fa-star" />
-                    )}
-                    {star === 5 ? (
-                        <i class="fa-solid fa-star" />
-                    ) : (
-                        <i class="fa-regular fa-star" />
-                    )}
-                </p>
-                <p className="helpful">
-                    {ishelpful === true ? (
-                        <button
-                            onClick={() => Offhelpful()}
-                            disabled={clicked ? true : false}
-                        >
-                            <i class="fa-solid fa-heart" />
-                        </button>
-                    ) : (
-                        <button
-                            onClick={() => Onhelpful()}
-                            disabled={clicked ? true : false}
-                        >
-                            <i class="fa-regular fa-heart" />
-                        </button>
-                    )}
-                    {" " + item.helpful}
-                </p>
-                {styled === "my" ? (
-                    <div className="btn">
-                        <button>
-                            <i class="fa-solid fa-pencil"></i>
-                        </button>
-                    </div>
-                ) : null}
-                <p className="date">{formatDate(item.dateTime)}</p>
-            </div>
+            <p className="text">{item.reviewContent}</p>
+            <p className="date">
+                <TimeAgo timestamp={item.dateTime} />
+            </p>
         </CommentBox>
     );
 };

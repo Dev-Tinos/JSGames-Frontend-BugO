@@ -8,6 +8,7 @@ import {
 } from "../services/ReviewApi";
 import { getGame } from "../services/GameApi";
 import { getUserLog, getUsersLogs } from "../services/LogApi";
+
 const GamePage = () => {
     const params = useParams();
     const [gameData, setGameData] = useState([]);
@@ -76,6 +77,7 @@ const GamePage = () => {
                 setReviewList(reviews);
                 setMyReview(review);
                 setReviewPage(1);
+                console.log(reviewList);
             } catch (error) {
                 console.error();
             }

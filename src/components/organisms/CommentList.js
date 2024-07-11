@@ -8,8 +8,6 @@ const CommentStyle = styled.div`
     box-sizing: border-box;
     margin: auto;
     width: 1280px;
-    padding-top: 40px;
-    padding-bottom: 40px;
     background-color: #ffffff;
     border-radius: 10px;
 `;

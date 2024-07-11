@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ProfileImg from "../atoms/ProfileImg";
 
 const ProfileBoxStyle = styled.div`
-    /* float: left; */
     display: flex;
     width: 1280px;
     height: auto;
@@ -24,6 +23,8 @@ const ProfileBoxStyle = styled.div`
         margin-left: 50px;
     }
     .title {
+        display: flex;
+        align-items: center;
         font-size: 30px;
         margin-bottom: 10px;
         font-weight: bold;
@@ -34,13 +35,11 @@ const ProfileBoxStyle = styled.div`
         margin-bottom: 5px;
     }
     button {
-        width: 34px;
-        height: 34px;
-        font-size: 20px;
+        font-size: 25px;
         background-color: #fff;
         margin-left: 10px;
-    }
-    img {
+        border: 0;
+        cursor: pointer;
     }
 `;
 

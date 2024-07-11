@@ -6,7 +6,7 @@ const CardStyled = styled.div`
     margin: auto;
     background-color: #fff;
     border-radius: 10px;
-    border: 1px solid #5383e8;
+    border: 1px solid #ddddff;
     width: 280px;
     height: 448px;
     text-align: center;
@@ -31,13 +31,7 @@ const CardStyled = styled.div`
 
 const RankingCard = ({ item, ranking, styled }) => {
     return (
-        <CardStyled
-            style={
-                styled === "my"
-                    ? { boxShadow: "0 0 0 20px #ffffb5 inset" }
-                    : null
-            }
-        >
+        <CardStyled className={styled === "my" ? "my" : null}>
             <>
                 <p className="ranking">{ranking}</p>
                 <img

@@ -9,7 +9,7 @@ const CardListStyled = styled.div`
     width: 1280px;
     height: 500px;
     background-color: #ffffff;
-    border: 1px solid #5383e8;
+    border: 1px solid #ddddff;
     border-radius: 10px;
     display: flex;
     button {

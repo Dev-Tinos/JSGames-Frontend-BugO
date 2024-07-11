@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StarStyle = styled.ul`
     display: flex;
+    align-items: center;
     gap: 20px;
     list-style-type: none;
     padding: 0;

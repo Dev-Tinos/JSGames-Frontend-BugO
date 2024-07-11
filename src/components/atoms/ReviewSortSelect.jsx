@@ -5,12 +5,12 @@ const SelectStyle = styled.ul`
     display: flex;
     justify-content: right;
     align-items: center;
-    width: 95%;
-    height: 50px;
-    margin: auto;
+    width: 100%;
+    margin: 30px 0 0;
     border: 0px;
-    padding: 0;
+    padding: 0 0 30px;
     gap: 20px;
+    border-bottom: 3px solid #ddddff;
     li {
         display: inline-block;
         cursor: pointer;

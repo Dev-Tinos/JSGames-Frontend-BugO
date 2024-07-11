@@ -14,7 +14,7 @@ const Detailbox = styled.div`
         margin: 20px auto;
         background-color: #ffffff;
         padding: 20px;
-        border: 1px solid #5383e8;
+        border: 1px solid #ddddff;
         border-radius: 10px;
     }
     h2 {
