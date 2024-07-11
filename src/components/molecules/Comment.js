@@ -63,6 +63,9 @@ const CommentBox = styled.div`
                 font-size: 18px;
             }
         }
+        .fa-solid.fa-star {
+            color: #ffcc00;
+        }
     }
 `;
 
@@ -78,10 +81,11 @@ const formatDate = (dateObj) => {
     return `${year}.${month}.${day} ${hours}:${minutes}:${seconds}`;
 };
 
-const Comment = ({ item, STAR, styled }) => {
+const Comment = ({ item, styled }) => {
     const [ishelpful, setIshelpful] = useState();
     const [clicked, setClicked] = useState(false);
-    const star = STAR.find((star) => star.value === item.star);
+    const star = Math.floor(item.star);
+
     useEffect(() => {
         const getData = async () => {
             const Ishelpful = await getHelpful({
@@ -132,12 +136,35 @@ const Comment = ({ item, STAR, styled }) => {
                 />
             </div>
             <div className="comment-content">
-                <p className="name">
-                    {item.user.nickname}
-                    {item.reviewId}
-                </p>
+                <p className="name">{item.user.nickname}</p>
                 <p className="text">{item.reviewContent}</p>
-                <p className="name">{star.name}</p>
+                <p className="name">
+                    {star >= 1 ? (
+                        <i class="fa-solid fa-star" />
+                    ) : (
+                        <i class="fa-regular fa-star" />
+                    )}
+                    {star >= 2 ? (
+                        <i class="fa-solid fa-star" />
+                    ) : (
+                        <i class="fa-regular fa-star" />
+                    )}
+                    {star >= 3 ? (
+                        <i class="fa-solid fa-star" />
+                    ) : (
+                        <i class="fa-regular fa-star" />
+                    )}
+                    {star >= 4 ? (
+                        <i class="fa-solid fa-star" />
+                    ) : (
+                        <i class="fa-regular fa-star" />
+                    )}
+                    {star === 5 ? (
+                        <i class="fa-solid fa-star" />
+                    ) : (
+                        <i class="fa-regular fa-star" />
+                    )}
+                </p>
                 <p className="helpful">
                     {ishelpful === true ? (
                         <button

@@ -6,7 +6,6 @@ import ReviewSortSelect from "../atoms/ReviewSortSelect";
 
 const CommentStyle = styled.div`
     box-sizing: border-box;
-    border: 1px solid #5383e8;
     margin: auto;
     width: 1280px;
     padding-top: 40px;
@@ -32,38 +31,26 @@ const CommentList = ({
         { value: "HELPFUL", name: "도움순" },
     ];
 
-    const STAR = [
-        { value: 1, name: "★☆☆☆☆" },
-        { value: 2, name: "★★☆☆☆" },
-        { value: 3, name: "★★★☆☆" },
-        { value: 4, name: "★★★★☆" },
-        { value: 5, name: "★★★★★" },
-    ];
-
     return (
         <CommentStyle>
             {userId === null || myReview != null ? null : (
-                <div>
-                    <CommentForm reviewsubmit={reviewsubmit} />
-                    <ReviewSortSelect
-                        item={STAR}
-                        setSort={setStar}
-                        sort={star}
-                        type={"star"}
-                    />
-                </div>
+                <CommentForm
+                    reviewsubmit={reviewsubmit}
+                    setSort={setStar}
+                    sort={star}
+                />
             )}
-            {myReview === null ? null : (
-                <Comment item={myReview} STAR={STAR} styled="my" />
-            )}
+            {myReview === null ? null : <Comment item={myReview} styled="my" />}
             <ReviewSortSelect
                 item={OPTIONS}
                 setSort={setReviewSort}
                 sort={reviewSort}
             />
-            {data.map((item) => (
-                <Comment key={item.reviewId} item={item} STAR={STAR} />
-            ))}
+            <div>
+                {data.map((item) => (
+                    <Comment key={item.reviewId} item={item} />
+                ))}
+            </div>
         </CommentStyle>
     );
 };

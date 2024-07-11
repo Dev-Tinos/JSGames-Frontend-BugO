@@ -23,7 +23,7 @@ const SelectStyle = styled.ul`
     }
 `;
 
-const ReviewSortSelect = ({ item, setSort, sort, type }) => {
+const ReviewSortSelect = ({ item, setSort, sort }) => {
     return (
         <SelectStyle>
             {item.map((item) => (
@@ -31,13 +31,7 @@ const ReviewSortSelect = ({ item, setSort, sort, type }) => {
                     key={item.value}
                     value={item.value}
                     defaultValue={item.defaultValue === item.value}
-                    className={
-                        type === "star" && sort === item.value
-                            ? "star"
-                            : sort === item.value
-                            ? "active"
-                            : ""
-                    }
+                    className={sort === item.value ? "active" : ""}
                     onClick={() => setSort(item.value)}
                 >
                     {item.name}
