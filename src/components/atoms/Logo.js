@@ -3,12 +3,20 @@ import styled from "styled-components";
 
 const Logoblock = styled.div`
     margin: 10px;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ffffff;
     img {
+        position: absolute;
+        top: 20px;
+        left: -10px;
+        width: 100px;
+        height: 100px;
         background-color: #fff;
-        width: 75px;
-        height: 75px;
         display: block;
-        border-radius: 50%;
     }
 `;
 
