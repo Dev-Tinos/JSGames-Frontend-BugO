@@ -5,15 +5,15 @@ const BarStyle = styled.div`
     width: 100%;
     min-width: 600px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     position: relative;
     ul {
         display: flex;
         margin: 15px -10% 0 64px;
-        padding: 0 200px 5px 0;
+        padding: 0 0 5px 0;
         width: 90%;
         min-width: 600px;
-        height: auto;
+        height: 70px;
         align-items: center;
         justify-content: left;
         overflow: scroll;
@@ -24,7 +24,7 @@ const BarStyle = styled.div`
         }
         &::-webkit-scrollbar-thumb {
             background-color: #efefef;
-            border-radius: 10px;
+            border-radius: 50px;
         }
     }
     li {
