@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../atoms/Logo";
 import styled from "styled-components";
 import ProfileImg from "../atoms/ProfileImg";
@@ -91,14 +91,6 @@ const TopNavigationBar = () => {
         document.body.style.overflow = "unset";
     };
 
-    const navigate = useNavigate();
-
-    const LogOut = () => {
-        localStorage.removeItem("userId");
-        setUserId(null);
-        navigate("/");
-    };
-
     useEffect(() => {
         setUserId(localStorage.getItem("userId"));
     }, [userId]);
@@ -147,9 +139,6 @@ const TopNavigationBar = () => {
                     <Link to={`/mypage`}>
                         <ProfileImg />
                     </Link>
-                    {/* <button className="button" onClick={LogOut}>
-                        로그아웃
-                    </button> */}
                 </div>
             )}
             <Modal

@@ -5,38 +5,50 @@ import { putUser } from "../../services/UserApi";
 
 const FormStyle = styled.div`
     box-sizing: border-box;
-    border: 1px solid #5383e3;
+    border: 1px solid #ddddff;
     border-radius: 10px;
-    width: 600px;
+    width: 800px;
     background-color: #ffffff;
     margin: 50px auto;
     text-align: center;
     padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     input {
         box-sizing: border-box;
         display: block;
         background-color: #fff;
         border: none;
-        width: 500px;
+        width: 100%;
         height: 70px;
-        margin: 10px auto;
-        border: 1px solid #5383e3;
+        margin: 0 auto;
+        border: 1px solid #ddddff;
         border-radius: 5px;
         padding: 10px 16px;
         font-size: 18px;
         font-family: "SUIT-Regular", sans-serif;
     }
-    button {
-        box-sizing: border-box;
-        border: 0;
-        border-radius: 10px;
-        background-color: #5383e3;
-        color: #ffffff;
-        margin: 10px;
-        font-size: 20px;
-        width: 100px;
-        height: 50px;
-        font-family: "SUIT-Regular", sans-serif;
+    .buttonbox {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        button {
+            box-sizing: border-box;
+            border: 0;
+            border-radius: 10px;
+            background-color: #5383e3;
+            color: #ffffff;
+            margin: 0;
+            font-size: 20px;
+            padding: 20px 70px;
+            font-family: "SUIT-Regular", sans-serif;
+        }
+    }
+    select {
+        width: 100%;
+        border: 1px solid #ddddff;
+        margin: 0;
     }
 `;
 const MAJOR = [
@@ -76,16 +88,16 @@ const EditInfoForm = ({ onClicked }) => {
                     setNickname(e.target.value);
                 }}
                 placeholder={"닉네임"}
-            ></input>
+            />
             <input
                 value={img}
                 onChange={(e) => {
                     setImg(e.target.value);
                 }}
                 placeholder={"이미지 URL"}
-            ></input>
+            />
             <MajorSelect item={MAJOR} setMajor={setMajor} />
-            <div>
+            <div className="buttonbox">
                 <button
                     onClick={async () => {
                         const data = await putUser({
