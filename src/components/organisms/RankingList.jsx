@@ -3,15 +3,20 @@ import styled from "styled-components";
 import RankingItem from "../molecules/RankingItem";
 
 const RankingListStyle = styled.div`
-    width: 1280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    min-width: 700px;
+    margin: 15px;
     .commentbox {
         background-color: #fff;
-        padding: 15px;
     }
     .title {
         width: 90%;
         margin: auto;
         display: flex;
+        border-bottom: 2px solid #efefef;
         .ranking {
             width: 9%;
             text-align: center;

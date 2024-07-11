@@ -15,6 +15,8 @@ const RankingStyle = styled.div`
     .container {
         display: flex;
         margin: auto;
+        padding-right: 200px;
+        min-height: 100dvb;
     }
     .commentbox {
         background-color: #fff;
@@ -24,7 +26,12 @@ const RankingStyle = styled.div`
         padding: 15px;
     }
     .rankingBox {
-        flex: 1;
+        width: 100%;
+        min-width: 700px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: 2px solid #efefef;
     }
 `;
 
@@ -209,7 +216,6 @@ const RankingTemplat = ({
             <div className="container">
                 <RankingNav setType={setType} type={type} />
                 {changeRaningPage()}
-                <div className="space" />
             </div>
             <div ref={loaderRef} />
             <Footer />

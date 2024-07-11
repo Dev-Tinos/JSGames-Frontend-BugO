@@ -8,8 +8,8 @@ const RankingItemStyle = styled.div`
     margin: auto;
     display: flex;
     margin-top: 5px;
-    box-shadow: 0 0 0 2px #ccc;
-    border-radius: 5px;
+    border-bottom: 2px solid #ccc;
+    font-weight: 600;
 
     .ranking {
         font-size: 24px;

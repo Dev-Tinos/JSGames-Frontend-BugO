@@ -15,6 +15,7 @@ const MyPage = () => {
             try {
                 const apiData = await getUser(userId);
                 setUser(apiData);
+                console.log(apiData);
             } catch (error) {
                 console.error();
             }
