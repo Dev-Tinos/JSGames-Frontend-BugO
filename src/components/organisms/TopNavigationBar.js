@@ -74,6 +74,10 @@ const TopBar = styled.div`
                 font-size: 25px;
             }
         }
+        a {
+            width: 60px;
+            height: 60px;
+        }
     }
 `;
 

@@ -3,11 +3,13 @@ import styled from "styled-components";
 import defaultImg from "../../assets/img/tino.png";
 
 const ProfileImgStyle = styled.div`
-    width: 64px;
-    height: 64px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    overflow: hidden;
     .roundimg {
         background-color: #fff;
-        border-radius: 50%;
         object-fit: cover;
     }
 `;

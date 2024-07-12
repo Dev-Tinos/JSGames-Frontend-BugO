@@ -24,15 +24,15 @@ const CardStyled = styled.div`
         margin: 30px 0 10px;
     }
     .imgbox {
+        box-sizing: border-box;
         width: 150px;
         height: 150px;
         flex-shrink: 0;
         margin: 0 0 20px;
     }
     .roundimg {
-        box-sizing: border-box;
-        width: 150px;
-        height: 150px;
+        width: 100%;
+        height: 100%;
     }
     .name {
         font-size: 20px;

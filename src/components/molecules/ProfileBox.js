@@ -7,15 +7,14 @@ const ProfileBoxStyle = styled.div`
     display: flex;
     width: 1280px;
     height: auto;
-    margin: auto;
+    margin: 50px auto;
     .img {
         width: 300px;
         height: 300px;
     }
     .roundimg {
-        width: 250px;
-        height: 250px;
-        margin: 30px;
+        width: 100%;
+        height: 100%;
         box-shadow: 0 0 0 2px inset #cccccc;
     }
     .textbox {

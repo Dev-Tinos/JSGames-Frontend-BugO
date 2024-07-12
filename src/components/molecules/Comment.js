@@ -29,9 +29,8 @@ const CommentBox = styled.div`
     }
     .roundimg {
         box-sizing: border-box;
-        width: 100px;
-        height: 100px;
-        border: 1px solid #dfdfdf;
+        width: 100%;
+        height: 100%;
     }
     .name {
         display: flex;
