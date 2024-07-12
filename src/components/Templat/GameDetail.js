@@ -43,6 +43,7 @@ const GameDetail = ({
     star,
     setStar,
     myReview,
+    rankingRef,
 }) => {
     return (
         <Detailbox>
@@ -61,6 +62,7 @@ const GameDetail = ({
                 data={ranking}
                 myRanking={myRanking}
                 setRankingPage={setRankingPage}
+                rankingRef={rankingRef}
             />
             <h2>댓글</h2>
             <CommentList

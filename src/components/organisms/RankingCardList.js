@@ -56,7 +56,13 @@ const CardListStyled = styled.div`
     }
 `;
 
-const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
+const RankingCardList = ({
+    myRanking,
+    data,
+    rankingPage,
+    setRankingPage,
+    rankingRef,
+}) => {
     const useHorizontalScroll = () => {
         const elRef = useRef();
         useEffect(() => {
@@ -111,6 +117,7 @@ const RankingCardList = ({ myRanking, data, rankingPage, setRankingPage }) => {
                               ranking={i + 1}
                           />
                       ))}
+                <div ref={rankingRef}></div>
                 <div className="footer"></div>
             </div>
             {/* <button

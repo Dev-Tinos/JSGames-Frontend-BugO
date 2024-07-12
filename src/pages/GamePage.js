@@ -22,6 +22,7 @@ const GamePage = () => {
     const [myRanking, setMyRanking] = useState(null);
     const [btnDisable, setBtnDisable] = useState(false);
     const loaderRef = useRef(null);
+    const rankingRef = useRef(null);
 
     useEffect(() => {
         const getData = async () => {
@@ -41,14 +42,15 @@ const GamePage = () => {
         const getData = async () => {
             try {
                 const rankings = await getUsersLogs(params.gameId, {
-                    size: 10,
-                    page: rankingPage,
+                    size: 5,
+                    page: 0,
                 });
                 const ranking = await getUserLog(
                     params.gameId,
                     localStorage.getItem("userId")
                 );
                 setRankingList(rankings);
+                setRankingPage(1);
                 setMyRanking(ranking);
                 setIsLoading(false);
             } catch (error) {
@@ -57,7 +59,7 @@ const GamePage = () => {
         };
         setRankingList(null);
         getData();
-    }, [params, rankingPage]);
+    }, [params]);
 
     useEffect(() => {
         const getData = async () => {
@@ -168,6 +170,38 @@ const GamePage = () => {
         return () => observer.disconnect();
     }, [loaderRef, reviewPage, params, reviewSort]);
 
+    useEffect(() => {
+        const fetchMoreData = async () => {
+            try {
+                setTimeout(async () => {
+                    const newList = await getUsersLogs(params.gameId, {
+                        size: 5,
+                        page: rankingPage,
+                    });
+                    if (newList.length === 0) {
+                        return;
+                    }
+                    setRankingList((prevList) => [...prevList, ...newList]);
+                    setRankingPage((prevPage) => prevPage + 1);
+                }, 100);
+            } catch (error) {
+                console.error();
+            }
+        };
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const firstEntry = entries[0];
+                if (firstEntry.isIntersecting) {
+                    fetchMoreData();
+                }
+            },
+            { threshold: 1.0 }
+        );
+        if (rankingRef.current) {
+            observer.observe(rankingRef.current);
+        }
+        return () => observer.disconnect();
+    }, [rankingRef, params, rankingPage]);
     return (
         <div>
             <GameDetail
@@ -187,6 +221,7 @@ const GamePage = () => {
                 star={star}
                 setStar={setStar}
                 myReview={myReview}
+                rankingRef={rankingRef}
             />
         </div>
     );

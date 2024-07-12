@@ -6,7 +6,7 @@ const CardStyled = styled.div`
     box-sizing: border-box;
     margin: auto;
     background-color: #ffffff;
-    border: 1px solid #ddddff;
+    border: 1px solid #cccccc;
     border-radius: 10px;
     width: 280px;
     height: 448px;
@@ -17,6 +17,7 @@ const CardStyled = styled.div`
     gap: 20px;
     &.my {
         background-color: #ddddff;
+        border: 1px solid #ddddff;
     }
     .ranking {
         font-size: 36px;
