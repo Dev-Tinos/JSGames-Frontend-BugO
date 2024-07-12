@@ -1,46 +1,59 @@
 import React from "react";
 import styled from "styled-components";
+import ProfileImg from "../atoms/ProfileImg";
 
 const CardStyled = styled.div`
     box-sizing: border-box;
     margin: auto;
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: #ffffff;
     border: 1px solid #ddddff;
+    border-radius: 10px;
     width: 280px;
     height: 448px;
-    text-align: center;
-    .ranking {
-        font-size: 30px;
-        font-weight: bold;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    &.my {
+        background-color: #ddddff;
     }
-    img {
+    .ranking {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 30px 0 10px;
+    }
+    .imgbox {
         width: 150px;
         height: 150px;
-        border-radius: 50%;
-        box-shadow: 0 0 0 2px #efefef;
+        flex-shrink: 0;
+        margin: 0 0 20px;
+    }
+    .roundimg {
+        box-sizing: border-box;
+        width: 150px;
+        height: 150px;
     }
     .name {
         font-size: 20px;
-        margin-top: 40px;
+        font-weight: 600;
+        margin: 0;
     }
     .score {
         font-size: 20px;
+        margin: 0;
     }
 `;
 
 const RankingCard = ({ item, ranking, styled }) => {
     return (
         <CardStyled className={styled === "my" ? "my" : null}>
-            <>
-                <p className="ranking">{ranking}</p>
-                <img
-                    src={require("../../assets/img/tino.png")}
-                    alt={`${item.userId}`}
-                />
-                <p className="name">{item.user.nickname}</p>
-                <p className="score">{item.gameScore}</p>
-            </>
+            <p className="ranking">{ranking}</p>
+            <div className="imgbox">
+                <ProfileImg />
+            </div>
+            <p className="name">{item.user.nickname}</p>
+            <p className="score">{item.gameScore}</p>
         </CardStyled>
     );
 };

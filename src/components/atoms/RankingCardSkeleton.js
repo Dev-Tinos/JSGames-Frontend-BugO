@@ -9,7 +9,7 @@ const CardStyle = styled.div`
     border-radius: 10px;
     width: 280px;
     height: 448px;
-    /* text-align: center; */
+    flex-shrink: 0;
     .ranking {
         font-size: 30px;
         font-weight: bold;
@@ -48,7 +48,9 @@ const CardStyle = styled.div`
         margin-right: auto;
     }
     &.not {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 

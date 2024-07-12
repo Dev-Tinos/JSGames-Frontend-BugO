@@ -42,7 +42,7 @@ const GamePage = () => {
         const getData = async () => {
             try {
                 const rankings = await getUsersLogs(params.gameId, {
-                    size: 3,
+                    size: 10,
                     page: rankingPage,
                 });
                 const ranking = await getUserLog(
