@@ -38,6 +38,8 @@ const GameDetail = ({
     btnDisable,
     loaderRef,
     reviewsubmit,
+    reviewEdit,
+    setReviewEdit,
     reviewSort,
     setReviewSort,
     star,
@@ -68,6 +70,8 @@ const GameDetail = ({
             <CommentList
                 data={review}
                 reviewsubmit={reviewsubmit}
+                reviewEdit={reviewEdit}
+                setReviewEdit={setReviewEdit}
                 setReviewSort={setReviewSort}
                 star={star}
                 setStar={setStar}

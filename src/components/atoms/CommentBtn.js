@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
-    width: 10%;
+    padding: 20px 50px;
     background-color: #5383e8;
     color: #fff;
     border: none;
     border-radius: 5px;
+    min-height: 55px;
+    width: 130px;
     cursor: pointer;
 `;
 

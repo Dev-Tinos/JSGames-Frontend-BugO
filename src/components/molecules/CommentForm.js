@@ -12,7 +12,6 @@ const CommentFormBox = styled.div`
     box-sizing: border-box;
     text-align: center;
     gap: 20px;
-    overflow: -moz-hidden-unscrollable;
     form {
         display: flex;
     }
@@ -20,13 +19,24 @@ const CommentFormBox = styled.div`
         width: 100%;
         display: flex;
         justify-content: space-between;
-        ul {
-            justify-content: left;
-        }
+    }
+    .editBox {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        gap: 20px;
     }
 `;
 
-const CommentForm = ({ reviewsubmit, setSort, sort }) => {
+const CommentForm = ({
+    reviewsubmit,
+    reviewEdit,
+    setReviewEdit,
+    setSort,
+    sort,
+    type,
+    IsEdit,
+}) => {
     const [reviewText, setreviewText] = useState("");
     const submit = () => {
         reviewsubmit(reviewText);
@@ -39,10 +49,17 @@ const CommentForm = ({ reviewsubmit, setSort, sort }) => {
                 value={reviewText}
                 onChange={setreviewText}
             />
-            <div className="buttonBox">
-                <StarSelect setSort={setSort} sort={sort} />
-                <CommentBtn text="입력" onClick={submit} />
-            </div>
+            {type ? (
+                <div className="editBox">
+                    <CommentBtn text="취소" onClick={IsEdit} />
+                    <CommentBtn text="입력" onClick={submit} />
+                </div>
+            ) : (
+                <div className="buttonBox">
+                    <StarSelect setSort={setSort} sort={sort} />
+                    <CommentBtn text="입력" onClick={submit} />
+                </div>
+            )}
         </CommentFormBox>
     );
 };

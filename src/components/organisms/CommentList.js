@@ -12,9 +12,18 @@ const CommentStyle = styled.div`
     border-radius: 10px;
 `;
 
+const OPTIONS = [
+    { value: "RECENT", name: "최근순" },
+    { value: "OLDEST", name: "오래된순" },
+    { value: "STAR", name: "별점순" },
+    { value: "HELPFUL", name: "도움순" },
+];
+
 const CommentList = ({
     data,
     reviewsubmit,
+    reviewEdit,
+    setReviewEdit,
     setReviewSort,
     star,
     setStar,
@@ -22,12 +31,6 @@ const CommentList = ({
     myReview,
 }) => {
     const userId = localStorage.getItem("userId");
-    const OPTIONS = [
-        { value: "RECENT", name: "최근순" },
-        { value: "OLDEST", name: "오래된순" },
-        { value: "STAR", name: "별점순" },
-        { value: "HELPFUL", name: "도움순" },
-    ];
 
     return (
         <CommentStyle>
@@ -38,7 +41,15 @@ const CommentList = ({
                     sort={star}
                 />
             )}
-            {myReview === null ? null : <Comment item={myReview} styled="my" />}
+            {myReview === null ? null : (
+                <Comment
+                    item={myReview}
+                    styled="my"
+                    reviewsubmit={reviewsubmit}
+                    reviewEdit={reviewEdit}
+                    setReviewEdit={setReviewEdit}
+                />
+            )}
             <ReviewSortSelect
                 item={OPTIONS}
                 setSort={setReviewSort}

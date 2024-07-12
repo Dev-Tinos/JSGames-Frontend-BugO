@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const InputBox = styled.textarea`
     box-sizing: border-box;
-    border: 1px solid #5383e8;
+    border: 2px solid #ddddff;
     border-radius: 10px;
     width: 100%;
     resize: none;

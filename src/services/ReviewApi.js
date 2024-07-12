@@ -43,10 +43,10 @@ export const putReview = async (reviewId, params) => {
             headers: headers,
         })
         .then((response) => {
-            return response.data;
+            return response;
         })
         .catch((error) => {
-            return error;
+            return error.response;
         });
     return data;
 };

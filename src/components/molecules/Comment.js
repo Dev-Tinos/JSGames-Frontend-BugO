@@ -7,6 +7,7 @@ import {
 } from "../../services/HelpfulApi";
 import ProfileImg from "../atoms/ProfileImg";
 import TimeAgo from "../../services/function/TimeAgo";
+import CommentForm from "./CommentForm";
 
 const CommentBox = styled.div`
     box-sizing: border-box;
@@ -67,12 +68,26 @@ const CommentBox = styled.div`
         margin: 0 0 -10px;
         text-align: end;
     }
+    .editForm {
+        margin: 40px 0 0;
+        button {
+            background-color: #5383e2;
+        }
+    }
 `;
 
-const Comment = ({ item, styled }) => {
+const Comment = ({ item, styled, reviewsubmit, reviewEdit, setReviewEdit }) => {
     const [ishelpful, setIshelpful] = useState();
     const [clicked, setClicked] = useState(false);
     const star = Math.floor(item.star);
+
+    const IsEdit = () => {
+        if (reviewEdit === true) {
+            setReviewEdit(false);
+        } else {
+            setReviewEdit(true);
+        }
+    };
 
     useEffect(() => {
         const getData = async () => {
@@ -116,7 +131,7 @@ const Comment = ({ item, styled }) => {
                     <p className="name">
                         {item.user.nickname}
                         {styled === "my" ? (
-                            <button>
+                            <button onClick={IsEdit}>
                                 <i class="fa-solid fa-pencil"></i>
                             </button>
                         ) : null}
@@ -173,6 +188,17 @@ const Comment = ({ item, styled }) => {
             <p className="date">
                 <TimeAgo timestamp={item.dateTime} />
             </p>
+            {reviewEdit === true ? (
+                <div className="editForm">
+                    <CommentForm
+                        type={reviewEdit}
+                        IsEdit={IsEdit}
+                        reviewsubmit={reviewsubmit}
+                        reviewEdit={reviewEdit}
+                        setReviewEdit={setReviewEdit}
+                    />
+                </div>
+            ) : null}
         </CommentBox>
     );
 };

@@ -5,6 +5,7 @@ import {
     getReviewList,
     getUserReview,
     postReview,
+    putReview,
 } from "../services/ReviewApi";
 import { getGame } from "../services/GameApi";
 import { getUserLog, getUsersLogs } from "../services/LogApi";
@@ -13,6 +14,7 @@ const GamePage = () => {
     const [gameData, setGameData] = useState([]);
     const [reviewList, setReviewList] = useState([]);
     const [myReview, setMyReview] = useState(null);
+    const [reviewEdit, setReviewEdit] = useState(false);
     const [reviewPage, setReviewPage] = useState(1);
     const [reviewSort, setReviewSort] = useState("RECENT");
     const [star, setStar] = useState(null);
@@ -100,36 +102,64 @@ const GamePage = () => {
 
     const reviewsubmit = async (reviewText) => {
         try {
-            if (star === null) {
-                alert("별점을 선택해 주세요");
-                return;
-            }
-            const data = await postReview({
-                userId: localStorage.getItem("userId"),
-                gameId: gameData.gameId,
-                reviewContent: reviewText,
-                star: star,
-            });
-            if (data.status === 200) {
-                alert("리뷰 작성 완료");
-                try {
-                    const reviews = await getReviewList(params.gameId, {
-                        page: 0,
-                        size: 5,
-                        sort: "RECENT",
-                    });
-                    const review = await getUserReview(
-                        params.gameId,
-                        localStorage.getItem("userId")
-                    );
-                    setReviewList(reviews);
-                    setMyReview(review);
-                    setReviewPage(1);
-                } catch (error) {
-                    console.error();
+            if (reviewEdit === true) {
+                const data = await putReview(myReview.reviewId, {
+                    reviewContent: reviewText,
+                });
+                if (data.status === 200) {
+                    alert("리뷰 수정 완료");
+                    try {
+                        const reviews = await getReviewList(params.gameId, {
+                            page: 0,
+                            size: 5,
+                            sort: "RECENT",
+                        });
+                        const review = await getUserReview(
+                            params.gameId,
+                            localStorage.getItem("userId")
+                        );
+                        setReviewList(reviews);
+                        setMyReview(review);
+                        setReviewEdit(false);
+                        setReviewPage(1);
+                    } catch (error) {
+                        console.error();
+                    }
+                } else {
+                    alert(data.data.message);
                 }
             } else {
-                alert(data.data.message);
+                if (star === null) {
+                    alert("별점을 선택해 주세요");
+                    return;
+                }
+                const data = await postReview({
+                    userId: localStorage.getItem("userId"),
+                    gameId: gameData.gameId,
+                    reviewContent: reviewText,
+                    star: star,
+                });
+                if (data.status === 200) {
+                    alert("리뷰 작성 완료");
+                    try {
+                        const reviews = await getReviewList(params.gameId, {
+                            page: 0,
+                            size: 5,
+                            sort: "RECENT",
+                        });
+                        const review = await getUserReview(
+                            params.gameId,
+                            localStorage.getItem("userId")
+                        );
+                        setReviewList(reviews);
+                        setMyReview(review);
+                        setReviewPage(1);
+                    } catch (error) {
+                        console.error();
+                    }
+                } else {
+                    alert(data.data.message);
+                }
             }
         } catch (error) {
             console.error();
@@ -216,6 +246,8 @@ const GamePage = () => {
                 btnDisable={btnDisable}
                 loaderRef={loaderRef}
                 reviewsubmit={reviewsubmit}
+                reviewEdit={reviewEdit}
+                setReviewEdit={setReviewEdit}
                 reviewSort={reviewSort}
                 setReviewSort={setReviewSort}
                 star={star}
