@@ -16,7 +16,7 @@ const RankingStyle = styled.div`
         display: flex;
         margin: auto;
         padding-right: 200px;
-        min-height: 100dvb;
+        min-height: 70dvb;
     }
     .commentbox {
         background-color: #fff;
