@@ -16,7 +16,6 @@ const GamePage = () => {
     const [reviewPage, setReviewPage] = useState(1);
     const [reviewSort, setReviewSort] = useState("RECENT");
     const [star, setStar] = useState(null);
-    const [reviewLoading, setReviewLoading] = useState(false);
     const [rankingList, setRankingList] = useState(null);
     const [rankingPage, setRankingPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -63,10 +62,9 @@ const GamePage = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                setReviewList([]);
                 const reviews = await getReviewList(params.gameId, {
                     page: 0,
-                    size: 10,
+                    size: 5,
                     sort: reviewSort,
                 });
                 const review = await getUserReview(
@@ -104,14 +102,33 @@ const GamePage = () => {
                 alert("별점을 선택해 주세요");
                 return;
             }
-            await postReview({
+            const data = await postReview({
                 userId: localStorage.getItem("userId"),
                 gameId: gameData.gameId,
                 reviewContent: reviewText,
                 star: star,
             });
-            alert("리뷰 작성 완료");
-            window.location.reload();
+            if (data.status === 200) {
+                alert("리뷰 작성 완료");
+                try {
+                    const reviews = await getReviewList(params.gameId, {
+                        page: 0,
+                        size: 5,
+                        sort: "RECENT",
+                    });
+                    const review = await getUserReview(
+                        params.gameId,
+                        localStorage.getItem("userId")
+                    );
+                    setReviewList(reviews);
+                    setMyReview(review);
+                    setReviewPage(1);
+                } catch (error) {
+                    console.error();
+                }
+            } else {
+                alert(data.data.message);
+            }
         } catch (error) {
             console.error();
         }
@@ -123,7 +140,7 @@ const GamePage = () => {
                 setTimeout(async () => {
                     const newList = await getReviewList(params.gameId, {
                         page: reviewPage,
-                        size: 10,
+                        size: 5,
                         sort: reviewSort,
                     });
                     if (newList.length === 0) {
@@ -149,7 +166,7 @@ const GamePage = () => {
             observer.observe(loaderRef.current);
         }
         return () => observer.disconnect();
-    }, [loaderRef, reviewPage, params, reviewSort, reviewLoading]);
+    }, [loaderRef, reviewPage, params, reviewSort]);
 
     return (
         <div>
