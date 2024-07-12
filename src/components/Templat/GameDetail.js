@@ -21,6 +21,10 @@ const Detailbox = styled.div`
         width: 1280px;
         margin: 20px auto;
     }
+    .ref {
+        height: 10px;
+        flex-shrink: 0;
+    }
 `;
 
 const GameDetail = ({
@@ -68,7 +72,7 @@ const GameDetail = ({
                 reviewSort={reviewSort}
                 myReview={myReview}
             />
-            <div ref={loaderRef}></div>
+            <div ref={loaderRef} className="ref"></div>
             <Footer />
         </Detailbox>
     );

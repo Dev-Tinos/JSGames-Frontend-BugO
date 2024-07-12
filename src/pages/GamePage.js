@@ -119,10 +119,6 @@ const GamePage = () => {
 
     useEffect(() => {
         const fetchMoreData = async () => {
-            if (reviewLoading) return;
-
-            setReviewLoading(true);
-
             try {
                 setTimeout(async () => {
                     const newList = await getReviewList(params.gameId, {
@@ -135,7 +131,6 @@ const GamePage = () => {
                     }
                     setReviewList((prevList) => [...prevList, ...newList]);
                     setReviewPage((prevPage) => prevPage + 1);
-                    setReviewLoading(false);
                 }, 100);
             } catch (error) {
                 console.error();

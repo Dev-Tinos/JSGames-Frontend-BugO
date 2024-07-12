@@ -10,6 +10,7 @@ const CommentStyle = styled.div`
     width: 1280px;
     background-color: #ffffff;
     border-radius: 10px;
+    min-height: 1200px;
 `;
 
 const CommentList = ({
