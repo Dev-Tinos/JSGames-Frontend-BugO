@@ -60,21 +60,22 @@ const TopBar = styled.div`
     }
     .rightMenu {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
         .button {
             margin: auto;
             background-color: #5383e8;
             color: white;
             text-decoration: none;
-            width: 100px;
             display: block;
-            margin-left: 10px;
             border: 0px;
             font-size: 18px;
             i {
                 font-size: 25px;
             }
         }
-        a {
+        div {
             width: 60px;
             height: 60px;
         }
