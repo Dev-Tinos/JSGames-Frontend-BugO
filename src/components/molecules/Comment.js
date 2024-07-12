@@ -92,8 +92,8 @@ const Comment = ({ item, styled }) => {
             userId: localStorage.getItem("userId"),
             reviewId: item.reviewId,
         });
+        item.helpful++;
         setIshelpful(true);
-        window.location.reload();
         setClicked(false);
     };
     const Offhelpful = async () => {
@@ -102,10 +102,11 @@ const Comment = ({ item, styled }) => {
             userId: localStorage.getItem("userId"),
             reviewId: item.reviewId,
         });
+        item.helpful--;
         setIshelpful(false);
-        window.location.reload();
         setClicked(false);
     };
+
     return (
         <CommentBox className={styled === "my" ? "my" : null}>
             <div className="info">
