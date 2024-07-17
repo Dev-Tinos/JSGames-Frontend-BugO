@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const SelectStyle = styled.ul`
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     margin: auto;
     gap: 20px;

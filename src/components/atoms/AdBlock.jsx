@@ -8,7 +8,7 @@ const BlockStyle = styled.div`
     margin: 10px 10px -19px 10px;
     display: inline-block;
     border-radius: 10px;
-    box-shadow: 0 0 0 2px #ccc;
+    box-shadow: 0 0 0 2px #dfdfdf;
 
     .ad {
         margin: 10px auto;
@@ -16,7 +16,7 @@ const BlockStyle = styled.div`
         width: 360px;
         height: 280px;
         object-fit: cover;
-        background-color: #dfdfdf;
+        background-color: #efefef;
         border-radius: 10px;
     }
 `;
