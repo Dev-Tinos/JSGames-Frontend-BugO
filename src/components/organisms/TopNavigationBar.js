@@ -66,13 +66,19 @@ const TopBar = styled.div`
         .button {
             margin: auto;
             background-color: #5383e8;
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             display: block;
             border: 0px;
             font-size: 18px;
             i {
                 font-size: 25px;
+            }
+            &.login {
+                color: #ccc;
+            }
+            &.login:hover {
+                color: #ffffff;
             }
         }
         div {
@@ -125,7 +131,7 @@ const TopNavigationBar = () => {
             </div>
             {userId === null ? (
                 <div className="rightMenu">
-                    <Link to="/login" className="button">
+                    <Link to="/login" className="button login">
                         로그인
                     </Link>
                 </div>

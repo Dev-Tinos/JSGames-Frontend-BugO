@@ -26,6 +26,7 @@ const GamePage = () => {
     const loaderRef = useRef(null);
     const rankingRef = useRef(null);
 
+    // 게임 정보 호출
     useEffect(() => {
         const getData = async () => {
             try {
@@ -40,6 +41,7 @@ const GamePage = () => {
         getData();
     }, [params]);
 
+    // 게임 랭킹 호출
     useEffect(() => {
         const getData = async () => {
             try {
@@ -63,6 +65,7 @@ const GamePage = () => {
         getData();
     }, [params]);
 
+    // 리뷰 호출
     useEffect(() => {
         const getData = async () => {
             try {
@@ -86,6 +89,7 @@ const GamePage = () => {
         getData();
     }, [params, reviewSort]);
 
+    // MY랭킹 새로고침
     const rankingRefresh = async () => {
         setBtnDisable(true);
         try {
@@ -100,6 +104,7 @@ const GamePage = () => {
         setBtnDisable(false);
     };
 
+    // 리뷰 작성 & 수정
     const reviewsubmit = async (reviewText) => {
         try {
             if (reviewEdit === true) {
@@ -166,6 +171,7 @@ const GamePage = () => {
         }
     };
 
+    // 리뷰 무한 스크롤
     useEffect(() => {
         const fetchMoreData = async () => {
             try {
@@ -200,6 +206,7 @@ const GamePage = () => {
         return () => observer.disconnect();
     }, [loaderRef, reviewPage, params, reviewSort]);
 
+    // 랭킹 무한 스크롤
     useEffect(() => {
         const fetchMoreData = async () => {
             try {
@@ -232,6 +239,7 @@ const GamePage = () => {
         }
         return () => observer.disconnect();
     }, [rankingRef, params, rankingPage]);
+
     return (
         <div>
             <GameDetail
