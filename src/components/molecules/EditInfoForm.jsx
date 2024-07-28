@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MajorSelect from "../atoms/MajorSelect";
 import { putUser } from "../../services/UserApi";
+// import { postImage } from "../../services/ImageApi";
+import axios from "axios";
 
 const FormStyle = styled.div`
     box-sizing: border-box;
@@ -28,6 +30,8 @@ const FormStyle = styled.div`
         padding: 10px 16px;
         font-size: 18px;
         font-family: "SUIT-Regular", sans-serif;
+        &.file {
+        }
     }
     .buttonbox {
         display: flex;
@@ -43,6 +47,33 @@ const FormStyle = styled.div`
             font-size: 20px;
             padding: 20px 70px;
             font-family: "SUIT-Regular", sans-serif;
+        }
+    }
+    .fileInput {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            color: #ffffff;
+            width: 110px;
+            height: 70px;
+            background-color: #5383e3;
+        }
+        input {
+            width: 580px;
+            margin: 0;
+        }
+        input[type="file"] {
+            position: absolute;
+            width: 0;
+            height: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
         }
     }
     select {
@@ -77,8 +108,42 @@ const MAJOR = [
 
 const EditInfoForm = ({ onClicked }) => {
     const [nickname, setNickname] = useState("");
-    const [img, setImg] = useState("");
+    const [file, setFile] = useState(null);
     const [major, setMajor] = useState("소프트웨어학과");
+
+    const EditInfo = async () => {
+        const formData = new FormData();
+        formData.append("file", file);
+        console.log(file);
+        console.log(formData);
+        // const imgUrl = await postImage(file);
+        const imgUrl = await axios
+            .post(`http://tino-back.tasty-site.com:8080/Image`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then((response) => {
+                return response.data.imageUrl;
+            })
+            .catch((error) => {
+                return error;
+            });
+        console.log(imgUrl);
+
+        const data = await putUser({
+            userId: localStorage.getItem("userId"),
+            nickname: nickname,
+            profileImageURL: imgUrl,
+            major: major,
+        });
+        if (data.status === 200) {
+            alert("회원 정보가 변경되었습니다.");
+            window.location.reload();
+        } else {
+            alert("오류가 발생하였습니다.");
+        }
+    };
 
     return (
         <FormStyle>
@@ -89,33 +154,23 @@ const EditInfoForm = ({ onClicked }) => {
                 }}
                 placeholder={"닉네임"}
             />
-            <input
-                value={img}
-                onChange={(e) => {
-                    setImg(e.target.value);
-                }}
-                placeholder={"이미지 URL"}
-            />
+            <div className="fileInput">
+                <input
+                    value={file === null ? null : file.name}
+                    placeholder={"이미지 파일"}
+                />
+                <label for="file">파일찾기</label>
+                <input
+                    id="file"
+                    type="file"
+                    onChange={(e) => {
+                        setFile(e.target.files[0]);
+                    }}
+                />
+            </div>
             <MajorSelect item={MAJOR} setMajor={setMajor} />
             <div className="buttonbox">
-                <button
-                    onClick={async () => {
-                        const data = await putUser({
-                            userId: localStorage.getItem("userId"),
-                            nickname: nickname,
-                            profileImageURL: img,
-                            major: major,
-                        });
-                        if (data.status === 200) {
-                            alert("회원 정보가 변경되었습니다.");
-                            window.location.reload();
-                        } else {
-                            alert("오류가 발생하였습니다.");
-                        }
-                    }}
-                >
-                    수정
-                </button>
+                <button onClick={EditInfo}>수정</button>
                 <button onClick={onClicked}>취소</button>
             </div>
         </FormStyle>

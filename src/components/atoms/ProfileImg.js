@@ -25,11 +25,11 @@ const isValidHttpUrl = (string) => {
 };
 
 const ProfileImg = ({ img }) => {
-    const validSrc = isValidHttpUrl(img) ? img : defaultImg;
+    const imageSrc = isValidHttpUrl(img) ? img : defaultImg;
 
     return (
         <ProfileImgStyle>
-            <img className="roundimg" src={validSrc} alt="티노" />
+            <img className="roundimg" src={imageSrc} alt="티노" />
         </ProfileImgStyle>
     );
 };
