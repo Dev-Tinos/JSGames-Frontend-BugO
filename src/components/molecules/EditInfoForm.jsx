@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MajorSelect from "../atoms/MajorSelect";
 import { putUser } from "../../services/UserApi";
-// import { postImage } from "../../services/ImageApi";
+import { postImage } from "../../services/ImageApi";
 import axios from "axios";
 
 const FormStyle = styled.div`
@@ -114,22 +114,7 @@ const EditInfoForm = ({ onClicked }) => {
     const EditInfo = async () => {
         const formData = new FormData();
         formData.append("file", file);
-        console.log(file);
-        console.log(formData);
-        // const imgUrl = await postImage(file);
-        const imgUrl = await axios
-            .post(`http://tino-back.tasty-site.com:8080/Image`, formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            })
-            .then((response) => {
-                return response.data.imageUrl;
-            })
-            .catch((error) => {
-                return error;
-            });
-        console.log(imgUrl);
+        const imgUrl = await postImage(formData);
 
         const data = await putUser({
             userId: localStorage.getItem("userId"),
