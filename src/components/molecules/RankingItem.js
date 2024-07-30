@@ -8,7 +8,7 @@ const RankingItemStyle = styled.div`
     margin: auto;
     display: flex;
     margin-top: 5px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #efefef;
     font-weight: 600;
 
     .ranking {

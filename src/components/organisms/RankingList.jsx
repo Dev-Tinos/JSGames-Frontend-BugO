@@ -16,7 +16,7 @@ const RankingListStyle = styled.div`
         width: 90%;
         margin: auto;
         display: flex;
-        border-bottom: 2px solid #efefef;
+        border-bottom: 2px solid #ccc;
         .ranking {
             width: 9%;
             text-align: center;
