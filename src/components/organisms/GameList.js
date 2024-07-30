@@ -39,10 +39,10 @@ const GameStyle = styled.div`
 
 const GameList = ({ data, isLoading, gameSort, setGameSort }) => {
     const SORT = [
-        { value: "VIEW_COUNT", name: "조회 수 높은 순" },
-        { value: "LOG_COUNT", name: "로그 많은 순" },
+        { value: "VIEW_COUNT", name: "조회순" },
+        { value: "LOG_COUNT", name: "인기순" },
         { value: "RECENT", name: "최신순" },
-        { value: "REVIEW_COUNT", name: "리뷰 많은 순" },
+        { value: "REVIEW_COUNT", name: "댓글순" },
     ];
     return (
         <GameStyle>

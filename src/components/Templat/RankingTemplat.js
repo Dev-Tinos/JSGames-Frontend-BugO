@@ -144,10 +144,10 @@ const MajorImg = [
 ];
 
 const SORT = [
-    { value: "VIEW_COUNT", name: "조회 수", text: "조회 수" },
-    { value: "LOG_COUNT", name: "플레이 수", text: "" },
+    { value: "VIEW_COUNT", name: "조회순", text: "조회 수" },
+    { value: "LOG_COUNT", name: "인기순", text: "" },
     { value: "RECENT", name: "최신순", text: "등록 일자" },
-    { value: "REVIEW_COUNT", name: "리뷰 갯수", text: "" },
+    { value: "REVIEW_COUNT", name: "댓글순", text: "" },
 ];
 
 const RankingTemplat = ({
