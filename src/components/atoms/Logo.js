@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Logoblock = styled.div`
-    margin: 10px;
     position: relative;
     width: 80px;
     height: 80px;

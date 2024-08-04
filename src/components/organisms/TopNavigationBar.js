@@ -27,18 +27,32 @@ const customStyles = {
 };
 
 const TopBar = styled.div`
-    @media (max-width: 950px) {
-        width: 900px;
-    }
-
+    width: 100%;
     background-color: #5383e8;
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 200px;
-    .space {
-        flex: 1;
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        padding: 0 30px;
+        @media (max-width: 1200px) {
+            width: 800px;
+        }
+        @media (min-width: 1200px) {
+            width: 1200px;
+        }
+        @media (min-width: 1600px) {
+            width: 1600px;
+        }
+        @media (min-width: 2000px) {
+            width: 2000px;
+        }
+        @media (min-width: 2400px) {
+            width: 2400px;
+        }
     }
     .nav-link-activev {
         color: #fff;
@@ -49,7 +63,6 @@ const TopBar = styled.div`
         width: auto;
         font-size: 22px;
         font-weight: bold;
-        margin-left: 15px;
     }
     a:hover {
         color: #fff;
@@ -57,6 +70,9 @@ const TopBar = styled.div`
     .leftMenu {
         display: flex;
         align-items: center;
+        a {
+            margin-right: 30px;
+        }
     }
     .rightMenu {
         display: flex;
@@ -75,7 +91,7 @@ const TopBar = styled.div`
                 font-size: 25px;
             }
             &.login {
-                color: #ccc;
+                color: #b3cdff;
             }
             &.login:hover {
                 color: #ffffff;
@@ -108,61 +124,63 @@ const TopNavigationBar = () => {
 
     return (
         <TopBar>
-            <div className="leftMenu">
-                <Link to="/">
-                    <Logo />
-                </Link>
-                <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link-active" : "nav-link"
-                    }
-                >
-                    홈
-                </NavLink>
-                <Link
-                    to="/ranking"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link-active" : "nav-link"
-                    }
-                >
-                    랭킹
-                </Link>
-            </div>
-            {userId === null ? (
-                <div className="rightMenu">
-                    <Link to="/login" className="button login">
-                        로그인
+            <div className="menu">
+                <div className="leftMenu">
+                    <Link to="/">
+                        <Logo />
+                    </Link>
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link-active" : "nav-link"
+                        }
+                    >
+                        홈
+                    </NavLink>
+                    <Link
+                        to="/ranking"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link-active" : "nav-link"
+                        }
+                    >
+                        랭킹
                     </Link>
                 </div>
-            ) : (
-                <div className="rightMenu">
-                    <button className="button">
-                        <i
-                            class="fa-solid fa-users fa-sm"
-                            style={{
-                                cursor: "pointer",
-                                justifyContent: "center",
-                            }}
-                            onClick={openModal}
-                        />
-                    </button>
-                    <Link to={`/mypage`}>
-                        <ProfileImg />
-                    </Link>
-                </div>
-            )}
-            <Modal
-                isOpen={isModalOpen}
-                onRequestClose={closeModal}
-                contentLabel="Friend Modal"
-                style={customStyles}
-            >
-                <FriendPage
+                {userId === null ? (
+                    <div className="rightMenu">
+                        <Link to="/login" className="button login">
+                            로그인
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="rightMenu">
+                        <button className="button">
+                            <i
+                                class="fa-solid fa-users fa-sm"
+                                style={{
+                                    cursor: "pointer",
+                                    justifyContent: "center",
+                                }}
+                                onClick={openModal}
+                            />
+                        </button>
+                        <Link to={`/mypage`}>
+                            <ProfileImg />
+                        </Link>
+                    </div>
+                )}
+                <Modal
                     isOpen={isModalOpen}
-                    closeModal={closeModal}
-                ></FriendPage>
-            </Modal>
+                    onRequestClose={closeModal}
+                    contentLabel="Friend Modal"
+                    style={customStyles}
+                >
+                    <FriendPage
+                        isOpen={isModalOpen}
+                        closeModal={closeModal}
+                    ></FriendPage>
+                </Modal>
+            </div>
         </TopBar>
     );
 };

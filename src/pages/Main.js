@@ -12,7 +12,7 @@ const Main = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                const params = { page: 0, size: 5, sort: gameSort };
+                const params = { page: 0, size: 10, sort: gameSort };
                 const apiData = await getGameRanking(params);
                 setGameList(apiData);
                 setIsLoading(false);
@@ -31,17 +31,13 @@ const Main = () => {
                 setTimeout(async () => {
                     const newList = await getGameRanking({
                         page: page,
-                        size: 5,
+                        size: 10,
                         sort: gameSort,
                     });
                     if (newList.length === 0) {
                         return;
                     }
-                    setGameList((prevList) => [
-                        ...prevList,
-                        { gameId: "ad" },
-                        ...newList,
-                    ]);
+                    setGameList((prevList) => [...prevList, ...newList]);
                     setPage((prevPage) => prevPage + 1);
                 }, 100);
             } catch (error) {

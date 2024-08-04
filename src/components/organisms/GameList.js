@@ -54,8 +54,13 @@ const GameList = ({ data, isLoading, gameSort, setGameSort }) => {
                       return <GameItemSkeleton key={i} />;
                   })
                 : data.map((item, i) =>
-                      item.gameId === "ad" ? (
-                          <AdBlock />
+                      (i + 1) % 5 === 0 ? (
+                          <>
+                              <Link to={`/game/${item.gameId}`}>
+                                  <GameItem key={item.gameId} item={item} />
+                              </Link>
+                              <AdBlock />
+                          </>
                       ) : (
                           <Link to={`/game/${item.gameId}`}>
                               <GameItem key={item.gameId} item={item} />

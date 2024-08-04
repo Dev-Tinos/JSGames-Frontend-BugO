@@ -2,16 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 const BlockStyle = styled.div`
+    box-sizing: border-box;
     list-style-type: none;
     width: 380px;
-    height: 300px;
-    margin: 10px 10px -19px 10px;
+    height: 350px;
+    margin: 0 10px 10px;
+    padding: 10px;
     display: inline-block;
     border-radius: 10px;
     box-shadow: 0 0 0 2px #dfdfdf;
 
     .ad {
-        margin: 10px auto;
+        box-sizing: border-box;
         display: block;
         width: 360px;
         height: 280px;
@@ -24,25 +26,7 @@ const BlockStyle = styled.div`
 const AdBlock = () => {
     return (
         <BlockStyle>
-            <div className="ad">
-                <script
-                    async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3414009965030523"
-                    crossorigin="anonymous"
-                ></script>
-                {/* <!-- web1 --> */}
-                <ins
-                    class="adsbygoogle"
-                    style={{ display: "block" }}
-                    data-ad-client="ca-pub-3414009965030523"
-                    data-ad-slot="7615886042"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            <div className="ad"></div>
         </BlockStyle>
     );
 };
