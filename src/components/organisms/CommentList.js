@@ -48,6 +48,8 @@ const CommentList = ({
                     reviewsubmit={reviewsubmit}
                     reviewEdit={reviewEdit}
                     setReviewEdit={setReviewEdit}
+                    setSort={setStar}
+                    sort={star}
                 />
             )}
             <ReviewSortSelect

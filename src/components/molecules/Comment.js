@@ -76,10 +76,17 @@ const CommentBox = styled.div`
     }
 `;
 
-const Comment = ({ item, styled, reviewsubmit, reviewEdit, setReviewEdit }) => {
+const Comment = ({
+    item,
+    styled,
+    reviewsubmit,
+    reviewEdit,
+    setReviewEdit,
+    setSort,
+    sort,
+}) => {
     const [ishelpful, setIshelpful] = useState();
     const [clicked, setClicked] = useState(false);
-    const star = Math.floor(item.star);
 
     const IsEdit = () => {
         if (reviewEdit === true) {
@@ -137,27 +144,27 @@ const Comment = ({ item, styled, reviewsubmit, reviewEdit, setReviewEdit }) => {
                         ) : null}
                     </p>
                     <p className="star">
-                        {star >= 1 ? (
+                        {item.star >= 1 ? (
                             <i class="fa-solid fa-star" />
                         ) : (
                             <i class="fa-regular fa-star" />
                         )}
-                        {star >= 2 ? (
+                        {item.star >= 2 ? (
                             <i class="fa-solid fa-star" />
                         ) : (
                             <i class="fa-regular fa-star" />
                         )}
-                        {star >= 3 ? (
+                        {item.star >= 3 ? (
                             <i class="fa-solid fa-star" />
                         ) : (
                             <i class="fa-regular fa-star" />
                         )}
-                        {star >= 4 ? (
+                        {item.star >= 4 ? (
                             <i class="fa-solid fa-star" />
                         ) : (
                             <i class="fa-regular fa-star" />
                         )}
-                        {star === 5 ? (
+                        {item.star >= 5 ? (
                             <i class="fa-solid fa-star" />
                         ) : (
                             <i class="fa-regular fa-star" />
@@ -196,6 +203,8 @@ const Comment = ({ item, styled, reviewsubmit, reviewEdit, setReviewEdit }) => {
                         reviewsubmit={reviewsubmit}
                         reviewEdit={reviewEdit}
                         setReviewEdit={setReviewEdit}
+                        sort={sort}
+                        setSort={setSort}
                     />
                 </div>
             ) : null}

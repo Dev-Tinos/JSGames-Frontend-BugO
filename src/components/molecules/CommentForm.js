@@ -15,10 +15,14 @@ const CommentFormBox = styled.div`
     form {
         display: flex;
     }
-    .buttonBox {
+    .submitBox {
         width: 100%;
         display: flex;
         justify-content: space-between;
+    }
+    .buttonBox {
+        display: flex;
+        gap: 20px;
     }
     .editBox {
         width: 100%;
@@ -36,11 +40,13 @@ const CommentForm = ({
     sort,
     type,
     IsEdit,
+    star,
 }) => {
     const [reviewText, setreviewText] = useState("");
     const submit = () => {
         reviewsubmit(reviewText);
     };
+
     return (
         <CommentFormBox>
             <CommentInput
@@ -50,12 +56,15 @@ const CommentForm = ({
                 onChange={setreviewText}
             />
             {type ? (
-                <div className="editBox">
-                    <CommentBtn text="취소" onClick={IsEdit} />
-                    <CommentBtn text="입력" onClick={submit} />
+                <div className="submitBox">
+                    <StarSelect setSort={setSort} sort={sort} />
+                    <div className="buttonBox">
+                        <CommentBtn text="취소" onClick={IsEdit} />
+                        <CommentBtn text="입력" onClick={submit} />
+                    </div>
                 </div>
             ) : (
-                <div className="buttonBox">
+                <div className="submitBox">
                     <StarSelect setSort={setSort} sort={sort} />
                     <CommentBtn text="입력" onClick={submit} />
                 </div>

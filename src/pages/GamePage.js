@@ -110,6 +110,7 @@ const GamePage = () => {
             if (reviewEdit === true) {
                 const data = await putReview(myReview.reviewId, {
                     reviewContent: reviewText,
+                    star: star,
                 });
                 if (data.status === 200) {
                     alert("리뷰 수정 완료");
