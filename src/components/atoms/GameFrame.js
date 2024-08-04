@@ -1,21 +1,27 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import PreventArrowKeyScroll from "../../services/function/PreventArrowKeyScroll";
 
 const FrameStyle = styled.div`
     width: 1280px;
     height: 800px;
-    background-color: #efefef;
+    background-color: #ffffff;
     margin: auto;
     iframe {
         width: 1280px;
         height: 800px;
         border-width: 0px;
+        &:focus {
+            background-color: red;
+        }
+        overflow: hidden;
     }
 `;
 
 const GameFrame = ({ gameUrl }) => {
     const [error, setError] = useState(null);
     const userId = localStorage.getItem("userId");
+    const iframeRef = useRef(null);
 
     const isProtocolValid = (url) => {
         try {
@@ -25,7 +31,6 @@ const GameFrame = ({ gameUrl }) => {
                 urlObject.protocol === "https:"
             );
         } catch (error) {
-            // URL 파싱 중 에러가 발생하면 프로토콜이 아닌 것으로 처리
             return false;
         }
     };
@@ -34,14 +39,13 @@ const GameFrame = ({ gameUrl }) => {
         setError("Invalid protocol. Please use HTTP or HTTPS.");
     };
 
-    const iframeRef = useRef(null);
-
     return (
         <FrameStyle>
             {error ? (
                 <p>{error}</p>
             ) : (
                 <iframe
+                    id="game"
                     ref={iframeRef}
                     src={
                         isProtocolValid(gameUrl)
@@ -50,11 +54,9 @@ const GameFrame = ({ gameUrl }) => {
                     }
                     title="게임 화면"
                     onError={handleIframeError}
-                    onLoad={() => {
-                        console.log("Iframe has loaded!");
-                    }}
                 ></iframe>
             )}
+            <PreventArrowKeyScroll />
         </FrameStyle>
     );
 };
