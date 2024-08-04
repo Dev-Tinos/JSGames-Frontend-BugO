@@ -3,7 +3,6 @@ import styled from "styled-components";
 import MajorSelect from "../atoms/MajorSelect";
 import { putUser } from "../../services/UserApi";
 import { postImage } from "../../services/ImageApi";
-import axios from "axios";
 
 const FormStyle = styled.div`
     box-sizing: border-box;
