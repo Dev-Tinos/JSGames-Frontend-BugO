@@ -43,6 +43,9 @@ const GameStyle = styled.div`
         a {
             width: auto;
             height: auto;
+            &:active {
+                color: #000000;
+            }
         }
     }
 `;
