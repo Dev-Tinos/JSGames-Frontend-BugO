@@ -31,8 +31,6 @@ const GameDetail = ({
     game,
     review,
     ranking,
-    rankingPage,
-    setRankingPage,
     myRanking,
     rankingRefresh,
     btnDisable,
@@ -60,10 +58,8 @@ const GameDetail = ({
                 <RefreshBtn onClick={rankingRefresh} btnDisable={btnDisable} />
             </h2>
             <RankingCardList
-                rankingPage={rankingPage}
                 data={ranking}
                 myRanking={myRanking}
-                setRankingPage={setRankingPage}
                 rankingRef={rankingRef}
             />
             <h2>댓글</h2>

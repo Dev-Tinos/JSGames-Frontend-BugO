@@ -8,23 +8,24 @@ import AdBlock from "../atoms/AdBlock";
 
 const GameStyle = styled.div`
     @media (max-width: 1200px) {
-        width: 800px;
+        width: 780px;
     }
     @media (min-width: 1200px) {
-        width: 1200px;
+        width: 1180px;
     }
     @media (min-width: 1600px) {
-        width: 1600px;
+        width: 1580px;
     }
     @media (min-width: 2000px) {
-        width: 2000px;
+        width: 1980px;
     }
     @media (min-width: 2400px) {
-        width: 2400px;
+        width: 2380px;
     }
     margin: auto;
     height: auto;
     overflow: hidden;
+    gap: 20px;
     .sortbox {
         text-align: right;
         select {
@@ -33,6 +34,15 @@ const GameStyle = styled.div`
             padding: 10px;
             box-shadow: 0px 0px 0px 2px inset #ddddff;
             outline: none;
+        }
+    }
+    .gameList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        a {
+            width: auto;
+            height: auto;
         }
     }
 `;
@@ -49,24 +59,26 @@ const GameList = ({ data, isLoading, gameSort, setGameSort }) => {
             <div className="sortbox">
                 <SortSelect item={SORT} setSort={setGameSort} sort={gameSort} />
             </div>
-            {isLoading
-                ? new Array(12).fill(1).map((_, i) => {
-                      return <GameItemSkeleton key={i} />;
-                  })
-                : data.map((item, i) =>
-                      (i + 1) % 5 === 0 ? (
-                          <>
+            <div className="gameList">
+                {isLoading
+                    ? new Array(15).fill(1).map((_, i) => {
+                          return <GameItemSkeleton key={i} />;
+                      })
+                    : data.map((item, i) =>
+                          (i + 1) % 5 === 0 ? (
+                              <>
+                                  <Link to={`/game/${item.gameId}`}>
+                                      <GameItem key={item.gameId} item={item} />
+                                  </Link>
+                                  <AdBlock />
+                              </>
+                          ) : (
                               <Link to={`/game/${item.gameId}`}>
                                   <GameItem key={item.gameId} item={item} />
                               </Link>
-                              <AdBlock />
-                          </>
-                      ) : (
-                          <Link to={`/game/${item.gameId}`}>
-                              <GameItem key={item.gameId} item={item} />
-                          </Link>
-                      )
-                  )}
+                          )
+                      )}
+            </div>
         </GameStyle>
     );
 };

@@ -9,7 +9,7 @@ const CardStyle = styled.div`
     border-radius: 10px;
     width: 280px;
     height: 448px;
-    flex-shrink: 0;
+    flex-shrink: 1;
     .ranking {
         font-size: 30px;
         font-weight: bold;
@@ -54,22 +54,14 @@ const CardStyle = styled.div`
     }
 `;
 
-const RankingCardSkeleton = ({ type }) => {
+const RankingCardSkeleton = () => {
     return (
-        <>
-            {type === null ? (
-                <CardStyle className="not">
-                    <p>랭킹 데이터가 없습니다</p>
-                </CardStyle>
-            ) : (
-                <CardStyle>
-                    <p className="ranking" />
-                    <div className="skeleton-img" />
-                    <p className="name" />
-                    <p className="score" />
-                </CardStyle>
-            )}
-        </>
+        <CardStyle>
+            <p className="ranking" />
+            <div className="skeleton-img" />
+            <p className="name" />
+            <p className="score" />
+        </CardStyle>
     );
 };
 

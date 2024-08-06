@@ -7,11 +7,10 @@ const GameItemBlock = styled.div`
     list-style-type: none;
     width: 380px;
     height: 350px;
-    margin: 10px;
     display: inline-block;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 0 0 0 2px #ddddff;
+    border: 2px solid #ddddff;
     cursor: pointer;
     text-align: left;
     position: relative;

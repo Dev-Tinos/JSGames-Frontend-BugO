@@ -22,10 +22,16 @@ const CardListStyled = styled.div`
         cursor: pointer;
     }
     .mycard {
+        width: 280px;
         display: flex;
         align-items: center;
         padding: 0 20px 10px 0;
         border-right: 1px solid #ddddff;
+        p {
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+        }
     }
     .cards {
         display: flex;
@@ -49,20 +55,9 @@ const CardListStyled = styled.div`
         background-color: #eee;
         color: #000;
     }
-    .my {
-        .CardStyled {
-            background-color: red;
-        }
-    }
 `;
 
-const RankingCardList = ({
-    myRanking,
-    data,
-    rankingPage,
-    setRankingPage,
-    rankingRef,
-}) => {
+const RankingCardList = ({ myRanking, data, rankingRef }) => {
     const useHorizontalScroll = () => {
         const elRef = useRef();
         useEffect(() => {
@@ -87,7 +82,7 @@ const RankingCardList = ({
         <CardListStyled>
             <div className="mycard">
                 {myRanking === null ? (
-                    <RankingCardSkeleton type={myRanking} />
+                    <p>데이터가 없습니다</p>
                 ) : (
                     <RankingCard
                         item={myRanking}
@@ -96,15 +91,6 @@ const RankingCardList = ({
                     />
                 )}
             </div>
-            {/* <button
-                disabled={rankingPage === 0 ? true : false}
-                className={rankingPage === 0 ? "disabledButton" : null}
-                onClick={() => {
-                    setRankingPage(rankingPage - 1);
-                }}
-            >
-                <i class="fa-solid fa-caret-left fa-2x"></i>
-            </button> */}
             <div className="cards" ref={useHorizontalScroll()}>
                 {data === null
                     ? new Array(3).fill(1).map((_, i) => {
@@ -120,13 +106,6 @@ const RankingCardList = ({
                 <div ref={rankingRef}></div>
                 <div className="footer"></div>
             </div>
-            {/* <button
-                onClick={() => {
-                    setRankingPage(rankingPage + 1);
-                }}
-            >
-                <i class="fa-solid fa-caret-right fa-2x"></i>
-            </button> */}
         </CardListStyled>
     );
 };

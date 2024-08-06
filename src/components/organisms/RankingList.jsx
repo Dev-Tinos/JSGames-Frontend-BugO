@@ -32,6 +32,13 @@ const RankingListStyle = styled.div`
             text-align: center;
         }
     }
+    .none {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        font-size: 20px;
+    }
 `;
 
 const RankingList = ({ data, type, MajorImg, gameSort, SORT }) => {
@@ -82,7 +89,7 @@ const RankingList = ({ data, type, MajorImg, gameSort, SORT }) => {
             <div className="commentbox">
                 {onChangeRanking()}
                 {data.length === 0 ? (
-                    <div>데이터가 없습니다</div>
+                    <div className="none">데이터가 없습니다</div>
                 ) : (
                     data.map((item, i) => (
                         <RankingItem
