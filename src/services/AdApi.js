@@ -6,7 +6,6 @@ export const getAd = async () => {
     const data = await axios
         .get(`${API_URL}`)
         .then((response) => {
-            console.log(response.data);
             return response.data;
         })
         .catch((error) => {

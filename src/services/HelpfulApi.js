@@ -9,7 +9,6 @@ export const postHelpful = async (params) => {
             `${API_URL}/helpful/user/${params.userId}/review/${params.reviewId}`
         )
         .then((response) => {
-            alert("Helpful을 추가했습니다.");
             return response;
         })
         .catch((error) => {
@@ -40,7 +39,6 @@ export const deleteHelpful = async (params) => {
             `${API_URL}/helpful/user/${params.userId}/review/${params.reviewId}`
         )
         .then((response) => {
-            alert("Helpful을 삭제했습니다.");
             return response;
         })
         .catch((error) => {
