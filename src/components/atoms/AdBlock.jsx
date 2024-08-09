@@ -44,23 +44,12 @@ const BlockStyle = styled.div`
     }
 `;
 
-const AD = {
-    id: 5,
-    link: "https://forms.gle/NHXvbiCRTHcXvFw3A",
-    title: "내가 이거보단 잘만들겠네!!",
-    description: "(15초 소요) 서비스의 웹게임 개발자로 등록해주세요",
-    thumbnail:
-        "https://dev-tinos-img.s3.ap-northeast-2.amazonaws.com/survey.png",
-};
-
 const AdBlock = () => {
-    const [adData, setAdData] = useState(AD);
+    const [adData, setAdData] = useState(null);
 
     const handleLoad = async () => {
         const result = await getAd();
-        if (result.state === 200) {
-            setAdData(result);
-        }
+        setAdData(result);
     };
 
     useEffect(() => {
