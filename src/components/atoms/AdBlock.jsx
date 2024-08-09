@@ -12,6 +12,7 @@ const BlockStyle = styled.div`
     border: 2px solid #dfdfdf;
     position: relative;
     overflow: hidden;
+
     .banner {
         position: absolute;
         top: 20px;
