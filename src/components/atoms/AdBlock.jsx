@@ -19,7 +19,7 @@ const BlockStyle = styled.div`
         margin: 0;
         background-color: #ffff00;
         font-size: 20px;
-        padding: 10px;
+        padding: 5px;
         border-radius: 10px;
         font-weight: 700;
     }
