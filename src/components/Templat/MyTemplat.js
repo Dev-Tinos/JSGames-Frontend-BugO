@@ -20,7 +20,9 @@ const MyTemplat = ({ user, historyData }) => {
         <MyTemplatStyle>
             <TopNavigationBar />
             <ProfileBox data={user} onClicked={onClicked} />
-            {edit === true ? <EditInfoForm onClicked={onClicked} /> : null}
+            {edit === true ? (
+                <EditInfoForm user={user} onClicked={onClicked} />
+            ) : null}
             <UserHistory data={historyData} />
         </MyTemplatStyle>
     );

@@ -105,8 +105,8 @@ const MAJOR = [
     { value: "임베디드시스템학과" },
 ];
 
-const EditInfoForm = ({ onClicked }) => {
-    const [nickname, setNickname] = useState("");
+const EditInfoForm = ({ user, onClicked }) => {
+    const [nickname, setNickname] = useState(user.nickname);
     const [file, setFile] = useState(null);
     const [major, setMajor] = useState("소프트웨어학과");
 
