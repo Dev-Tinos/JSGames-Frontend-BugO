@@ -95,12 +95,17 @@ const RankingItem = ({ item, ranking, type, MajorImg, gameSort }) => {
                         <p className="ranking">{item.totalRank}</p>
                         <div className="imgbox">
                             <img
-                                src={require("../../assets/img/tino.png")}
+                                src={
+                                    imgError
+                                        ? require("../../assets/img/tino.png")
+                                        : item.user.profileImageURL
+                                }
+                                onError={() => setImgError(true)}
                                 alt={`${item.userId}`}
                             />
                         </div>
                         <p className="name">{item.user.nickname}</p>
-                        <p className="score">{item.rankWeight}</p>
+                        <p className="score">{item.rankWeight}</p>s{" "}
                     </RankingItemStyle>
                 );
             default:
