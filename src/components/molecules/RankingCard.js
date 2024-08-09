@@ -51,7 +51,7 @@ const RankingCard = ({ item, ranking, styled }) => {
         <CardStyled className={styled === "my" ? "my" : null}>
             <p className="ranking">{ranking}</p>
             <div className="imgbox">
-                <ProfileImg />
+                <ProfileImg img={item.user.profileImageURL} />
             </div>
             <p className="name">{item.user.nickname}</p>
             <p className="score">{item.gameScore}</p>
