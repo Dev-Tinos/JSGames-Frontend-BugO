@@ -221,7 +221,7 @@ const GamePage = () => {
                     }
                     setRankingList((prevList) => [...prevList, ...newList]);
                     setRankingPage((prevPage) => prevPage + 1);
-                }, 100);
+                }, 1000);
             } catch (error) {
                 console.error();
             }
