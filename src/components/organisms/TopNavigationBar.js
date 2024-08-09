@@ -96,6 +96,9 @@ const TopBar = styled.div`
             &.login:hover {
                 color: #ffffff;
             }
+            &.friend {
+                display: none;
+            }
         }
         div {
             width: 60px;
@@ -154,7 +157,7 @@ const TopNavigationBar = () => {
                     </div>
                 ) : (
                     <div className="rightMenu">
-                        <button className="button">
+                        <button className="button friend">
                             <i
                                 class="fa-solid fa-users fa-sm"
                                 style={{
